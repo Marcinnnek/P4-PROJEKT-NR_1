@@ -32,6 +32,7 @@ namespace P4_PROJEKT_NR_1
             this.dataGridViewEmployess = new System.Windows.Forms.DataGridView();
             this.buttonShowEmployee = new System.Windows.Forms.Button();
             this.panelPracownicy = new System.Windows.Forms.Panel();
+            this.cBgender = new System.Windows.Forms.ComboBox();
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.mTBDataUrodzenia = new System.Windows.Forms.MaskedTextBox();
             this.labelID = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@ namespace P4_PROJEKT_NR_1
             this.labelNazwisko = new System.Windows.Forms.Label();
             this.labelImie = new System.Windows.Forms.Label();
             this.tBnPESEL = new System.Windows.Forms.TextBox();
-            this.tBPlec = new System.Windows.Forms.TextBox();
             this.tBNazwisko = new System.Windows.Forms.TextBox();
             this.tBImie = new System.Windows.Forms.TextBox();
             this.buttonPracownikWykonaj = new System.Windows.Forms.Button();
@@ -87,6 +87,7 @@ namespace P4_PROJEKT_NR_1
             // 
             // panelPracownicy
             // 
+            this.panelPracownicy.Controls.Add(this.cBgender);
             this.panelPracownicy.Controls.Add(this.buttonRefresh);
             this.panelPracownicy.Controls.Add(this.mTBDataUrodzenia);
             this.panelPracownicy.Controls.Add(this.labelID);
@@ -97,7 +98,6 @@ namespace P4_PROJEKT_NR_1
             this.panelPracownicy.Controls.Add(this.labelNazwisko);
             this.panelPracownicy.Controls.Add(this.labelImie);
             this.panelPracownicy.Controls.Add(this.tBnPESEL);
-            this.panelPracownicy.Controls.Add(this.tBPlec);
             this.panelPracownicy.Controls.Add(this.tBNazwisko);
             this.panelPracownicy.Controls.Add(this.tBImie);
             this.panelPracownicy.Controls.Add(this.buttonPracownikWykonaj);
@@ -110,6 +110,14 @@ namespace P4_PROJEKT_NR_1
             this.panelPracownicy.Name = "panelPracownicy";
             this.panelPracownicy.Size = new System.Drawing.Size(1329, 548);
             this.panelPracownicy.TabIndex = 2;
+            // 
+            // cBgender
+            // 
+            this.cBgender.FormattingEnabled = true;
+            this.cBgender.Location = new System.Drawing.Point(105, 311);
+            this.cBgender.Name = "cBgender";
+            this.cBgender.Size = new System.Drawing.Size(128, 27);
+            this.cBgender.TabIndex = 20;
             // 
             // buttonRefresh
             // 
@@ -202,13 +210,6 @@ namespace P4_PROJEKT_NR_1
             this.tBnPESEL.TabIndex = 9;
             this.tBnPESEL.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tBnPESEL_KeyPress_1);
             // 
-            // tBPlec
-            // 
-            this.tBPlec.Location = new System.Drawing.Point(105, 312);
-            this.tBPlec.Name = "tBPlec";
-            this.tBPlec.Size = new System.Drawing.Size(128, 26);
-            this.tBPlec.TabIndex = 8;
-            // 
             // tBNazwisko
             // 
             this.tBNazwisko.Location = new System.Drawing.Point(105, 280);
@@ -266,7 +267,7 @@ namespace P4_PROJEKT_NR_1
             // panelZatrudnienie
             // 
             this.panelZatrudnienie.Controls.Add(this.buttonZatrudnienieZapisz);
-            this.panelZatrudnienie.Location = new System.Drawing.Point(345, 651);
+            this.panelZatrudnienie.Location = new System.Drawing.Point(397, 633);
             this.panelZatrudnienie.Name = "panelZatrudnienie";
             this.panelZatrudnienie.Size = new System.Drawing.Size(145, 161);
             this.panelZatrudnienie.TabIndex = 3;
@@ -283,7 +284,7 @@ namespace P4_PROJEKT_NR_1
             // panelUrlopy
             // 
             this.panelUrlopy.Controls.Add(this.buttonUrlopZapisz);
-            this.panelUrlopy.Location = new System.Drawing.Point(35, 587);
+            this.panelUrlopy.Location = new System.Drawing.Point(75, 613);
             this.panelUrlopy.Name = "panelUrlopy";
             this.panelUrlopy.Size = new System.Drawing.Size(184, 344);
             this.panelUrlopy.TabIndex = 1;
@@ -372,13 +373,13 @@ namespace P4_PROJEKT_NR_1
         private System.Windows.Forms.Label labelNazwisko;
         private System.Windows.Forms.Label labelImie;
         private System.Windows.Forms.TextBox tBnPESEL;
-        private System.Windows.Forms.TextBox tBPlec;
         private System.Windows.Forms.TextBox tBNazwisko;
         private System.Windows.Forms.TextBox tBImie;
         private System.Windows.Forms.Label labelID;
         private System.Windows.Forms.TextBox tBID;
         private System.Windows.Forms.MaskedTextBox mTBDataUrodzenia;
         private System.Windows.Forms.Button buttonRefresh;
+        private System.Windows.Forms.ComboBox cBgender;
     }
 }
 

@@ -70,6 +70,3 @@ namespace P4_PROJEKT_NR_1.Tables
         }
     }
 }
-//SELECT IDpracownika AS 'ID', imie AS 'Imię', nazwisko AS 'Nazwisko',
-//                                                        plec AS 'Płeć', numer_pesel AS 'PESEL', data_urodzenia AS 'Data urodzenia' 
-//                                                        FROM ewu.pracownicy

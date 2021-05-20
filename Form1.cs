@@ -15,9 +15,15 @@ namespace P4_PROJEKT_NR_1
 {
     public partial class Form1 : Form
     {
+        static List<string> myGender = new List<string>();
+
         public Form1()
         {
+            myGender.Add("Kobieta");
+            myGender.Add("Mężczyzna");
+            
             InitializeComponent();
+            cBgender.DataSource = myGender;
         }
 
         private void buttonShowEmployee_Click(object sender, EventArgs e)
@@ -76,39 +82,54 @@ namespace P4_PROJEKT_NR_1
         {
             if (buttonPracownikDodaj.Enabled == true)
             {
-                Pracownicy newEmployee = new Pracownicy()
+                if (DataCheck() == true)
                 {
-                    imie = tBImie.Text.ToString(),
-                    nazwisko = tBNazwisko.Text.ToString(),
-                    plec = tBPlec.Text.ToString(),
-                    numer_pesel = tBnPESEL.Text.ToString(),
-                    data_urodzenia = DateTime.Parse(mTBDataUrodzenia.Text.ToString())
-                };
-                myDB.InsertEmployees(newEmployee);
-                EmployeeDecorator();
+                    Pracownicy newEmployee = new Pracownicy()
+                    {
+                        imie = tBImie.Text.ToString(),
+                        nazwisko = tBNazwisko.Text.ToString(),
+                        plec = cBgender.Text.ToString(),
+                        numer_pesel = tBnPESEL.Text.ToString(),
+                        data_urodzenia = DateTime.Parse(mTBDataUrodzenia.Text.ToString())
+                    };
+                    myDB.InsertEmployees(newEmployee);
+                    EmployeeDecorator();
+                    buttonPracownikWykonaj.Enabled = false;
+                }
             }
+
             if (buttonPracownikAkt.Enabled == true)
             {
-                Pracownicy newEmployee = new Pracownicy()
+                if (DataCheck() == true)
                 {
-                    IDpracownika = int.Parse(tBID.Text),
-                    imie = tBImie.Text.ToString(),
-                    nazwisko = tBNazwisko.Text.ToString(),
-                    plec = tBPlec.Text.ToString(),
-                    numer_pesel = tBnPESEL.Text.ToString(),
-                    data_urodzenia = DateTime.Parse(mTBDataUrodzenia.Text.ToString())
-                };
-                myDB.UpdateEmployees(newEmployee);
-                EmployeeDecorator();
+                    Pracownicy newEmployee = new Pracownicy()
+                    {
+                        IDpracownika = int.Parse(tBID.Text),
+                        imie = tBImie.Text.ToString(),
+                        nazwisko = tBNazwisko.Text.ToString(),
+                        plec = cBgender.Text.ToString(),
+                        numer_pesel = tBnPESEL.Text.ToString(),
+                        data_urodzenia = DateTime.Parse(mTBDataUrodzenia.Text.ToString())
+                    };
+                    myDB.UpdateEmployees(newEmployee);
+                    EmployeeDecorator();
+                    buttonPracownikWykonaj.Enabled = false;
+                }
             }
+
             if (buttonPrawconikUsun.Enabled == true)
             {
-                myDB.DeleteEmployee(tBnPESEL.Text.ToString(), int.Parse(tBID.Text));
-                EmployeeDecorator();
+                if (DataCheck() == true)
+                {
+                    myDB.DeleteEmployee(tBnPESEL.Text.ToString(), int.Parse(tBID.Text));
+                    EmployeeDecorator();
+                    buttonPracownikWykonaj.Enabled = false;
+                }
             }
             buttonPracownikDodaj.Enabled = true;
             buttonPracownikAkt.Enabled = true;
             buttonPrawconikUsun.Enabled = true;
+
         }
 
         private void dataGridViewEmployess_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -119,7 +140,7 @@ namespace P4_PROJEKT_NR_1
             tBID.Text = dataGridViewEmployess.CurrentRow.Cells[0].Value.ToString();
             tBImie.Text = dataGridViewEmployess.CurrentRow.Cells[1].Value.ToString();
             tBNazwisko.Text = dataGridViewEmployess.CurrentRow.Cells[2].Value.ToString();
-            tBPlec.Text = dataGridViewEmployess.CurrentRow.Cells[3].Value.ToString();
+            cBgender.Text = dataGridViewEmployess.CurrentRow.Cells[3].Value.ToString();
             tBnPESEL.Text = dataGridViewEmployess.CurrentRow.Cells[4].Value.ToString();
             mTBDataUrodzenia.Text = dataGridViewEmployess.CurrentRow.Cells[5].Value.ToString();
         }
@@ -140,7 +161,6 @@ namespace P4_PROJEKT_NR_1
             tBID.Text = "";
             tBImie.Text = "";
             tBNazwisko.Text = "";
-            tBPlec.Text = "";
             tBnPESEL.Text = "";
             mTBDataUrodzenia.Text = "";
 
@@ -169,8 +189,30 @@ namespace P4_PROJEKT_NR_1
                 e.Handled = true;
                 MessageBox.Show("PESEL - tylko 11 cyfr!!!");
             }
-
+        }
+        private bool DataCheck()
+        {
+            if (tBImie.TextLength < 3)
+            {
+                MessageBox.Show("Niepoprawne imię!");
+                return false;
+            }
+            else if (tBNazwisko.TextLength < 3)
+            {
+                MessageBox.Show("Niepoprawne nazwisko!");
+                return false;
+            }
+            else if (!(cBgender.Text == "Mężczyzna" || cBgender.Text == "Kobieta"))
+            {
+                MessageBox.Show("Podaj poprawną płeć!");
+                return false;
+            }
+            else if (tBnPESEL.TextLength != 11)
+            {
+                MessageBox.Show("Podaj poprawną płeć!");
+                return false;
+            }
+            return true;
         }
     }
-
 }
