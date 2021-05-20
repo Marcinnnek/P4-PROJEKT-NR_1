@@ -138,7 +138,6 @@ namespace P4_PROJEKT_NR_1
             buttonPracownikDodaj.Enabled = true;
             buttonPracownikAkt.Enabled = true;
             buttonPrawconikUsun.Enabled = true;
-
         }
 
         private void dataGridViewEmployess_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -183,7 +182,7 @@ namespace P4_PROJEKT_NR_1
 
         private void tBnPESEL_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
                 MessageBox.Show("PESEL - tylko 11 cyfr!!!");
@@ -218,5 +217,4 @@ namespace P4_PROJEKT_NR_1
 
 
     }
-
 }

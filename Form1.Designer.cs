@@ -29,7 +29,6 @@ namespace P4_PROJEKT_NR_1
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridViewEmployess = new System.Windows.Forms.DataGridView();
             this.buttonShowEmployee = new System.Windows.Forms.Button();
             this.panelPracownicy = new System.Windows.Forms.Panel();
             this.cBgender = new System.Windows.Forms.ComboBox();
@@ -56,24 +55,12 @@ namespace P4_PROJEKT_NR_1
             this.buttonPanelPracownicy = new System.Windows.Forms.Button();
             this.buttonPanelZatrudnienie = new System.Windows.Forms.Button();
             this.buttonPanelUrlopy = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployess)).BeginInit();
+            this.dataGridViewEmployess = new System.Windows.Forms.DataGridView();
             this.panelPracownicy.SuspendLayout();
             this.panelZatrudnienie.SuspendLayout();
             this.panelUrlopy.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployess)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridViewEmployess
-            // 
-            this.dataGridViewEmployess.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridViewEmployess.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEmployess.Location = new System.Drawing.Point(239, 0);
-            this.dataGridViewEmployess.MinimumSize = new System.Drawing.Size(15, 0);
-            this.dataGridViewEmployess.Name = "dataGridViewEmployess";
-            this.dataGridViewEmployess.RowHeadersWidth = 47;
-            this.dataGridViewEmployess.RowTemplate.Height = 28;
-            this.dataGridViewEmployess.Size = new System.Drawing.Size(1090, 548);
-            this.dataGridViewEmployess.TabIndex = 0;
-            this.dataGridViewEmployess.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployess_CellContentClick);
             // 
             // buttonShowEmployee
             // 
@@ -108,7 +95,7 @@ namespace P4_PROJEKT_NR_1
             this.panelPracownicy.Controls.Add(this.dataGridViewEmployess);
             this.panelPracownicy.Location = new System.Drawing.Point(190, 12);
             this.panelPracownicy.Name = "panelPracownicy";
-            this.panelPracownicy.Size = new System.Drawing.Size(1329, 548);
+            this.panelPracownicy.Size = new System.Drawing.Size(1002, 548);
             this.panelPracownicy.TabIndex = 2;
             // 
             // cBgender
@@ -328,6 +315,20 @@ namespace P4_PROJEKT_NR_1
             this.buttonPanelUrlopy.UseVisualStyleBackColor = true;
             this.buttonPanelUrlopy.Click += new System.EventHandler(this.buttonPanelUrlopy_Click);
             // 
+            // dataGridViewEmployess
+            // 
+            this.dataGridViewEmployess.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.dataGridViewEmployess.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewEmployess.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEmployess.Location = new System.Drawing.Point(313, 0);
+            this.dataGridViewEmployess.MinimumSize = new System.Drawing.Size(15, 0);
+            this.dataGridViewEmployess.Name = "dataGridViewEmployess";
+            this.dataGridViewEmployess.RowHeadersWidth = 47;
+            this.dataGridViewEmployess.RowTemplate.Height = 28;
+            this.dataGridViewEmployess.Size = new System.Drawing.Size(689, 548);
+            this.dataGridViewEmployess.TabIndex = 0;
+            this.dataGridViewEmployess.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployess_CellContentClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -342,18 +343,16 @@ namespace P4_PROJEKT_NR_1
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployess)).EndInit();
             this.panelPracownicy.ResumeLayout(false);
             this.panelPracownicy.PerformLayout();
             this.panelZatrudnienie.ResumeLayout(false);
             this.panelUrlopy.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployess)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridViewEmployess;
         private System.Windows.Forms.Button buttonShowEmployee;
         private System.Windows.Forms.Panel panelPracownicy;
         private System.Windows.Forms.Panel panelZatrudnienie;
@@ -380,6 +379,7 @@ namespace P4_PROJEKT_NR_1
         private System.Windows.Forms.MaskedTextBox mTBDataUrodzenia;
         private System.Windows.Forms.Button buttonRefresh;
         private System.Windows.Forms.ComboBox cBgender;
+        private System.Windows.Forms.DataGridView dataGridViewEmployess;
     }
 }
 
