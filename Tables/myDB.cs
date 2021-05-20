@@ -12,6 +12,7 @@ namespace P4_PROJEKT_NR_1.Tables
 {
     public static class myDB
     {
+        #region
         public static IEnumerable<Pracownicy> GetEmployees()
         {
             using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
@@ -69,4 +70,7 @@ namespace P4_PROJEKT_NR_1.Tables
             }
         }
     }
+    #endregion
+
+
 }

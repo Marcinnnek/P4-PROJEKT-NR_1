@@ -25,7 +25,16 @@ namespace P4_PROJEKT_NR_1
             InitializeComponent();
             cBgender.DataSource = myGender;
         }
-
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            tBID.Enabled = false;
+            buttonPracownikWykonaj.Enabled = false;
+            EmployeeDecorator();
+            panelUrlopy.Hide();
+            panelZatrudnienie.Hide();
+            panelPracownicy.Hide();
+        }
+        #region
         private void buttonShowEmployee_Click(object sender, EventArgs e)
         {
             EmployeeDecorator();
@@ -146,16 +155,6 @@ namespace P4_PROJEKT_NR_1
         }
 
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            tBID.Enabled = false;
-            buttonPracownikWykonaj.Enabled = false;
-            EmployeeDecorator();
-            panelUrlopy.Hide();
-            panelZatrudnienie.Hide();
-            panelPracownicy.Hide();
-        }
-
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
             tBID.Text = "";
@@ -214,5 +213,10 @@ namespace P4_PROJEKT_NR_1
             }
             return true;
         }
+        #endregion
+
+
+
     }
+
 }
