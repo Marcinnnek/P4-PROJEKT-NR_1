@@ -48,18 +48,25 @@ namespace P4_PROJEKT_NR_1
             this.buttonPracownikDodaj = new System.Windows.Forms.Button();
             this.buttonPrawconikUsun = new System.Windows.Forms.Button();
             this.buttonPracownikAkt = new System.Windows.Forms.Button();
+            this.dataGridViewEmployess = new System.Windows.Forms.DataGridView();
             this.panelZatrudnienie = new System.Windows.Forms.Panel();
-            this.buttonZatrudnienieZapisz = new System.Windows.Forms.Button();
+            this.cBoxEmployee = new System.Windows.Forms.ComboBox();
+            this.tBoxSelectedEmployee = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.labelSelEmpID = new System.Windows.Forms.Label();
+            this.buttonZatrWykonaj = new System.Windows.Forms.Button();
             this.panelUrlopy = new System.Windows.Forms.Panel();
             this.buttonUrlopZapisz = new System.Windows.Forms.Button();
             this.buttonPanelPracownicy = new System.Windows.Forms.Button();
             this.buttonPanelZatrudnienie = new System.Windows.Forms.Button();
             this.buttonPanelUrlopy = new System.Windows.Forms.Button();
-            this.dataGridViewEmployess = new System.Windows.Forms.DataGridView();
             this.panelPracownicy.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployess)).BeginInit();
             this.panelZatrudnienie.SuspendLayout();
             this.panelUrlopy.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployess)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonShowEmployee
@@ -251,27 +258,111 @@ namespace P4_PROJEKT_NR_1
             this.buttonPracownikAkt.UseVisualStyleBackColor = true;
             this.buttonPracownikAkt.Click += new System.EventHandler(this.buttonPracownikAkt_Click);
             // 
+            // dataGridViewEmployess
+            // 
+            this.dataGridViewEmployess.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.dataGridViewEmployess.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewEmployess.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEmployess.Location = new System.Drawing.Point(313, 0);
+            this.dataGridViewEmployess.MinimumSize = new System.Drawing.Size(15, 0);
+            this.dataGridViewEmployess.Name = "dataGridViewEmployess";
+            this.dataGridViewEmployess.RowHeadersWidth = 47;
+            this.dataGridViewEmployess.RowTemplate.Height = 28;
+            this.dataGridViewEmployess.Size = new System.Drawing.Size(689, 548);
+            this.dataGridViewEmployess.TabIndex = 0;
+            this.dataGridViewEmployess.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployess_CellContentClick);
+            // 
             // panelZatrudnienie
             // 
-            this.panelZatrudnienie.Controls.Add(this.buttonZatrudnienieZapisz);
-            this.panelZatrudnienie.Location = new System.Drawing.Point(397, 633);
+            this.panelZatrudnienie.Controls.Add(this.cBoxEmployee);
+            this.panelZatrudnienie.Controls.Add(this.tBoxSelectedEmployee);
+            this.panelZatrudnienie.Controls.Add(this.button4);
+            this.panelZatrudnienie.Controls.Add(this.button3);
+            this.panelZatrudnienie.Controls.Add(this.button2);
+            this.panelZatrudnienie.Controls.Add(this.button1);
+            this.panelZatrudnienie.Controls.Add(this.labelSelEmpID);
+            this.panelZatrudnienie.Controls.Add(this.buttonZatrWykonaj);
+            this.panelZatrudnienie.Location = new System.Drawing.Point(87, 611);
             this.panelZatrudnienie.Name = "panelZatrudnienie";
-            this.panelZatrudnienie.Size = new System.Drawing.Size(145, 161);
+            this.panelZatrudnienie.Size = new System.Drawing.Size(1170, 595);
             this.panelZatrudnienie.TabIndex = 3;
             // 
-            // buttonZatrudnienieZapisz
+            // cBoxEmployee
             // 
-            this.buttonZatrudnienieZapisz.Location = new System.Drawing.Point(0, 2);
-            this.buttonZatrudnienieZapisz.Name = "buttonZatrudnienieZapisz";
-            this.buttonZatrudnienieZapisz.Size = new System.Drawing.Size(86, 26);
-            this.buttonZatrudnienieZapisz.TabIndex = 0;
-            this.buttonZatrudnienieZapisz.Text = "Zapisz";
-            this.buttonZatrudnienieZapisz.UseVisualStyleBackColor = true;
+            this.cBoxEmployee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxEmployee.FormattingEnabled = true;
+            this.cBoxEmployee.Location = new System.Drawing.Point(196, 36);
+            this.cBoxEmployee.Name = "cBoxEmployee";
+            this.cBoxEmployee.Size = new System.Drawing.Size(773, 27);
+            this.cBoxEmployee.TabIndex = 10;
+            this.cBoxEmployee.SelectedIndexChanged += new System.EventHandler(this.cBoxEmployee_SelectedIndexChanged);
+            // 
+            // tBoxSelectedEmployee
+            // 
+            this.tBoxSelectedEmployee.Enabled = false;
+            this.tBoxSelectedEmployee.Location = new System.Drawing.Point(132, 81);
+            this.tBoxSelectedEmployee.Name = "tBoxSelectedEmployee";
+            this.tBoxSelectedEmployee.Size = new System.Drawing.Size(115, 26);
+            this.tBoxSelectedEmployee.TabIndex = 9;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(0, 145);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(86, 26);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(0, 113);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(86, 26);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(0, 80);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(86, 26);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 177);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(86, 26);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // labelSelEmpID
+            // 
+            this.labelSelEmpID.AutoSize = true;
+            this.labelSelEmpID.Location = new System.Drawing.Point(132, 17);
+            this.labelSelEmpID.Name = "labelSelEmpID";
+            this.labelSelEmpID.Size = new System.Drawing.Size(23, 19);
+            this.labelSelEmpID.TabIndex = 2;
+            this.labelSelEmpID.Text = "ID";
+            // 
+            // buttonZatrWykonaj
+            // 
+            this.buttonZatrWykonaj.Location = new System.Drawing.Point(0, 14);
+            this.buttonZatrWykonaj.Name = "buttonZatrWykonaj";
+            this.buttonZatrWykonaj.Size = new System.Drawing.Size(86, 26);
+            this.buttonZatrWykonaj.TabIndex = 0;
+            this.buttonZatrWykonaj.Text = "Wykonaj";
+            this.buttonZatrWykonaj.UseVisualStyleBackColor = true;
             // 
             // panelUrlopy
             // 
             this.panelUrlopy.Controls.Add(this.buttonUrlopZapisz);
-            this.panelUrlopy.Location = new System.Drawing.Point(75, 613);
+            this.panelUrlopy.Location = new System.Drawing.Point(1429, 34);
             this.panelUrlopy.Name = "panelUrlopy";
             this.panelUrlopy.Size = new System.Drawing.Size(184, 344);
             this.panelUrlopy.TabIndex = 1;
@@ -315,20 +406,6 @@ namespace P4_PROJEKT_NR_1
             this.buttonPanelUrlopy.UseVisualStyleBackColor = true;
             this.buttonPanelUrlopy.Click += new System.EventHandler(this.buttonPanelUrlopy_Click);
             // 
-            // dataGridViewEmployess
-            // 
-            this.dataGridViewEmployess.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.dataGridViewEmployess.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewEmployess.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEmployess.Location = new System.Drawing.Point(313, 0);
-            this.dataGridViewEmployess.MinimumSize = new System.Drawing.Size(15, 0);
-            this.dataGridViewEmployess.Name = "dataGridViewEmployess";
-            this.dataGridViewEmployess.RowHeadersWidth = 47;
-            this.dataGridViewEmployess.RowTemplate.Height = 28;
-            this.dataGridViewEmployess.Size = new System.Drawing.Size(689, 548);
-            this.dataGridViewEmployess.TabIndex = 0;
-            this.dataGridViewEmployess.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployess_CellContentClick);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -345,9 +422,10 @@ namespace P4_PROJEKT_NR_1
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelPracownicy.ResumeLayout(false);
             this.panelPracownicy.PerformLayout();
-            this.panelZatrudnienie.ResumeLayout(false);
-            this.panelUrlopy.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployess)).EndInit();
+            this.panelZatrudnienie.ResumeLayout(false);
+            this.panelZatrudnienie.PerformLayout();
+            this.panelUrlopy.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -358,7 +436,7 @@ namespace P4_PROJEKT_NR_1
         private System.Windows.Forms.Panel panelZatrudnienie;
         private System.Windows.Forms.Button buttonPanelPracownicy;
         private System.Windows.Forms.Button buttonPanelZatrudnienie;
-        private System.Windows.Forms.Button buttonZatrudnienieZapisz;
+        private System.Windows.Forms.Button buttonZatrWykonaj;
         private System.Windows.Forms.Button buttonPanelUrlopy;
         private System.Windows.Forms.Panel panelUrlopy;
         private System.Windows.Forms.Button buttonUrlopZapisz;
@@ -380,6 +458,13 @@ namespace P4_PROJEKT_NR_1
         private System.Windows.Forms.Button buttonRefresh;
         private System.Windows.Forms.ComboBox cBgender;
         private System.Windows.Forms.DataGridView dataGridViewEmployess;
+        private System.Windows.Forms.Label labelSelEmpID;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox tBoxSelectedEmployee;
+        private System.Windows.Forms.ComboBox cBoxEmployee;
     }
 }
 

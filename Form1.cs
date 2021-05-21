@@ -24,15 +24,22 @@ namespace P4_PROJEKT_NR_1
             
             InitializeComponent();
             cBgender.DataSource = myGender;
+
+
+            cBoxEmployee.DataSource = myDB.GetEmployees();
+            cBoxEmployee.DisplayMember = "FullName";
+            cBoxEmployee.ValueMember = "IDpracownika";
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             tBID.Enabled = false;
             buttonPracownikWykonaj.Enabled = false;
             EmployeeDecorator();
+
             panelUrlopy.Hide();
             panelZatrudnienie.Hide();
             panelPracownicy.Hide();
+            tBoxSelectedEmployee.Text =null;
         }
         #region
         private void buttonShowEmployee_Click(object sender, EventArgs e)
@@ -171,12 +178,12 @@ namespace P4_PROJEKT_NR_1
         private void EmployeeDecorator()
         {
             dataGridViewEmployess.DataSource = myDB.GetEmployees().ToList();
-            dataGridViewEmployess.Columns[0].HeaderText = "ID";
-            dataGridViewEmployess.Columns[1].HeaderText = "Imię";
-            dataGridViewEmployess.Columns[2].HeaderText = "Nazwisko";
-            dataGridViewEmployess.Columns[3].HeaderText = "Płeć";
-            dataGridViewEmployess.Columns[4].HeaderText = "PESEL";
-            dataGridViewEmployess.Columns[5].HeaderText = "Data urodzenia";
+            //dataGridViewEmployess.Columns[0].HeaderText = "ID";
+            //dataGridViewEmployess.Columns[1].HeaderText = "Imię";
+            //dataGridViewEmployess.Columns[2].HeaderText = "Nazwisko";
+            //dataGridViewEmployess.Columns[3].HeaderText = "Płeć";
+            //dataGridViewEmployess.Columns[4].HeaderText = "PESEL";
+            //dataGridViewEmployess.Columns[5].HeaderText = "Data urodzenia";
         }
 
 
@@ -214,7 +221,9 @@ namespace P4_PROJEKT_NR_1
         }
         #endregion
 
-
-
+        private void cBoxEmployee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tBoxSelectedEmployee.Text = cBoxEmployee.SelectedValue.ToString();
+        }
     }
 }

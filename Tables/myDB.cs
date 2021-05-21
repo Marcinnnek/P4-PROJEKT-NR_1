@@ -19,7 +19,7 @@ namespace P4_PROJEKT_NR_1.Tables
             {
                 if (myDBconnection.State == ConnectionState.Closed)
                     myDBconnection.Open();
-                return myDBconnection.Query<Pracownicy>(@"SELECT * FROM ewu.pracownicy").ToList();
+                return myDBconnection.Query<Pracownicy>(@"SELECT IDpracownika, imie, nazwisko, plec, numer_pesel, data_urodzenia FROM ewu.pracownicy").ToList();
             }
         }
 
