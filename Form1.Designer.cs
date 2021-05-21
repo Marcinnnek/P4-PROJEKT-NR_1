@@ -63,6 +63,13 @@ namespace P4_PROJEKT_NR_1
             this.buttonPanelPracownicy = new System.Windows.Forms.Button();
             this.buttonPanelZatrudnienie = new System.Windows.Forms.Button();
             this.buttonPanelUrlopy = new System.Windows.Forms.Button();
+            this.IDpracownika = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.plec = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numer_pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_urodzenia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelPracownicy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployess)).BeginInit();
             this.panelZatrudnienie.SuspendLayout();
@@ -263,6 +270,14 @@ namespace P4_PROJEKT_NR_1
             this.dataGridViewEmployess.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.dataGridViewEmployess.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewEmployess.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEmployess.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDpracownika,
+            this.FullName,
+            this.imie,
+            this.nazwisko,
+            this.plec,
+            this.numer_pesel,
+            this.data_urodzenia});
             this.dataGridViewEmployess.Location = new System.Drawing.Point(313, 0);
             this.dataGridViewEmployess.MinimumSize = new System.Drawing.Size(15, 0);
             this.dataGridViewEmployess.Name = "dataGridViewEmployess";
@@ -406,6 +421,70 @@ namespace P4_PROJEKT_NR_1
             this.buttonPanelUrlopy.UseVisualStyleBackColor = true;
             this.buttonPanelUrlopy.Click += new System.EventHandler(this.buttonPanelUrlopy_Click);
             // 
+            // IDpracownika
+            // 
+            this.IDpracownika.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.IDpracownika.DataPropertyName = "IDpracownika";
+            this.IDpracownika.HeaderText = "ID";
+            this.IDpracownika.MinimumWidth = 6;
+            this.IDpracownika.Name = "IDpracownika";
+            this.IDpracownika.ReadOnly = true;
+            this.IDpracownika.Width = 40;
+            // 
+            // FullName
+            // 
+            this.FullName.DataPropertyName = "FullName";
+            this.FullName.HeaderText = "FullName";
+            this.FullName.MinimumWidth = 6;
+            this.FullName.Name = "FullName";
+            this.FullName.ReadOnly = true;
+            this.FullName.Visible = false;
+            // 
+            // imie
+            // 
+            this.imie.DataPropertyName = "imie";
+            this.imie.FillWeight = 94.86911F;
+            this.imie.HeaderText = "Imię";
+            this.imie.MinimumWidth = 6;
+            this.imie.Name = "imie";
+            this.imie.ReadOnly = true;
+            // 
+            // nazwisko
+            // 
+            this.nazwisko.DataPropertyName = "nazwisko";
+            this.nazwisko.FillWeight = 94.86911F;
+            this.nazwisko.HeaderText = "Nazwisko";
+            this.nazwisko.MinimumWidth = 6;
+            this.nazwisko.Name = "nazwisko";
+            this.nazwisko.ReadOnly = true;
+            // 
+            // plec
+            // 
+            this.plec.DataPropertyName = "plec";
+            this.plec.FillWeight = 94.86911F;
+            this.plec.HeaderText = "Płeć";
+            this.plec.MinimumWidth = 6;
+            this.plec.Name = "plec";
+            this.plec.ReadOnly = true;
+            // 
+            // numer_pesel
+            // 
+            this.numer_pesel.DataPropertyName = "numer_pesel";
+            this.numer_pesel.FillWeight = 94.86911F;
+            this.numer_pesel.HeaderText = "PESEL";
+            this.numer_pesel.MinimumWidth = 6;
+            this.numer_pesel.Name = "numer_pesel";
+            this.numer_pesel.ReadOnly = true;
+            // 
+            // data_urodzenia
+            // 
+            this.data_urodzenia.DataPropertyName = "data_urodzenia";
+            this.data_urodzenia.FillWeight = 94.86911F;
+            this.data_urodzenia.HeaderText = "Data urodzenia";
+            this.data_urodzenia.MinimumWidth = 6;
+            this.data_urodzenia.Name = "data_urodzenia";
+            this.data_urodzenia.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -465,6 +544,13 @@ namespace P4_PROJEKT_NR_1
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox tBoxSelectedEmployee;
         private System.Windows.Forms.ComboBox cBoxEmployee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDpracownika;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn imie;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nazwisko;
+        private System.Windows.Forms.DataGridViewTextBoxColumn plec;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numer_pesel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_urodzenia;
     }
 }
 
