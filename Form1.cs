@@ -284,7 +284,15 @@ namespace P4_PROJEKT_NR_1
 
             //cBoxStazPracy.Text = dataGridPeroidOfEmp.CurrentRow.Cells[4].Value.ToString();      //not ok
             dTPzatrudnionyOd.Text = dataGridPeroidOfEmp.CurrentRow.Cells[5].Value.ToString();    //ok
-            dTPzatrudnionyDo.Text = dataGridPeroidOfEmp.CurrentRow.Cells[6].Value.ToString();   //ok
+            if (dataGridPeroidOfEmp.CurrentRow.Cells[6].Value == null)
+            {
+                dTPzatrudnionyDo.Hide();
+            }
+            else
+            {
+                dTPzatrudnionyDo.Text = dataGridPeroidOfEmp.CurrentRow.Cells[6].Value.ToString();   //ok
+                dTPzatrudnionyDo.Show();
+            }
             tBnaleznyUrlop.Text = dataGridPeroidOfEmp.CurrentRow.Cells[7].Value.ToString();   //ok
             cBoxStanowisko.Text = dataGridPeroidOfEmp.CurrentRow.Cells[8].Value.ToString();     //ok
             cBoxWCP.Text = dataGridPeroidOfEmp.CurrentRow.Cells[11].Value.ToString();           //ok
