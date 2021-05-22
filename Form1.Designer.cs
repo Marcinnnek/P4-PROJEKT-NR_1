@@ -58,12 +58,9 @@ namespace P4_PROJEKT_NR_1
             this.panelZatrudnienie = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.labelTEST = new System.Windows.Forms.Label();
             this.checkBoxUCNO = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.dataGridPeroidOfEmp = new System.Windows.Forms.DataGridView();
             this.IDzatrudnienia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZatrudnionyOD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -97,6 +94,9 @@ namespace P4_PROJEKT_NR_1
             this.buttonExecutePeroid = new System.Windows.Forms.Button();
             this.labelSelEmpID = new System.Windows.Forms.Label();
             this.buttonPeroidCancel = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelUrlopy = new System.Windows.Forms.Panel();
             this.buttonUrlopZapisz = new System.Windows.Forms.Button();
             this.buttonPanelPracownicy = new System.Windows.Forms.Button();
@@ -375,14 +375,7 @@ namespace P4_PROJEKT_NR_1
             // 
             // panelZatrudnienie
             // 
-            this.panelZatrudnienie.Controls.Add(this.label6);
-            this.panelZatrudnienie.Controls.Add(this.label5);
-            this.panelZatrudnienie.Controls.Add(this.label4);
-            this.panelZatrudnienie.Controls.Add(this.label3);
-            this.panelZatrudnienie.Controls.Add(this.label2);
-            this.panelZatrudnienie.Controls.Add(this.labelTEST);
             this.panelZatrudnienie.Controls.Add(this.checkBoxUCNO);
-            this.panelZatrudnienie.Controls.Add(this.label1);
             this.panelZatrudnienie.Controls.Add(this.dataGridPeroidOfEmp);
             this.panelZatrudnienie.Controls.Add(this.cBoxStanowisko);
             this.panelZatrudnienie.Controls.Add(this.cBoxWCP);
@@ -412,7 +405,7 @@ namespace P4_PROJEKT_NR_1
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1297, 225);
+            this.label6.Location = new System.Drawing.Point(36, 331);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 19);
             this.label6.TabIndex = 33;
@@ -421,43 +414,25 @@ namespace P4_PROJEKT_NR_1
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1297, 206);
+            this.label5.Location = new System.Drawing.Point(36, 233);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(45, 19);
             this.label5.TabIndex = 32;
             this.label5.Text = "label5";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1297, 176);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 19);
-            this.label4.TabIndex = 31;
-            this.label4.Text = "label4";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1297, 157);
+            this.label3.Location = new System.Drawing.Point(36, 260);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 19);
             this.label3.TabIndex = 30;
             this.label3.Text = "label3";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1297, 129);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 19);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "label2";
-            // 
             // labelTEST
             // 
             this.labelTEST.AutoSize = true;
-            this.labelTEST.Location = new System.Drawing.Point(1297, 106);
+            this.labelTEST.Location = new System.Drawing.Point(36, 286);
             this.labelTEST.Name = "labelTEST";
             this.labelTEST.Size = new System.Drawing.Size(65, 19);
             this.labelTEST.TabIndex = 28;
@@ -473,16 +448,6 @@ namespace P4_PROJEKT_NR_1
             this.checkBoxUCNO.TabIndex = 27;
             this.checkBoxUCNO.Text = "Umowa na czas nieokreślony";
             this.checkBoxUCNO.UseVisualStyleBackColor = true;
-            this.checkBoxUCNO.CheckedChanged += new System.EventHandler(this.checkBoxUCNO_CheckedChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1297, 78);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 19);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "label1";
             // 
             // dataGridPeroidOfEmp
             // 
@@ -800,6 +765,33 @@ namespace P4_PROJEKT_NR_1
             this.buttonPeroidCancel.UseVisualStyleBackColor = true;
             this.buttonPeroidCancel.Click += new System.EventHandler(this.buttonPeroidCancel_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(36, 205);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(45, 19);
+            this.label4.TabIndex = 31;
+            this.label4.Text = "label4";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(36, 179);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 19);
+            this.label2.TabIndex = 29;
+            this.label2.Text = "label2";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(36, 155);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 19);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "label1";
+            // 
             // panelUrlopy
             // 
             this.panelUrlopy.Controls.Add(this.buttonUrlopZapisz);
@@ -851,16 +843,24 @@ namespace P4_PROJEKT_NR_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1492, 906);
+            this.ClientSize = new System.Drawing.Size(1492, 973);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.panelUrlopy);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.buttonPanelUrlopy);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.labelTEST);
             this.Controls.Add(this.buttonPanelZatrudnienie);
             this.Controls.Add(this.buttonPanelPracownicy);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.panelZatrudnienie);
             this.Controls.Add(this.panelPracownicy);
+            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1510, 1080);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1510, 950);
             this.Name = "FormEWU";
             this.Text = "Ewidencja Urlopów";
@@ -873,6 +873,7 @@ namespace P4_PROJEKT_NR_1
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPeroidOfEmp)).EndInit();
             this.panelUrlopy.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

@@ -19,6 +19,7 @@ namespace P4_PROJEKT_NR_1
         static List<StazPracy> Practice = new List<StazPracy>();
         private int IDemployee;
         private int IDperoid;
+        DateTime? UCNO;
         public FormEWU()
         {
             InitializeComponent();
@@ -56,14 +57,13 @@ namespace P4_PROJEKT_NR_1
             buttonPracownikWykonaj.Enabled = false;
             buttonExecutePeroid.Enabled = false;
 
-            EmployeeDecorator();
+            EmployeeRefresh();
 
             panelUrlopy.Hide();
             panelZatrudnienie.Hide();
             panelPracownicy.Hide();
 
             tBoxSelectedEmployee.Text = null;
-            dTPzatrudnionyDo.Hide();
 
             tBnaleznyUrlop.Enabled = false;
         }
@@ -94,9 +94,9 @@ namespace P4_PROJEKT_NR_1
         }
         private void buttonShowEmployee_Click(object sender, EventArgs e)
         {
-            EmployeeDecorator();
+            EmployeeRefresh();
         }
-        
+
         #endregion
         #region
         private void buttonPracownikDodaj_Click(object sender, EventArgs e)
@@ -133,7 +133,6 @@ namespace P4_PROJEKT_NR_1
                         data_urodzenia = DateTime.Parse(mTBDataUrodzenia.Text.ToString())
                     };
                     myDB.InsertEmployees(newEmployee);
-                    EmployeeDecorator();
                     buttonPracownikWykonaj.Enabled = false;
                 }
             }
@@ -152,7 +151,6 @@ namespace P4_PROJEKT_NR_1
                         data_urodzenia = DateTime.Parse(mTBDataUrodzenia.Text.ToString())
                     };
                     myDB.UpdateEmployees(newEmployee);
-                    EmployeeDecorator();
                     buttonPracownikWykonaj.Enabled = false;
                 }
             }
@@ -162,7 +160,6 @@ namespace P4_PROJEKT_NR_1
                 if (DataCheckEmp() == true)
                 {
                     myDB.DeleteEmployee(tBnPESEL.Text.ToString(), int.Parse(tBID.Text));
-                    EmployeeDecorator();
                     buttonPracownikWykonaj.Enabled = false;
                 }
             }
@@ -170,6 +167,7 @@ namespace P4_PROJEKT_NR_1
             buttonPracownikAkt.Enabled = true;
             buttonPrawconikUsun.Enabled = true;
             cBoxEmployee.DataSource = myDB.GetEmployees();
+            EmployeeRefresh();
         }
 
         private void dataGridViewEmployess_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -198,9 +196,9 @@ namespace P4_PROJEKT_NR_1
             buttonPracownikAkt.Enabled = true;
             buttonPrawconikUsun.Enabled = true;
             buttonPracownikWykonaj.Enabled = false;
-            EmployeeDecorator();
+            EmployeeRefresh();
         }
-        private void EmployeeDecorator()
+        private void EmployeeRefresh()
         {
             dataGridViewEmployess.DataSource = myDB.GetEmployees().ToList();
         }
@@ -279,11 +277,10 @@ namespace P4_PROJEKT_NR_1
             dTPzatrudnionyOd.Text = dataGridPeroidOfEmp.CurrentRow.Cells[5].Value.ToString();    //ok
             if (dataGridPeroidOfEmp.CurrentRow.Cells[6].Value == null)
             {
-                dTPzatrudnionyDo.Hide();
+                dTPzatrudnionyDo.Text = DateTime.Now.AddMonths(3).ToString();
             }
             else
             {
-                dTPzatrudnionyDo.Show();
                 dTPzatrudnionyDo.Text = dataGridPeroidOfEmp.CurrentRow.Cells[6].Value.ToString();   //ok
             }
 
@@ -297,19 +294,16 @@ namespace P4_PROJEKT_NR_1
         {
             if (buttonAddPeroid.Enabled == true)
             {
-                DateTime? UCNO;
                 if (true)
                 {
                     if (checkBoxUCNO.Checked)
                     {
-
                         UCNO = null;
                     }
                     else
                     {
                         UCNO = DateTime.Parse(dTPzatrudnionyDo.Text.ToString());
                     }
-
                     OkresZatrudnienia newPeroid = new OkresZatrudnienia()
                     {
                         IDpracownika = int.Parse(tBoxSelectedEmployee.Text.ToString()),
@@ -320,7 +314,6 @@ namespace P4_PROJEKT_NR_1
                         zatrudniony_do = UCNO
                     };
                     myDB.InsertPeroid(newPeroid);
-                    PeroidRefresh(IDemployee);
                     buttonExecutePeroid.Enabled = false;
                     dataGridPeroidOfEmp.Enabled = true;
                 }
@@ -330,11 +323,18 @@ namespace P4_PROJEKT_NR_1
             {
                 if (true)
                 {
-                    OkresZatrudnienia newEmployee = new OkresZatrudnienia()
+                    OkresZatrudnienia editedPeroid = new OkresZatrudnienia()
                     {
+                        IDpracownika = IDemployee,
+                        IDzatrudnienia = IDperoid,
+                        IDstanowiska = int.Parse(cBoxStanowisko.SelectedValue.ToString()),
+                        IDwymiar = int.Parse(cBoxWCP.SelectedValue.ToString()),
+                        staz_pracy = int.Parse(cBoxStazPracy.SelectedValue.ToString()),
+                        zatrudniony_od = DateTime.Parse(dTPzatrudnionyOd.Text.ToString()),
+                        zatrudniony_do = DateTime.Parse(dTPzatrudnionyDo.Text.ToString()),
+
                     };
-                    //myDB.UpdateEmployees(newEmployee);
-                    PeroidRefresh(IDemployee);
+                    myDB.UpdatePeroid(editedPeroid);
                     buttonExecutePeroid.Enabled = false;
                     dataGridPeroidOfEmp.Enabled = true;
                 }
@@ -345,7 +345,6 @@ namespace P4_PROJEKT_NR_1
                 if (true)
                 {
                     myDB.DeletePeroid(IDperoid);
-                    PeroidRefresh(IDemployee);
                     buttonExecutePeroid.Enabled = false;
                     dataGridPeroidOfEmp.Enabled = true;
                 }
@@ -354,6 +353,7 @@ namespace P4_PROJEKT_NR_1
             buttonUpdatePeroid.Enabled = true;
             buttonDeletePeroid.Enabled = true;
             SwitchPeroidsCB(false);
+            PeroidRefresh(IDemployee);
         }
 
         private void buttonAddPeroid_Click(object sender, EventArgs e)
@@ -375,6 +375,7 @@ namespace P4_PROJEKT_NR_1
             buttonExecutePeroid.Enabled = true;
             dataGridPeroidOfEmp.Enabled = false;
 
+            dTPzatrudnionyDo.Show();
             SwitchPeroidsCB(true);
 
             checkBoxUCNO.Show();
@@ -412,17 +413,6 @@ namespace P4_PROJEKT_NR_1
             dataGridPeroidOfEmp.DataSource = myDB.GetPeroidsOfEmployment(id);
         }
 
-        private void checkBoxUCNO_CheckedChanged(object sender, EventArgs e)
-        {
-            if (dTPzatrudnionyDo.Visible == false || (dTPzatrudnionyDo == null))
-            {
-                dTPzatrudnionyDo.Show();
-            }
-            else if (dTPzatrudnionyDo.Visible == true || !(dTPzatrudnionyDo == null))
-            {
-                dTPzatrudnionyDo.Hide();
-            }
-        }
 
         private void buttonPeroidCancel_Click(object sender, EventArgs e)
         {

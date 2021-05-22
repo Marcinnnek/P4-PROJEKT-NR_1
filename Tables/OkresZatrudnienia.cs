@@ -8,7 +8,7 @@ namespace P4_PROJEKT_NR_1.Tables
 {
     public class OkresZatrudnienia
     {
-        public int IDzatrudnienia { get; set; }            //0
+        public int ?IDzatrudnienia { get; set; }            //0
         public int IDpracownika { get; set; }              //1
         public int IDstanowiska { get; set; }              //2
         public int IDwymiar { get; set; }                  //3 

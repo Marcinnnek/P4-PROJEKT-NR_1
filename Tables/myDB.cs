@@ -42,8 +42,12 @@ namespace P4_PROJEKT_NR_1.Tables
             {
                 if (myDBconnection.State == ConnectionState.Closed)
                     myDBconnection.Open();
-                var result = myDBconnection.Execute(@"UPDATE ewu.pracownicy SET imie = @Name, nazwisko = @Surname, plec = @Gender, numer_pesel = @PESEL, data_urodzenia = @BDate
-                                                     WHERE IDpracownika = @ID",
+                var result = myDBconnection.Execute(@"UPDATE ewu.pracownicy SET imie = @Name, 
+                                                                                nazwisko = @Surname,
+                                                                                plec = @Gender,
+                                                                                numer_pesel = @PESEL,
+                                                                                data_urodzenia = @BDate
+                                                                                WHERE IDpracownika = @ID",
                  new
                  {
                      Name = emp.imie,
@@ -63,7 +67,8 @@ namespace P4_PROJEKT_NR_1.Tables
             {
                 if (myDBconnection.State == ConnectionState.Closed)
                     myDBconnection.Open();
-                var result = myDBconnection.Execute(@"DELETE FROM ewu.pracownicy WHERE IDpracownika = @ID OR numer_pesel = @PESEL",
+                var result = myDBconnection.Execute(    @"DELETE FROM ewu.pracownicy 
+                                                        WHERE IDpracownika = @ID OR numer_pesel = @PESEL",
                 new { PESEL = PESEL, ID = IDempolyee });
 
                 return result == 1;
@@ -85,7 +90,6 @@ namespace P4_PROJEKT_NR_1.Tables
                                                                     WHERE OZ.IDpracownika = @IDemp", new { IDemp = id }).ToList();
             }
         }
-
 
         public static IEnumerable<Stanowisko> GetPosition()
         {
@@ -114,8 +118,9 @@ namespace P4_PROJEKT_NR_1.Tables
             {
                 if (myDBconnection.State == ConnectionState.Closed)
                     myDBconnection.Open();
-                var result = myDBconnection.Execute(@"INSERT INTO ewu.okres_zatrudnienia (IDpracownika, IDstanowiska, IDwymiar, staz_pracy, zatrudniony_od, zatrudniony_do) 
-                                                        VALUES (@IDemp, @Position, @DayJob, @Practice ,@Since, @ToDate)",
+                var result = myDBconnection.Execute(@"INSERT INTO ewu.okres_zatrudnienia 
+                                                    (IDpracownika, IDstanowiska, IDwymiar, staz_pracy, zatrudniony_od, zatrudniony_do) 
+                                                    VALUES (@IDemp, @Position, @DayJob, @Practice ,@Since, @ToDate)",
                      new
                      {
                          IDemp = peroid.IDpracownika,
@@ -135,9 +140,38 @@ namespace P4_PROJEKT_NR_1.Tables
             {
                 if (myDBconnection.State == ConnectionState.Closed)
                     myDBconnection.Open();
-                var result = myDBconnection.Execute(@"DELETE FROM ewu.okres_zatrudnienia WHERE IDzatrudnienia = @IDp",
+                var result = myDBconnection.Execute(    @"DELETE FROM ewu.okres_zatrudnienia WHERE IDzatrudnienia = @IDp",
                 new {IDp = IDperoid});
 
+                return result == 1;
+            }
+        }
+
+        public static bool UpdatePeroid(OkresZatrudnienia IDperoid)
+        {
+            using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
+            {
+                if (myDBconnection.State == ConnectionState.Closed)
+                    myDBconnection.Open();
+                var result = myDBconnection.Execute(@"UPDATE ewu.okres_zatrudnienia 
+                                                    SET 
+                                                    IDpracownika = @IDemployee,
+                                                    IDstanowiska = @Position, 
+                                                    IDwymiar = @DayJob, 
+                                                    staz_pracy = @DayJob,
+                                                    zatrudniony_od = @Since,
+                                                    zatrudniony_do = @ToDate
+                                                    WHERE IDzatrudnienia = @IDper",
+                 new
+                 {
+                     IDemployee = IDperoid.IDpracownika,
+                     IDper = IDperoid.IDzatrudnienia,
+                     Position = IDperoid.IDstanowiska,
+                     DayJob = IDperoid.IDwymiar,
+                     Practice = IDperoid.staz_pracy,
+                     Since = IDperoid.zatrudniony_od,
+                     ToDate = IDperoid.zatrudniony_do
+                 }) ;
                 return result == 1;
             }
         }
