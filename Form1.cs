@@ -16,30 +16,52 @@ namespace P4_PROJEKT_NR_1
     public partial class Form1 : Form
     {
         static List<string> myGender = new List<string>();
-
+        static List<StazPracy> Practice = new List<StazPracy>();
+        private int IDemployee;
         public Form1()
         {
+            InitializeComponent();
+
             myGender.Add("Kobieta");
             myGender.Add("Mężczyzna");
-            
-            InitializeComponent();
             cBgender.DataSource = myGender;
 
+            Practice.Add(new StazPracy { practice = 0, days = "20 dni" });
+            Practice.Add(new StazPracy { practice = 1, days = "26 dni" });
+            cBoxStazPracy.DataSource = Practice;
+            cBoxStazPracy.DisplayMember = "days";
+            cBoxStazPracy.ValueMember = "practice";
+
+            cBoxStanowisko.DataSource = myDB.GetPosition();
+            cBoxStanowisko.DisplayMember = "nazwaST";
+            cBoxStanowisko.ValueMember = "IDstanowiska";
+
+            cBoxWCP.DataSource = myDB.GetDayJob();
+            cBoxWCP.DisplayMember = "nazwaWCP";
+            cBoxWCP.ValueMember = "IDwymiar";
 
             cBoxEmployee.DataSource = myDB.GetEmployees();
             cBoxEmployee.DisplayMember = "FullName";
             cBoxEmployee.ValueMember = "IDpracownika";
+
+
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+
+
             tBID.Enabled = false;
             buttonPracownikWykonaj.Enabled = false;
+
             EmployeeDecorator();
 
             panelUrlopy.Hide();
             panelZatrudnienie.Hide();
             panelPracownicy.Hide();
-            tBoxSelectedEmployee.Text =null;
+
+            tBoxSelectedEmployee.Text = null;
+
         }
         #region
         private void buttonShowEmployee_Click(object sender, EventArgs e)
@@ -70,9 +92,7 @@ namespace P4_PROJEKT_NR_1
             panelUrlopy.BringToFront();
             panelUrlopy.Show();
         }
-        #endregion
 
-        #region
         private void buttonPracownikDodaj_Click(object sender, EventArgs e)
         {
             buttonPracownikAkt.Enabled = false;
@@ -178,12 +198,6 @@ namespace P4_PROJEKT_NR_1
         private void EmployeeDecorator()
         {
             dataGridViewEmployess.DataSource = myDB.GetEmployees().ToList();
-            //dataGridViewEmployess.Columns[0].HeaderText = "ID";
-            //dataGridViewEmployess.Columns[1].HeaderText = "Imię";
-            //dataGridViewEmployess.Columns[2].HeaderText = "Nazwisko";
-            //dataGridViewEmployess.Columns[3].HeaderText = "Płeć";
-            //dataGridViewEmployess.Columns[4].HeaderText = "PESEL";
-            //dataGridViewEmployess.Columns[5].HeaderText = "Data urodzenia";
         }
 
 
@@ -219,11 +233,62 @@ namespace P4_PROJEKT_NR_1
             }
             return true;
         }
-        #endregion
 
+        #endregion
         private void cBoxEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
             tBoxSelectedEmployee.Text = cBoxEmployee.SelectedValue.ToString();
+            if (tBoxSelectedEmployee != null)
+            {
+                dataGridPeroidOfEmp.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dataGridPeroidOfEmp.ReadOnly = true;
+
+                int.TryParse(tBoxSelectedEmployee.Text, out IDemployee);
+                dataGridPeroidOfEmp.DataSource = myDB.GetPeroidsOfEmployment(IDemployee);
+            }
+
+
+        }
+
+        //private void dataGridPeroidOfEmp_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    //dataGridViewEmployess.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        //    //dataGridViewEmployess.ReadOnly = true;
+
+        //    label1.Text = dataGridPeroidOfEmp.CurrentRow.Cells[0].Value.ToString();
+        //    cBoxStanowisko.Text = dataGridPeroidOfEmp.CurrentRow.Cells[6].Value.ToString();
+        //    tBnaleznyUrlop.Text = dataGridPeroidOfEmp.CurrentRow.Cells[0].Value.ToString();
+
+        //}
+
+        public int staz ()
+        {
+
+
+            return 1;
+        }
+
+        private void dataGridPeroidOfEmp_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+            label1.Text = dataGridPeroidOfEmp.CurrentRow.Cells[0].Value.ToString();
+
+            if(dataGridPeroidOfEmp.CurrentRow.Cells[4].Value.ToString() == "0")
+            {
+                cBoxStazPracy.SelectedIndex = Practice[0].practice;
+            }
+            if (dataGridPeroidOfEmp.CurrentRow.Cells[4].Value.ToString() == "1")
+            {
+                cBoxStazPracy.SelectedIndex = Practice[1].practice;
+            }
+
+            //cBoxStazPracy.Text = dataGridPeroidOfEmp.CurrentRow.Cells[4].Value.ToString();      //not ok
+            dTPzatrudnionyOd.Text = dataGridPeroidOfEmp.CurrentRow.Cells[5].Value.ToString();    //ok
+            dTPzatrudnionyDo.Text = dataGridPeroidOfEmp.CurrentRow.Cells[6].Value.ToString();   //ok
+            tBnaleznyUrlop.Text = dataGridPeroidOfEmp.CurrentRow.Cells[7].Value.ToString();   //ok
+            cBoxStanowisko.Text = dataGridPeroidOfEmp.CurrentRow.Cells[8].Value.ToString();     //ok
+            cBoxWCP.Text = dataGridPeroidOfEmp.CurrentRow.Cells[11].Value.ToString();           //ok
+
         }
     }
 }

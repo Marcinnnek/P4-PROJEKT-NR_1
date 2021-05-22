@@ -49,20 +49,6 @@ namespace P4_PROJEKT_NR_1
             this.buttonPrawconikUsun = new System.Windows.Forms.Button();
             this.buttonPracownikAkt = new System.Windows.Forms.Button();
             this.dataGridViewEmployess = new System.Windows.Forms.DataGridView();
-            this.panelZatrudnienie = new System.Windows.Forms.Panel();
-            this.cBoxEmployee = new System.Windows.Forms.ComboBox();
-            this.tBoxSelectedEmployee = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.labelSelEmpID = new System.Windows.Forms.Label();
-            this.buttonZatrWykonaj = new System.Windows.Forms.Button();
-            this.panelUrlopy = new System.Windows.Forms.Panel();
-            this.buttonUrlopZapisz = new System.Windows.Forms.Button();
-            this.buttonPanelPracownicy = new System.Windows.Forms.Button();
-            this.buttonPanelZatrudnienie = new System.Windows.Forms.Button();
-            this.buttonPanelUrlopy = new System.Windows.Forms.Button();
             this.IDpracownika = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imie = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,9 +56,50 @@ namespace P4_PROJEKT_NR_1
             this.plec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numer_pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_urodzenia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelZatrudnienie = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dataGridPeroidOfEmp = new System.Windows.Forms.DataGridView();
+            this.IDzatrudnienia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZatrudnionyOD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZatrudnionyDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.naleznyUrlop = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stazPracy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.etat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stanowisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opisST = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idpracownikahidden = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.etathidden = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDStanowisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDwymiar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cBoxStanowisko = new System.Windows.Forms.ComboBox();
+            this.cBoxWCP = new System.Windows.Forms.ComboBox();
+            this.tBnaleznyUrlop = new System.Windows.Forms.TextBox();
+            this.dTPzatrudnionyDo = new System.Windows.Forms.DateTimePicker();
+            this.dTPzatrudnionyOd = new System.Windows.Forms.DateTimePicker();
+            this.cBoxStazPracy = new System.Windows.Forms.ComboBox();
+            this.labelStanowisko = new System.Windows.Forms.Label();
+            this.labelWCP = new System.Windows.Forms.Label();
+            this.labelNaleznyUrlop = new System.Windows.Forms.Label();
+            this.labelZatrudnionyDo = new System.Windows.Forms.Label();
+            this.labelZatrudnionyOd = new System.Windows.Forms.Label();
+            this.labelStazPracy = new System.Windows.Forms.Label();
+            this.cBoxEmployee = new System.Windows.Forms.ComboBox();
+            this.tBoxSelectedEmployee = new System.Windows.Forms.TextBox();
+            this.buttonDeletePeroid = new System.Windows.Forms.Button();
+            this.buttonUpdatePeroid = new System.Windows.Forms.Button();
+            this.buttonAddPeroid = new System.Windows.Forms.Button();
+            this.buttonExecutePeroid = new System.Windows.Forms.Button();
+            this.labelSelEmpID = new System.Windows.Forms.Label();
+            this.buttonZatrWykonaj = new System.Windows.Forms.Button();
+            this.panelUrlopy = new System.Windows.Forms.Panel();
+            this.buttonUrlopZapisz = new System.Windows.Forms.Button();
+            this.buttonPanelPracownicy = new System.Windows.Forms.Button();
+            this.buttonPanelZatrudnienie = new System.Windows.Forms.Button();
+            this.buttonPanelUrlopy = new System.Windows.Forms.Button();
             this.panelPracownicy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployess)).BeginInit();
             this.panelZatrudnienie.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPeroidOfEmp)).BeginInit();
             this.panelUrlopy.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -287,140 +314,6 @@ namespace P4_PROJEKT_NR_1
             this.dataGridViewEmployess.TabIndex = 0;
             this.dataGridViewEmployess.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployess_CellContentClick);
             // 
-            // panelZatrudnienie
-            // 
-            this.panelZatrudnienie.Controls.Add(this.cBoxEmployee);
-            this.panelZatrudnienie.Controls.Add(this.tBoxSelectedEmployee);
-            this.panelZatrudnienie.Controls.Add(this.button4);
-            this.panelZatrudnienie.Controls.Add(this.button3);
-            this.panelZatrudnienie.Controls.Add(this.button2);
-            this.panelZatrudnienie.Controls.Add(this.button1);
-            this.panelZatrudnienie.Controls.Add(this.labelSelEmpID);
-            this.panelZatrudnienie.Controls.Add(this.buttonZatrWykonaj);
-            this.panelZatrudnienie.Location = new System.Drawing.Point(87, 611);
-            this.panelZatrudnienie.Name = "panelZatrudnienie";
-            this.panelZatrudnienie.Size = new System.Drawing.Size(1170, 595);
-            this.panelZatrudnienie.TabIndex = 3;
-            // 
-            // cBoxEmployee
-            // 
-            this.cBoxEmployee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxEmployee.FormattingEnabled = true;
-            this.cBoxEmployee.Location = new System.Drawing.Point(196, 36);
-            this.cBoxEmployee.Name = "cBoxEmployee";
-            this.cBoxEmployee.Size = new System.Drawing.Size(773, 27);
-            this.cBoxEmployee.TabIndex = 10;
-            this.cBoxEmployee.SelectedIndexChanged += new System.EventHandler(this.cBoxEmployee_SelectedIndexChanged);
-            // 
-            // tBoxSelectedEmployee
-            // 
-            this.tBoxSelectedEmployee.Enabled = false;
-            this.tBoxSelectedEmployee.Location = new System.Drawing.Point(132, 81);
-            this.tBoxSelectedEmployee.Name = "tBoxSelectedEmployee";
-            this.tBoxSelectedEmployee.Size = new System.Drawing.Size(115, 26);
-            this.tBoxSelectedEmployee.TabIndex = 9;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(0, 145);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(86, 26);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(0, 113);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(86, 26);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(0, 80);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(86, 26);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 177);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(86, 26);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // labelSelEmpID
-            // 
-            this.labelSelEmpID.AutoSize = true;
-            this.labelSelEmpID.Location = new System.Drawing.Point(132, 17);
-            this.labelSelEmpID.Name = "labelSelEmpID";
-            this.labelSelEmpID.Size = new System.Drawing.Size(23, 19);
-            this.labelSelEmpID.TabIndex = 2;
-            this.labelSelEmpID.Text = "ID";
-            // 
-            // buttonZatrWykonaj
-            // 
-            this.buttonZatrWykonaj.Location = new System.Drawing.Point(0, 14);
-            this.buttonZatrWykonaj.Name = "buttonZatrWykonaj";
-            this.buttonZatrWykonaj.Size = new System.Drawing.Size(86, 26);
-            this.buttonZatrWykonaj.TabIndex = 0;
-            this.buttonZatrWykonaj.Text = "Wykonaj";
-            this.buttonZatrWykonaj.UseVisualStyleBackColor = true;
-            // 
-            // panelUrlopy
-            // 
-            this.panelUrlopy.Controls.Add(this.buttonUrlopZapisz);
-            this.panelUrlopy.Location = new System.Drawing.Point(1429, 34);
-            this.panelUrlopy.Name = "panelUrlopy";
-            this.panelUrlopy.Size = new System.Drawing.Size(184, 344);
-            this.panelUrlopy.TabIndex = 1;
-            // 
-            // buttonUrlopZapisz
-            // 
-            this.buttonUrlopZapisz.Location = new System.Drawing.Point(49, 249);
-            this.buttonUrlopZapisz.Name = "buttonUrlopZapisz";
-            this.buttonUrlopZapisz.Size = new System.Drawing.Size(86, 26);
-            this.buttonUrlopZapisz.TabIndex = 0;
-            this.buttonUrlopZapisz.Text = "Zapisz";
-            this.buttonUrlopZapisz.UseVisualStyleBackColor = true;
-            // 
-            // buttonPanelPracownicy
-            // 
-            this.buttonPanelPracownicy.Location = new System.Drawing.Point(12, 12);
-            this.buttonPanelPracownicy.Name = "buttonPanelPracownicy";
-            this.buttonPanelPracownicy.Size = new System.Drawing.Size(147, 26);
-            this.buttonPanelPracownicy.TabIndex = 4;
-            this.buttonPanelPracownicy.Text = "Pracownicy";
-            this.buttonPanelPracownicy.UseVisualStyleBackColor = true;
-            this.buttonPanelPracownicy.Click += new System.EventHandler(this.buttonPanelPracownicy_Click);
-            // 
-            // buttonPanelZatrudnienie
-            // 
-            this.buttonPanelZatrudnienie.Location = new System.Drawing.Point(12, 44);
-            this.buttonPanelZatrudnienie.Name = "buttonPanelZatrudnienie";
-            this.buttonPanelZatrudnienie.Size = new System.Drawing.Size(147, 26);
-            this.buttonPanelZatrudnienie.TabIndex = 5;
-            this.buttonPanelZatrudnienie.Text = "Okres zatrudnienia";
-            this.buttonPanelZatrudnienie.UseVisualStyleBackColor = true;
-            this.buttonPanelZatrudnienie.Click += new System.EventHandler(this.buttonPanelZatrudnienie_Click);
-            // 
-            // buttonPanelUrlopy
-            // 
-            this.buttonPanelUrlopy.Location = new System.Drawing.Point(13, 77);
-            this.buttonPanelUrlopy.Name = "buttonPanelUrlopy";
-            this.buttonPanelUrlopy.Size = new System.Drawing.Size(146, 26);
-            this.buttonPanelUrlopy.TabIndex = 6;
-            this.buttonPanelUrlopy.Text = "Urlopy";
-            this.buttonPanelUrlopy.UseVisualStyleBackColor = true;
-            this.buttonPanelUrlopy.Click += new System.EventHandler(this.buttonPanelUrlopy_Click);
-            // 
             // IDpracownika
             // 
             this.IDpracownika.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -485,6 +378,399 @@ namespace P4_PROJEKT_NR_1
             this.data_urodzenia.Name = "data_urodzenia";
             this.data_urodzenia.ReadOnly = true;
             // 
+            // panelZatrudnienie
+            // 
+            this.panelZatrudnienie.Controls.Add(this.label1);
+            this.panelZatrudnienie.Controls.Add(this.dataGridPeroidOfEmp);
+            this.panelZatrudnienie.Controls.Add(this.cBoxStanowisko);
+            this.panelZatrudnienie.Controls.Add(this.cBoxWCP);
+            this.panelZatrudnienie.Controls.Add(this.tBnaleznyUrlop);
+            this.panelZatrudnienie.Controls.Add(this.dTPzatrudnionyDo);
+            this.panelZatrudnienie.Controls.Add(this.dTPzatrudnionyOd);
+            this.panelZatrudnienie.Controls.Add(this.cBoxStazPracy);
+            this.panelZatrudnienie.Controls.Add(this.labelStanowisko);
+            this.panelZatrudnienie.Controls.Add(this.labelWCP);
+            this.panelZatrudnienie.Controls.Add(this.labelNaleznyUrlop);
+            this.panelZatrudnienie.Controls.Add(this.labelZatrudnionyDo);
+            this.panelZatrudnienie.Controls.Add(this.labelZatrudnionyOd);
+            this.panelZatrudnienie.Controls.Add(this.labelStazPracy);
+            this.panelZatrudnienie.Controls.Add(this.cBoxEmployee);
+            this.panelZatrudnienie.Controls.Add(this.tBoxSelectedEmployee);
+            this.panelZatrudnienie.Controls.Add(this.buttonDeletePeroid);
+            this.panelZatrudnienie.Controls.Add(this.buttonUpdatePeroid);
+            this.panelZatrudnienie.Controls.Add(this.buttonAddPeroid);
+            this.panelZatrudnienie.Controls.Add(this.buttonExecutePeroid);
+            this.panelZatrudnienie.Controls.Add(this.labelSelEmpID);
+            this.panelZatrudnienie.Controls.Add(this.buttonZatrWykonaj);
+            this.panelZatrudnienie.Location = new System.Drawing.Point(41, 253);
+            this.panelZatrudnienie.Name = "panelZatrudnienie";
+            this.panelZatrudnienie.Size = new System.Drawing.Size(1366, 609);
+            this.panelZatrudnienie.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(165, 103);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 19);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "label1";
+            // 
+            // dataGridPeroidOfEmp
+            // 
+            this.dataGridPeroidOfEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridPeroidOfEmp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDzatrudnienia,
+            this.ZatrudnionyOD,
+            this.ZatrudnionyDO,
+            this.naleznyUrlop,
+            this.stazPracy,
+            this.etat,
+            this.Stanowisko,
+            this.opisST,
+            this.idpracownikahidden,
+            this.etathidden,
+            this.IDStanowisko,
+            this.IDwymiar});
+            this.dataGridPeroidOfEmp.Location = new System.Drawing.Point(412, 74);
+            this.dataGridPeroidOfEmp.Name = "dataGridPeroidOfEmp";
+            this.dataGridPeroidOfEmp.RowHeadersWidth = 47;
+            this.dataGridPeroidOfEmp.RowTemplate.Height = 28;
+            this.dataGridPeroidOfEmp.Size = new System.Drawing.Size(925, 390);
+            this.dataGridPeroidOfEmp.TabIndex = 25;
+            this.dataGridPeroidOfEmp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPeroidOfEmp_CellContentClick_1);
+            // 
+            // IDzatrudnienia
+            // 
+            this.IDzatrudnienia.DataPropertyName = "IDzatrudnienia";
+            this.IDzatrudnienia.HeaderText = "ID (z)";
+            this.IDzatrudnienia.MinimumWidth = 6;
+            this.IDzatrudnienia.Name = "IDzatrudnienia";
+            this.IDzatrudnienia.ReadOnly = true;
+            this.IDzatrudnienia.Width = 50;
+            // 
+            // ZatrudnionyOD
+            // 
+            this.ZatrudnionyOD.DataPropertyName = "zatrudniony_od";
+            this.ZatrudnionyOD.HeaderText = "Zatrudniony od";
+            this.ZatrudnionyOD.MinimumWidth = 6;
+            this.ZatrudnionyOD.Name = "ZatrudnionyOD";
+            this.ZatrudnionyOD.ReadOnly = true;
+            this.ZatrudnionyOD.Width = 140;
+            // 
+            // ZatrudnionyDO
+            // 
+            this.ZatrudnionyDO.DataPropertyName = "zatrudniony_do";
+            this.ZatrudnionyDO.HeaderText = "Zatrudniony do";
+            this.ZatrudnionyDO.MinimumWidth = 6;
+            this.ZatrudnionyDO.Name = "ZatrudnionyDO";
+            this.ZatrudnionyDO.ReadOnly = true;
+            this.ZatrudnionyDO.Width = 140;
+            // 
+            // naleznyUrlop
+            // 
+            this.naleznyUrlop.DataPropertyName = "nalezny_urlop";
+            this.naleznyUrlop.HeaderText = "Należny urlop";
+            this.naleznyUrlop.MinimumWidth = 6;
+            this.naleznyUrlop.Name = "naleznyUrlop";
+            this.naleznyUrlop.ReadOnly = true;
+            this.naleznyUrlop.Width = 130;
+            // 
+            // stazPracy
+            // 
+            this.stazPracy.DataPropertyName = "staz_pracy";
+            this.stazPracy.HeaderText = "Staż Pracy";
+            this.stazPracy.MinimumWidth = 6;
+            this.stazPracy.Name = "stazPracy";
+            this.stazPracy.ReadOnly = true;
+            this.stazPracy.Width = 115;
+            // 
+            // etat
+            // 
+            this.etat.DataPropertyName = "nazwaWCP";
+            this.etat.HeaderText = "Etat";
+            this.etat.MinimumWidth = 6;
+            this.etat.Name = "etat";
+            this.etat.ReadOnly = true;
+            this.etat.Width = 140;
+            // 
+            // Stanowisko
+            // 
+            this.Stanowisko.DataPropertyName = "nazwaST";
+            this.Stanowisko.HeaderText = "Stanowisko";
+            this.Stanowisko.MinimumWidth = 6;
+            this.Stanowisko.Name = "Stanowisko";
+            this.Stanowisko.ReadOnly = true;
+            this.Stanowisko.Width = 115;
+            // 
+            // opisST
+            // 
+            this.opisST.DataPropertyName = "opisST";
+            this.opisST.HeaderText = "opisST";
+            this.opisST.MinimumWidth = 6;
+            this.opisST.Name = "opisST";
+            this.opisST.ReadOnly = true;
+            this.opisST.Visible = false;
+            this.opisST.Width = 115;
+            // 
+            // idpracownikahidden
+            // 
+            this.idpracownikahidden.DataPropertyName = "IDpracownika";
+            this.idpracownikahidden.HeaderText = "IDpracownika";
+            this.idpracownikahidden.MinimumWidth = 6;
+            this.idpracownikahidden.Name = "idpracownikahidden";
+            this.idpracownikahidden.ReadOnly = true;
+            this.idpracownikahidden.Visible = false;
+            this.idpracownikahidden.Width = 115;
+            // 
+            // etathidden
+            // 
+            this.etathidden.DataPropertyName = "etat";
+            this.etathidden.HeaderText = "etat";
+            this.etathidden.MinimumWidth = 6;
+            this.etathidden.Name = "etathidden";
+            this.etathidden.ReadOnly = true;
+            this.etathidden.Visible = false;
+            this.etathidden.Width = 115;
+            // 
+            // IDStanowisko
+            // 
+            this.IDStanowisko.DataPropertyName = "IDstanowiska";
+            this.IDStanowisko.HeaderText = "ID (s)";
+            this.IDStanowisko.MinimumWidth = 6;
+            this.IDStanowisko.Name = "IDStanowisko";
+            this.IDStanowisko.ReadOnly = true;
+            this.IDStanowisko.Visible = false;
+            this.IDStanowisko.Width = 50;
+            // 
+            // IDwymiar
+            // 
+            this.IDwymiar.DataPropertyName = "IDwymiar";
+            this.IDwymiar.HeaderText = "ID (wcp)";
+            this.IDwymiar.MinimumWidth = 6;
+            this.IDwymiar.Name = "IDwymiar";
+            this.IDwymiar.ReadOnly = true;
+            this.IDwymiar.Visible = false;
+            this.IDwymiar.Width = 50;
+            // 
+            // cBoxStanowisko
+            // 
+            this.cBoxStanowisko.FormattingEnabled = true;
+            this.cBoxStanowisko.Location = new System.Drawing.Point(150, 453);
+            this.cBoxStanowisko.Name = "cBoxStanowisko";
+            this.cBoxStanowisko.Size = new System.Drawing.Size(256, 27);
+            this.cBoxStanowisko.TabIndex = 24;
+            // 
+            // cBoxWCP
+            // 
+            this.cBoxWCP.FormattingEnabled = true;
+            this.cBoxWCP.Location = new System.Drawing.Point(150, 419);
+            this.cBoxWCP.Name = "cBoxWCP";
+            this.cBoxWCP.Size = new System.Drawing.Size(256, 27);
+            this.cBoxWCP.TabIndex = 23;
+            // 
+            // tBnaleznyUrlop
+            // 
+            this.tBnaleznyUrlop.Location = new System.Drawing.Point(150, 386);
+            this.tBnaleznyUrlop.Name = "tBnaleznyUrlop";
+            this.tBnaleznyUrlop.Size = new System.Drawing.Size(256, 26);
+            this.tBnaleznyUrlop.TabIndex = 22;
+            // 
+            // dTPzatrudnionyDo
+            // 
+            this.dTPzatrudnionyDo.Location = new System.Drawing.Point(150, 353);
+            this.dTPzatrudnionyDo.Name = "dTPzatrudnionyDo";
+            this.dTPzatrudnionyDo.Size = new System.Drawing.Size(256, 26);
+            this.dTPzatrudnionyDo.TabIndex = 21;
+            // 
+            // dTPzatrudnionyOd
+            // 
+            this.dTPzatrudnionyOd.Location = new System.Drawing.Point(150, 320);
+            this.dTPzatrudnionyOd.Name = "dTPzatrudnionyOd";
+            this.dTPzatrudnionyOd.Size = new System.Drawing.Size(256, 26);
+            this.dTPzatrudnionyOd.TabIndex = 0;
+            // 
+            // cBoxStazPracy
+            // 
+            this.cBoxStazPracy.FormattingEnabled = true;
+            this.cBoxStazPracy.Location = new System.Drawing.Point(150, 287);
+            this.cBoxStazPracy.Name = "cBoxStazPracy";
+            this.cBoxStazPracy.Size = new System.Drawing.Size(256, 27);
+            this.cBoxStazPracy.TabIndex = 20;
+            // 
+            // labelStanowisko
+            // 
+            this.labelStanowisko.AutoSize = true;
+            this.labelStanowisko.Location = new System.Drawing.Point(0, 456);
+            this.labelStanowisko.Name = "labelStanowisko";
+            this.labelStanowisko.Size = new System.Drawing.Size(81, 19);
+            this.labelStanowisko.TabIndex = 18;
+            this.labelStanowisko.Text = "Stanowisko:";
+            // 
+            // labelWCP
+            // 
+            this.labelWCP.AutoSize = true;
+            this.labelWCP.Location = new System.Drawing.Point(0, 422);
+            this.labelWCP.Name = "labelWCP";
+            this.labelWCP.Size = new System.Drawing.Size(133, 19);
+            this.labelWCP.TabIndex = 17;
+            this.labelWCP.Text = "Wymiar czasu pracy:";
+            // 
+            // labelNaleznyUrlop
+            // 
+            this.labelNaleznyUrlop.AutoSize = true;
+            this.labelNaleznyUrlop.Location = new System.Drawing.Point(0, 389);
+            this.labelNaleznyUrlop.Name = "labelNaleznyUrlop";
+            this.labelNaleznyUrlop.Size = new System.Drawing.Size(96, 19);
+            this.labelNaleznyUrlop.TabIndex = 16;
+            this.labelNaleznyUrlop.Text = "Należny urlop:";
+            // 
+            // labelZatrudnionyDo
+            // 
+            this.labelZatrudnionyDo.AutoSize = true;
+            this.labelZatrudnionyDo.Location = new System.Drawing.Point(-2, 359);
+            this.labelZatrudnionyDo.Name = "labelZatrudnionyDo";
+            this.labelZatrudnionyDo.Size = new System.Drawing.Size(107, 19);
+            this.labelZatrudnionyDo.TabIndex = 15;
+            this.labelZatrudnionyDo.Text = "Zatrudniony do:";
+            // 
+            // labelZatrudnionyOd
+            // 
+            this.labelZatrudnionyOd.AutoSize = true;
+            this.labelZatrudnionyOd.Location = new System.Drawing.Point(0, 326);
+            this.labelZatrudnionyOd.Name = "labelZatrudnionyOd";
+            this.labelZatrudnionyOd.Size = new System.Drawing.Size(107, 19);
+            this.labelZatrudnionyOd.TabIndex = 14;
+            this.labelZatrudnionyOd.Text = "Zatrudniony od:";
+            // 
+            // labelStazPracy
+            // 
+            this.labelStazPracy.AutoSize = true;
+            this.labelStazPracy.Location = new System.Drawing.Point(0, 290);
+            this.labelStazPracy.Name = "labelStazPracy";
+            this.labelStazPracy.Size = new System.Drawing.Size(74, 19);
+            this.labelStazPracy.TabIndex = 13;
+            this.labelStazPracy.Text = "Staż pracy:";
+            // 
+            // cBoxEmployee
+            // 
+            this.cBoxEmployee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxEmployee.FormattingEnabled = true;
+            this.cBoxEmployee.Location = new System.Drawing.Point(453, 37);
+            this.cBoxEmployee.Name = "cBoxEmployee";
+            this.cBoxEmployee.Size = new System.Drawing.Size(494, 27);
+            this.cBoxEmployee.TabIndex = 10;
+            this.cBoxEmployee.SelectedIndexChanged += new System.EventHandler(this.cBoxEmployee_SelectedIndexChanged);
+            // 
+            // tBoxSelectedEmployee
+            // 
+            this.tBoxSelectedEmployee.Enabled = false;
+            this.tBoxSelectedEmployee.Location = new System.Drawing.Point(379, 38);
+            this.tBoxSelectedEmployee.Name = "tBoxSelectedEmployee";
+            this.tBoxSelectedEmployee.Size = new System.Drawing.Size(68, 26);
+            this.tBoxSelectedEmployee.TabIndex = 9;
+            // 
+            // buttonDeletePeroid
+            // 
+            this.buttonDeletePeroid.Location = new System.Drawing.Point(0, 145);
+            this.buttonDeletePeroid.Name = "buttonDeletePeroid";
+            this.buttonDeletePeroid.Size = new System.Drawing.Size(86, 26);
+            this.buttonDeletePeroid.TabIndex = 7;
+            this.buttonDeletePeroid.Text = "Usuń";
+            this.buttonDeletePeroid.UseVisualStyleBackColor = true;
+            // 
+            // buttonUpdatePeroid
+            // 
+            this.buttonUpdatePeroid.Location = new System.Drawing.Point(0, 113);
+            this.buttonUpdatePeroid.Name = "buttonUpdatePeroid";
+            this.buttonUpdatePeroid.Size = new System.Drawing.Size(86, 26);
+            this.buttonUpdatePeroid.TabIndex = 6;
+            this.buttonUpdatePeroid.Text = "Aktualizuj";
+            this.buttonUpdatePeroid.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddPeroid
+            // 
+            this.buttonAddPeroid.Location = new System.Drawing.Point(0, 80);
+            this.buttonAddPeroid.Name = "buttonAddPeroid";
+            this.buttonAddPeroid.Size = new System.Drawing.Size(86, 26);
+            this.buttonAddPeroid.TabIndex = 5;
+            this.buttonAddPeroid.Text = "Dodaj";
+            this.buttonAddPeroid.UseVisualStyleBackColor = true;
+            // 
+            // buttonExecutePeroid
+            // 
+            this.buttonExecutePeroid.Location = new System.Drawing.Point(0, 177);
+            this.buttonExecutePeroid.Name = "buttonExecutePeroid";
+            this.buttonExecutePeroid.Size = new System.Drawing.Size(86, 26);
+            this.buttonExecutePeroid.TabIndex = 4;
+            this.buttonExecutePeroid.Text = "Wykonaj";
+            this.buttonExecutePeroid.UseVisualStyleBackColor = true;
+            // 
+            // labelSelEmpID
+            // 
+            this.labelSelEmpID.AutoSize = true;
+            this.labelSelEmpID.Location = new System.Drawing.Point(345, 41);
+            this.labelSelEmpID.Name = "labelSelEmpID";
+            this.labelSelEmpID.Size = new System.Drawing.Size(23, 19);
+            this.labelSelEmpID.TabIndex = 2;
+            this.labelSelEmpID.Text = "ID";
+            // 
+            // buttonZatrWykonaj
+            // 
+            this.buttonZatrWykonaj.Location = new System.Drawing.Point(0, 14);
+            this.buttonZatrWykonaj.Name = "buttonZatrWykonaj";
+            this.buttonZatrWykonaj.Size = new System.Drawing.Size(86, 26);
+            this.buttonZatrWykonaj.TabIndex = 0;
+            this.buttonZatrWykonaj.Text = "Wykonaj";
+            this.buttonZatrWykonaj.UseVisualStyleBackColor = true;
+            // 
+            // panelUrlopy
+            // 
+            this.panelUrlopy.Controls.Add(this.buttonUrlopZapisz);
+            this.panelUrlopy.Location = new System.Drawing.Point(1429, 34);
+            this.panelUrlopy.Name = "panelUrlopy";
+            this.panelUrlopy.Size = new System.Drawing.Size(184, 344);
+            this.panelUrlopy.TabIndex = 1;
+            // 
+            // buttonUrlopZapisz
+            // 
+            this.buttonUrlopZapisz.Location = new System.Drawing.Point(49, 249);
+            this.buttonUrlopZapisz.Name = "buttonUrlopZapisz";
+            this.buttonUrlopZapisz.Size = new System.Drawing.Size(86, 26);
+            this.buttonUrlopZapisz.TabIndex = 0;
+            this.buttonUrlopZapisz.Text = "Zapisz";
+            this.buttonUrlopZapisz.UseVisualStyleBackColor = true;
+            // 
+            // buttonPanelPracownicy
+            // 
+            this.buttonPanelPracownicy.Location = new System.Drawing.Point(12, 12);
+            this.buttonPanelPracownicy.Name = "buttonPanelPracownicy";
+            this.buttonPanelPracownicy.Size = new System.Drawing.Size(147, 26);
+            this.buttonPanelPracownicy.TabIndex = 4;
+            this.buttonPanelPracownicy.Text = "Pracownicy";
+            this.buttonPanelPracownicy.UseVisualStyleBackColor = true;
+            this.buttonPanelPracownicy.Click += new System.EventHandler(this.buttonPanelPracownicy_Click);
+            // 
+            // buttonPanelZatrudnienie
+            // 
+            this.buttonPanelZatrudnienie.Location = new System.Drawing.Point(12, 44);
+            this.buttonPanelZatrudnienie.Name = "buttonPanelZatrudnienie";
+            this.buttonPanelZatrudnienie.Size = new System.Drawing.Size(147, 26);
+            this.buttonPanelZatrudnienie.TabIndex = 5;
+            this.buttonPanelZatrudnienie.Text = "Okres zatrudnienia";
+            this.buttonPanelZatrudnienie.UseVisualStyleBackColor = true;
+            this.buttonPanelZatrudnienie.Click += new System.EventHandler(this.buttonPanelZatrudnienie_Click);
+            // 
+            // buttonPanelUrlopy
+            // 
+            this.buttonPanelUrlopy.Location = new System.Drawing.Point(13, 77);
+            this.buttonPanelUrlopy.Name = "buttonPanelUrlopy";
+            this.buttonPanelUrlopy.Size = new System.Drawing.Size(146, 26);
+            this.buttonPanelUrlopy.TabIndex = 6;
+            this.buttonPanelUrlopy.Text = "Urlopy";
+            this.buttonPanelUrlopy.UseVisualStyleBackColor = true;
+            this.buttonPanelUrlopy.Click += new System.EventHandler(this.buttonPanelUrlopy_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -504,6 +790,7 @@ namespace P4_PROJEKT_NR_1
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployess)).EndInit();
             this.panelZatrudnienie.ResumeLayout(false);
             this.panelZatrudnienie.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPeroidOfEmp)).EndInit();
             this.panelUrlopy.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -538,10 +825,9 @@ namespace P4_PROJEKT_NR_1
         private System.Windows.Forms.ComboBox cBgender;
         private System.Windows.Forms.DataGridView dataGridViewEmployess;
         private System.Windows.Forms.Label labelSelEmpID;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonDeletePeroid;
+        private System.Windows.Forms.Button buttonUpdatePeroid;
+        private System.Windows.Forms.Button buttonAddPeroid;
         private System.Windows.Forms.TextBox tBoxSelectedEmployee;
         private System.Windows.Forms.ComboBox cBoxEmployee;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDpracownika;
@@ -551,6 +837,33 @@ namespace P4_PROJEKT_NR_1
         private System.Windows.Forms.DataGridViewTextBoxColumn plec;
         private System.Windows.Forms.DataGridViewTextBoxColumn numer_pesel;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_urodzenia;
+        private System.Windows.Forms.ComboBox cBoxStazPracy;
+        private System.Windows.Forms.Label labelStanowisko;
+        private System.Windows.Forms.Label labelWCP;
+        private System.Windows.Forms.Label labelNaleznyUrlop;
+        private System.Windows.Forms.Label labelZatrudnionyDo;
+        private System.Windows.Forms.Label labelZatrudnionyOd;
+        private System.Windows.Forms.Label labelStazPracy;
+        private System.Windows.Forms.ComboBox cBoxStanowisko;
+        private System.Windows.Forms.ComboBox cBoxWCP;
+        private System.Windows.Forms.TextBox tBnaleznyUrlop;
+        private System.Windows.Forms.DateTimePicker dTPzatrudnionyDo;
+        private System.Windows.Forms.DateTimePicker dTPzatrudnionyOd;
+        private System.Windows.Forms.Button buttonExecutePeroid;
+        private System.Windows.Forms.DataGridView dataGridPeroidOfEmp;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDzatrudnienia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ZatrudnionyOD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ZatrudnionyDO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn naleznyUrlop;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stazPracy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn etat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stanowisko;
+        private System.Windows.Forms.DataGridViewTextBoxColumn opisST;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idpracownikahidden;
+        private System.Windows.Forms.DataGridViewTextBoxColumn etathidden;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDStanowisko;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDwymiar;
     }
 }
 

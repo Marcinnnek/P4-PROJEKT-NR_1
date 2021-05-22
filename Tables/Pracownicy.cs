@@ -15,11 +15,6 @@ namespace P4_PROJEKT_NR_1.Tables
         public string numer_pesel { get; set; }
         public DateTime data_urodzenia { get; set; }
 
-        public static string ExtendFullName()
-        {
-            
-            return "coś";
-        }
         public string FullName => $"ID: {IDpracownika}, {imie} {nazwisko}, PESEL: {numer_pesel}";
     }
 }

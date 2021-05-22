@@ -69,8 +69,45 @@ namespace P4_PROJEKT_NR_1.Tables
                 return result == 1;
             }
         }
-    }
-    #endregion
+        #endregion
+        public static IEnumerable<ComboOkresZatrudnienia> GetPeroidsOfEmployment(int id )
+        {
 
+            using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
+            {
+                if (myDBconnection.State == ConnectionState.Closed)
+                    myDBconnection.Open();
+                return myDBconnection.Query<ComboOkresZatrudnienia>(@"SELECT OZ.IDzatrudnienia, OZ. IDpracownika, OZ.IDstanowiska, OZ.IDwymiar, OZ.nalezny_urlop, OZ.zatrudniony_od,
+                                                                    OZ.zatrudniony_do, OZ.staz_pracy, nazwaWCP, nazwaST, opisST
+                                                                    FROM ewu.pracownicy AS P	INNER JOIN ewu.okres_zatrudnienia AS OZ ON P.IDpracownika=OZ.IDpracownika
+							                                        INNER JOIN ewu.stanowisko AS S ON OZ.IDstanowiska=S.IDstanowiska
+							                                        INNER JOIN ewu.wymiar_czasu_pracy AS WCP ON OZ.IDwymiar=WCP.IDwymiar
+                                                                    WHERE OZ.IDpracownika = @IDemp", new { IDemp = id }).ToList();
+            }
+        }
+
+
+        public static IEnumerable<Stanowisko> GetPosition()
+        {
+
+            using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
+            {
+                if (myDBconnection.State == ConnectionState.Closed)
+                    myDBconnection.Open();
+                return myDBconnection.Query<Stanowisko>(@"SELECT * FROM ewu.stanowisko").ToList();
+            }
+        }
+
+        public static IEnumerable<WymiarCzasuPracy> GetDayJob()
+        {
+
+            using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
+            {
+                if (myDBconnection.State == ConnectionState.Closed)
+                    myDBconnection.Open();
+                return myDBconnection.Query<WymiarCzasuPracy>(@"SELECT * FROM ewu.wymiar_czasu_pracy").ToList();
+            }
+        }
+    }
 
 }

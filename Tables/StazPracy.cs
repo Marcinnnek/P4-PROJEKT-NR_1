@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace P4_PROJEKT_NR_1.Tables
 {
-    public class Gender
+    public class StazPracy
     {
-        public string plec { get; set; }
+        public int practice { get; set; }
+        public string days { get; set; }
     }
 }
