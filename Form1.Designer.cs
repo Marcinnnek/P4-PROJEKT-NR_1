@@ -1,7 +1,7 @@
 ﻿
 namespace P4_PROJEKT_NR_1
 {
-    partial class Form1
+    partial class FormEWU
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,10 +29,9 @@ namespace P4_PROJEKT_NR_1
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonShowEmployee = new System.Windows.Forms.Button();
             this.panelPracownicy = new System.Windows.Forms.Panel();
             this.cBgender = new System.Windows.Forms.ComboBox();
-            this.buttonRefresh = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.mTBDataUrodzenia = new System.Windows.Forms.MaskedTextBox();
             this.labelID = new System.Windows.Forms.Label();
             this.tBID = new System.Windows.Forms.TextBox();
@@ -57,6 +56,13 @@ namespace P4_PROJEKT_NR_1
             this.numer_pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_urodzenia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelZatrudnienie = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelTEST = new System.Windows.Forms.Label();
+            this.checkBoxUCNO = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridPeroidOfEmp = new System.Windows.Forms.DataGridView();
             this.IDzatrudnienia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -90,7 +96,7 @@ namespace P4_PROJEKT_NR_1
             this.buttonAddPeroid = new System.Windows.Forms.Button();
             this.buttonExecutePeroid = new System.Windows.Forms.Button();
             this.labelSelEmpID = new System.Windows.Forms.Label();
-            this.buttonZatrWykonaj = new System.Windows.Forms.Button();
+            this.buttonPeroidCancel = new System.Windows.Forms.Button();
             this.panelUrlopy = new System.Windows.Forms.Panel();
             this.buttonUrlopZapisz = new System.Windows.Forms.Button();
             this.buttonPanelPracownicy = new System.Windows.Forms.Button();
@@ -103,20 +109,10 @@ namespace P4_PROJEKT_NR_1
             this.panelUrlopy.SuspendLayout();
             this.SuspendLayout();
             // 
-            // buttonShowEmployee
-            // 
-            this.buttonShowEmployee.Location = new System.Drawing.Point(0, 0);
-            this.buttonShowEmployee.Name = "buttonShowEmployee";
-            this.buttonShowEmployee.Size = new System.Drawing.Size(155, 28);
-            this.buttonShowEmployee.TabIndex = 1;
-            this.buttonShowEmployee.Text = "Pokaż pracowników";
-            this.buttonShowEmployee.UseVisualStyleBackColor = true;
-            this.buttonShowEmployee.Click += new System.EventHandler(this.buttonShowEmployee_Click);
-            // 
             // panelPracownicy
             // 
             this.panelPracownicy.Controls.Add(this.cBgender);
-            this.panelPracownicy.Controls.Add(this.buttonRefresh);
+            this.panelPracownicy.Controls.Add(this.buttonCancel);
             this.panelPracownicy.Controls.Add(this.mTBDataUrodzenia);
             this.panelPracownicy.Controls.Add(this.labelID);
             this.panelPracownicy.Controls.Add(this.tBID);
@@ -132,34 +128,33 @@ namespace P4_PROJEKT_NR_1
             this.panelPracownicy.Controls.Add(this.buttonPracownikDodaj);
             this.panelPracownicy.Controls.Add(this.buttonPrawconikUsun);
             this.panelPracownicy.Controls.Add(this.buttonPracownikAkt);
-            this.panelPracownicy.Controls.Add(this.buttonShowEmployee);
             this.panelPracownicy.Controls.Add(this.dataGridViewEmployess);
             this.panelPracownicy.Location = new System.Drawing.Point(190, 12);
             this.panelPracownicy.Name = "panelPracownicy";
-            this.panelPracownicy.Size = new System.Drawing.Size(1002, 548);
+            this.panelPracownicy.Size = new System.Drawing.Size(976, 548);
             this.panelPracownicy.TabIndex = 2;
             // 
             // cBgender
             // 
             this.cBgender.FormattingEnabled = true;
-            this.cBgender.Location = new System.Drawing.Point(105, 311);
+            this.cBgender.Location = new System.Drawing.Point(105, 338);
             this.cBgender.Name = "cBgender";
-            this.cBgender.Size = new System.Drawing.Size(128, 27);
+            this.cBgender.Size = new System.Drawing.Size(173, 27);
             this.cBgender.TabIndex = 20;
             // 
-            // buttonRefresh
+            // buttonCancel
             // 
-            this.buttonRefresh.Location = new System.Drawing.Point(0, 522);
-            this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(86, 26);
-            this.buttonRefresh.TabIndex = 19;
-            this.buttonRefresh.Text = "Odświerz";
-            this.buttonRefresh.UseVisualStyleBackColor = true;
-            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
+            this.buttonCancel.Location = new System.Drawing.Point(1, 117);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(218, 44);
+            this.buttonCancel.TabIndex = 19;
+            this.buttonCancel.Text = "Anuluj";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
             // mTBDataUrodzenia
             // 
-            this.mTBDataUrodzenia.Location = new System.Drawing.Point(145, 376);
+            this.mTBDataUrodzenia.Location = new System.Drawing.Point(190, 403);
             this.mTBDataUrodzenia.Mask = "00-00-0000";
             this.mTBDataUrodzenia.Name = "mTBDataUrodzenia";
             this.mTBDataUrodzenia.Size = new System.Drawing.Size(88, 26);
@@ -170,7 +165,7 @@ namespace P4_PROJEKT_NR_1
             // labelID
             // 
             this.labelID.AutoSize = true;
-            this.labelID.Location = new System.Drawing.Point(0, 219);
+            this.labelID.Location = new System.Drawing.Point(1, 247);
             this.labelID.Name = "labelID";
             this.labelID.Size = new System.Drawing.Size(26, 19);
             this.labelID.TabIndex = 17;
@@ -178,15 +173,15 @@ namespace P4_PROJEKT_NR_1
             // 
             // tBID
             // 
-            this.tBID.Location = new System.Drawing.Point(105, 216);
+            this.tBID.Location = new System.Drawing.Point(190, 244);
             this.tBID.Name = "tBID";
-            this.tBID.Size = new System.Drawing.Size(128, 26);
+            this.tBID.Size = new System.Drawing.Size(88, 26);
             this.tBID.TabIndex = 16;
             // 
             // labelDataUrodzenia
             // 
             this.labelDataUrodzenia.AutoSize = true;
-            this.labelDataUrodzenia.Location = new System.Drawing.Point(0, 379);
+            this.labelDataUrodzenia.Location = new System.Drawing.Point(0, 406);
             this.labelDataUrodzenia.Name = "labelDataUrodzenia";
             this.labelDataUrodzenia.Size = new System.Drawing.Size(105, 19);
             this.labelDataUrodzenia.TabIndex = 15;
@@ -195,7 +190,7 @@ namespace P4_PROJEKT_NR_1
             // labelPESEL
             // 
             this.labelPESEL.AutoSize = true;
-            this.labelPESEL.Location = new System.Drawing.Point(0, 347);
+            this.labelPESEL.Location = new System.Drawing.Point(0, 374);
             this.labelPESEL.Name = "labelPESEL";
             this.labelPESEL.Size = new System.Drawing.Size(94, 19);
             this.labelPESEL.TabIndex = 14;
@@ -204,7 +199,7 @@ namespace P4_PROJEKT_NR_1
             // labelPlec
             // 
             this.labelPlec.AutoSize = true;
-            this.labelPlec.Location = new System.Drawing.Point(0, 315);
+            this.labelPlec.Location = new System.Drawing.Point(1, 341);
             this.labelPlec.Name = "labelPlec";
             this.labelPlec.Size = new System.Drawing.Size(37, 19);
             this.labelPlec.TabIndex = 13;
@@ -213,7 +208,7 @@ namespace P4_PROJEKT_NR_1
             // labelNazwisko
             // 
             this.labelNazwisko.AutoSize = true;
-            this.labelNazwisko.Location = new System.Drawing.Point(0, 283);
+            this.labelNazwisko.Location = new System.Drawing.Point(1, 309);
             this.labelNazwisko.Name = "labelNazwisko";
             this.labelNazwisko.Size = new System.Drawing.Size(69, 19);
             this.labelNazwisko.TabIndex = 12;
@@ -222,7 +217,7 @@ namespace P4_PROJEKT_NR_1
             // labelImie
             // 
             this.labelImie.AutoSize = true;
-            this.labelImie.Location = new System.Drawing.Point(0, 251);
+            this.labelImie.Location = new System.Drawing.Point(1, 275);
             this.labelImie.Name = "labelImie";
             this.labelImie.Size = new System.Drawing.Size(38, 19);
             this.labelImie.TabIndex = 11;
@@ -231,32 +226,32 @@ namespace P4_PROJEKT_NR_1
             // tBnPESEL
             // 
             this.tBnPESEL.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tBnPESEL.Location = new System.Drawing.Point(105, 344);
+            this.tBnPESEL.Location = new System.Drawing.Point(105, 371);
             this.tBnPESEL.MaxLength = 11;
             this.tBnPESEL.Name = "tBnPESEL";
-            this.tBnPESEL.Size = new System.Drawing.Size(128, 26);
+            this.tBnPESEL.Size = new System.Drawing.Size(173, 26);
             this.tBnPESEL.TabIndex = 9;
             this.tBnPESEL.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tBnPESEL_KeyPress_1);
             // 
             // tBNazwisko
             // 
-            this.tBNazwisko.Location = new System.Drawing.Point(105, 280);
+            this.tBNazwisko.Location = new System.Drawing.Point(105, 306);
             this.tBNazwisko.Name = "tBNazwisko";
-            this.tBNazwisko.Size = new System.Drawing.Size(128, 26);
+            this.tBNazwisko.Size = new System.Drawing.Size(173, 26);
             this.tBNazwisko.TabIndex = 7;
             // 
             // tBImie
             // 
-            this.tBImie.Location = new System.Drawing.Point(105, 248);
+            this.tBImie.Location = new System.Drawing.Point(105, 274);
             this.tBImie.Name = "tBImie";
-            this.tBImie.Size = new System.Drawing.Size(128, 26);
+            this.tBImie.Size = new System.Drawing.Size(173, 26);
             this.tBImie.TabIndex = 6;
             // 
             // buttonPracownikWykonaj
             // 
-            this.buttonPracownikWykonaj.Location = new System.Drawing.Point(0, 161);
+            this.buttonPracownikWykonaj.Location = new System.Drawing.Point(0, 167);
             this.buttonPracownikWykonaj.Name = "buttonPracownikWykonaj";
-            this.buttonPracownikWykonaj.Size = new System.Drawing.Size(155, 26);
+            this.buttonPracownikWykonaj.Size = new System.Drawing.Size(218, 44);
             this.buttonPracownikWykonaj.TabIndex = 5;
             this.buttonPracownikWykonaj.Text = "Wykonaj";
             this.buttonPracownikWykonaj.UseVisualStyleBackColor = true;
@@ -264,9 +259,9 @@ namespace P4_PROJEKT_NR_1
             // 
             // buttonPracownikDodaj
             // 
-            this.buttonPracownikDodaj.Location = new System.Drawing.Point(0, 65);
+            this.buttonPracownikDodaj.Location = new System.Drawing.Point(0, 0);
             this.buttonPracownikDodaj.Name = "buttonPracownikDodaj";
-            this.buttonPracownikDodaj.Size = new System.Drawing.Size(155, 26);
+            this.buttonPracownikDodaj.Size = new System.Drawing.Size(218, 26);
             this.buttonPracownikDodaj.TabIndex = 2;
             this.buttonPracownikDodaj.Text = "Dodaj";
             this.buttonPracownikDodaj.UseVisualStyleBackColor = true;
@@ -274,9 +269,9 @@ namespace P4_PROJEKT_NR_1
             // 
             // buttonPrawconikUsun
             // 
-            this.buttonPrawconikUsun.Location = new System.Drawing.Point(0, 129);
+            this.buttonPrawconikUsun.Location = new System.Drawing.Point(0, 64);
             this.buttonPrawconikUsun.Name = "buttonPrawconikUsun";
-            this.buttonPrawconikUsun.Size = new System.Drawing.Size(155, 26);
+            this.buttonPrawconikUsun.Size = new System.Drawing.Size(218, 26);
             this.buttonPrawconikUsun.TabIndex = 4;
             this.buttonPrawconikUsun.Text = "Usuń";
             this.buttonPrawconikUsun.UseVisualStyleBackColor = true;
@@ -284,9 +279,9 @@ namespace P4_PROJEKT_NR_1
             // 
             // buttonPracownikAkt
             // 
-            this.buttonPracownikAkt.Location = new System.Drawing.Point(0, 97);
+            this.buttonPracownikAkt.Location = new System.Drawing.Point(0, 32);
             this.buttonPracownikAkt.Name = "buttonPracownikAkt";
-            this.buttonPracownikAkt.Size = new System.Drawing.Size(155, 26);
+            this.buttonPracownikAkt.Size = new System.Drawing.Size(218, 26);
             this.buttonPracownikAkt.TabIndex = 3;
             this.buttonPracownikAkt.Text = "Aktualizuj";
             this.buttonPracownikAkt.UseVisualStyleBackColor = true;
@@ -305,7 +300,7 @@ namespace P4_PROJEKT_NR_1
             this.plec,
             this.numer_pesel,
             this.data_urodzenia});
-            this.dataGridViewEmployess.Location = new System.Drawing.Point(313, 0);
+            this.dataGridViewEmployess.Location = new System.Drawing.Point(284, 0);
             this.dataGridViewEmployess.MinimumSize = new System.Drawing.Size(15, 0);
             this.dataGridViewEmployess.Name = "dataGridViewEmployess";
             this.dataGridViewEmployess.RowHeadersWidth = 47;
@@ -380,6 +375,13 @@ namespace P4_PROJEKT_NR_1
             // 
             // panelZatrudnienie
             // 
+            this.panelZatrudnienie.Controls.Add(this.label6);
+            this.panelZatrudnienie.Controls.Add(this.label5);
+            this.panelZatrudnienie.Controls.Add(this.label4);
+            this.panelZatrudnienie.Controls.Add(this.label3);
+            this.panelZatrudnienie.Controls.Add(this.label2);
+            this.panelZatrudnienie.Controls.Add(this.labelTEST);
+            this.panelZatrudnienie.Controls.Add(this.checkBoxUCNO);
             this.panelZatrudnienie.Controls.Add(this.label1);
             this.panelZatrudnienie.Controls.Add(this.dataGridPeroidOfEmp);
             this.panelZatrudnienie.Controls.Add(this.cBoxStanowisko);
@@ -401,16 +403,82 @@ namespace P4_PROJEKT_NR_1
             this.panelZatrudnienie.Controls.Add(this.buttonAddPeroid);
             this.panelZatrudnienie.Controls.Add(this.buttonExecutePeroid);
             this.panelZatrudnienie.Controls.Add(this.labelSelEmpID);
-            this.panelZatrudnienie.Controls.Add(this.buttonZatrWykonaj);
-            this.panelZatrudnienie.Location = new System.Drawing.Point(41, 253);
+            this.panelZatrudnienie.Controls.Add(this.buttonPeroidCancel);
+            this.panelZatrudnienie.Location = new System.Drawing.Point(189, 12);
             this.panelZatrudnienie.Name = "panelZatrudnienie";
-            this.panelZatrudnienie.Size = new System.Drawing.Size(1366, 609);
+            this.panelZatrudnienie.Size = new System.Drawing.Size(1291, 609);
             this.panelZatrudnienie.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1297, 225);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 19);
+            this.label6.TabIndex = 33;
+            this.label6.Text = "label6";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1297, 206);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(45, 19);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "label5";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(1297, 176);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(45, 19);
+            this.label4.TabIndex = 31;
+            this.label4.Text = "label4";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1297, 157);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 19);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "label3";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1297, 129);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 19);
+            this.label2.TabIndex = 29;
+            this.label2.Text = "label2";
+            // 
+            // labelTEST
+            // 
+            this.labelTEST.AutoSize = true;
+            this.labelTEST.Location = new System.Drawing.Point(1297, 106);
+            this.labelTEST.Name = "labelTEST";
+            this.labelTEST.Size = new System.Drawing.Size(65, 19);
+            this.labelTEST.TabIndex = 28;
+            this.labelTEST.Text = "labelTEST";
+            // 
+            // checkBoxUCNO
+            // 
+            this.checkBoxUCNO.AutoSize = true;
+            this.checkBoxUCNO.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxUCNO.Location = new System.Drawing.Point(201, 345);
+            this.checkBoxUCNO.Name = "checkBoxUCNO";
+            this.checkBoxUCNO.Size = new System.Drawing.Size(204, 23);
+            this.checkBoxUCNO.TabIndex = 27;
+            this.checkBoxUCNO.Text = "Umowa na czas nieokreślony";
+            this.checkBoxUCNO.UseVisualStyleBackColor = true;
+            this.checkBoxUCNO.CheckedChanged += new System.EventHandler(this.checkBoxUCNO_CheckedChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(165, 103);
+            this.label1.Location = new System.Drawing.Point(1297, 78);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 19);
             this.label1.TabIndex = 26;
@@ -432,13 +500,13 @@ namespace P4_PROJEKT_NR_1
             this.etathidden,
             this.IDStanowisko,
             this.IDwymiar});
-            this.dataGridPeroidOfEmp.Location = new System.Drawing.Point(412, 74);
+            this.dataGridPeroidOfEmp.Location = new System.Drawing.Point(412, 39);
             this.dataGridPeroidOfEmp.Name = "dataGridPeroidOfEmp";
             this.dataGridPeroidOfEmp.RowHeadersWidth = 47;
             this.dataGridPeroidOfEmp.RowTemplate.Height = 28;
-            this.dataGridPeroidOfEmp.Size = new System.Drawing.Size(925, 390);
+            this.dataGridPeroidOfEmp.Size = new System.Drawing.Size(879, 570);
             this.dataGridPeroidOfEmp.TabIndex = 25;
-            this.dataGridPeroidOfEmp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPeroidOfEmp_CellContentClick_1);
+            this.dataGridPeroidOfEmp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPeroidOfEmp_CellClick);
             // 
             // IDzatrudnienia
             // 
@@ -555,45 +623,48 @@ namespace P4_PROJEKT_NR_1
             // 
             // cBoxStanowisko
             // 
+            this.cBoxStanowisko.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBoxStanowisko.FormattingEnabled = true;
-            this.cBoxStanowisko.Location = new System.Drawing.Point(150, 453);
+            this.cBoxStanowisko.Location = new System.Drawing.Point(150, 439);
             this.cBoxStanowisko.Name = "cBoxStanowisko";
             this.cBoxStanowisko.Size = new System.Drawing.Size(256, 27);
             this.cBoxStanowisko.TabIndex = 24;
             // 
             // cBoxWCP
             // 
+            this.cBoxWCP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBoxWCP.FormattingEnabled = true;
-            this.cBoxWCP.Location = new System.Drawing.Point(150, 419);
+            this.cBoxWCP.Location = new System.Drawing.Point(150, 406);
             this.cBoxWCP.Name = "cBoxWCP";
             this.cBoxWCP.Size = new System.Drawing.Size(256, 27);
             this.cBoxWCP.TabIndex = 23;
             // 
             // tBnaleznyUrlop
             // 
-            this.tBnaleznyUrlop.Location = new System.Drawing.Point(150, 386);
+            this.tBnaleznyUrlop.Location = new System.Drawing.Point(150, 374);
             this.tBnaleznyUrlop.Name = "tBnaleznyUrlop";
             this.tBnaleznyUrlop.Size = new System.Drawing.Size(256, 26);
             this.tBnaleznyUrlop.TabIndex = 22;
             // 
             // dTPzatrudnionyDo
             // 
-            this.dTPzatrudnionyDo.Location = new System.Drawing.Point(150, 353);
+            this.dTPzatrudnionyDo.Location = new System.Drawing.Point(150, 313);
             this.dTPzatrudnionyDo.Name = "dTPzatrudnionyDo";
             this.dTPzatrudnionyDo.Size = new System.Drawing.Size(256, 26);
             this.dTPzatrudnionyDo.TabIndex = 21;
             // 
             // dTPzatrudnionyOd
             // 
-            this.dTPzatrudnionyOd.Location = new System.Drawing.Point(150, 320);
+            this.dTPzatrudnionyOd.Location = new System.Drawing.Point(150, 281);
             this.dTPzatrudnionyOd.Name = "dTPzatrudnionyOd";
             this.dTPzatrudnionyOd.Size = new System.Drawing.Size(256, 26);
             this.dTPzatrudnionyOd.TabIndex = 0;
             // 
             // cBoxStazPracy
             // 
+            this.cBoxStazPracy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBoxStazPracy.FormattingEnabled = true;
-            this.cBoxStazPracy.Location = new System.Drawing.Point(150, 287);
+            this.cBoxStazPracy.Location = new System.Drawing.Point(149, 248);
             this.cBoxStazPracy.Name = "cBoxStazPracy";
             this.cBoxStazPracy.Size = new System.Drawing.Size(256, 27);
             this.cBoxStazPracy.TabIndex = 20;
@@ -601,7 +672,7 @@ namespace P4_PROJEKT_NR_1
             // labelStanowisko
             // 
             this.labelStanowisko.AutoSize = true;
-            this.labelStanowisko.Location = new System.Drawing.Point(0, 456);
+            this.labelStanowisko.Location = new System.Drawing.Point(0, 442);
             this.labelStanowisko.Name = "labelStanowisko";
             this.labelStanowisko.Size = new System.Drawing.Size(81, 19);
             this.labelStanowisko.TabIndex = 18;
@@ -610,7 +681,7 @@ namespace P4_PROJEKT_NR_1
             // labelWCP
             // 
             this.labelWCP.AutoSize = true;
-            this.labelWCP.Location = new System.Drawing.Point(0, 422);
+            this.labelWCP.Location = new System.Drawing.Point(-2, 409);
             this.labelWCP.Name = "labelWCP";
             this.labelWCP.Size = new System.Drawing.Size(133, 19);
             this.labelWCP.TabIndex = 17;
@@ -619,7 +690,7 @@ namespace P4_PROJEKT_NR_1
             // labelNaleznyUrlop
             // 
             this.labelNaleznyUrlop.AutoSize = true;
-            this.labelNaleznyUrlop.Location = new System.Drawing.Point(0, 389);
+            this.labelNaleznyUrlop.Location = new System.Drawing.Point(0, 374);
             this.labelNaleznyUrlop.Name = "labelNaleznyUrlop";
             this.labelNaleznyUrlop.Size = new System.Drawing.Size(96, 19);
             this.labelNaleznyUrlop.TabIndex = 16;
@@ -628,7 +699,7 @@ namespace P4_PROJEKT_NR_1
             // labelZatrudnionyDo
             // 
             this.labelZatrudnionyDo.AutoSize = true;
-            this.labelZatrudnionyDo.Location = new System.Drawing.Point(-2, 359);
+            this.labelZatrudnionyDo.Location = new System.Drawing.Point(-2, 319);
             this.labelZatrudnionyDo.Name = "labelZatrudnionyDo";
             this.labelZatrudnionyDo.Size = new System.Drawing.Size(107, 19);
             this.labelZatrudnionyDo.TabIndex = 15;
@@ -637,7 +708,7 @@ namespace P4_PROJEKT_NR_1
             // labelZatrudnionyOd
             // 
             this.labelZatrudnionyOd.AutoSize = true;
-            this.labelZatrudnionyOd.Location = new System.Drawing.Point(0, 326);
+            this.labelZatrudnionyOd.Location = new System.Drawing.Point(0, 287);
             this.labelZatrudnionyOd.Name = "labelZatrudnionyOd";
             this.labelZatrudnionyOd.Size = new System.Drawing.Size(107, 19);
             this.labelZatrudnionyOd.TabIndex = 14;
@@ -646,7 +717,7 @@ namespace P4_PROJEKT_NR_1
             // labelStazPracy
             // 
             this.labelStazPracy.AutoSize = true;
-            this.labelStazPracy.Location = new System.Drawing.Point(0, 290);
+            this.labelStazPracy.Location = new System.Drawing.Point(-2, 251);
             this.labelStazPracy.Name = "labelStazPracy";
             this.labelStazPracy.Size = new System.Drawing.Size(74, 19);
             this.labelStazPracy.TabIndex = 13;
@@ -656,85 +727,90 @@ namespace P4_PROJEKT_NR_1
             // 
             this.cBoxEmployee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBoxEmployee.FormattingEnabled = true;
-            this.cBoxEmployee.Location = new System.Drawing.Point(453, 37);
+            this.cBoxEmployee.Location = new System.Drawing.Point(508, 2);
             this.cBoxEmployee.Name = "cBoxEmployee";
-            this.cBoxEmployee.Size = new System.Drawing.Size(494, 27);
+            this.cBoxEmployee.Size = new System.Drawing.Size(783, 27);
             this.cBoxEmployee.TabIndex = 10;
             this.cBoxEmployee.SelectedIndexChanged += new System.EventHandler(this.cBoxEmployee_SelectedIndexChanged);
             // 
             // tBoxSelectedEmployee
             // 
             this.tBoxSelectedEmployee.Enabled = false;
-            this.tBoxSelectedEmployee.Location = new System.Drawing.Point(379, 38);
+            this.tBoxSelectedEmployee.Location = new System.Drawing.Point(434, 3);
             this.tBoxSelectedEmployee.Name = "tBoxSelectedEmployee";
             this.tBoxSelectedEmployee.Size = new System.Drawing.Size(68, 26);
             this.tBoxSelectedEmployee.TabIndex = 9;
             // 
             // buttonDeletePeroid
             // 
-            this.buttonDeletePeroid.Location = new System.Drawing.Point(0, 145);
+            this.buttonDeletePeroid.Location = new System.Drawing.Point(0, 62);
             this.buttonDeletePeroid.Name = "buttonDeletePeroid";
-            this.buttonDeletePeroid.Size = new System.Drawing.Size(86, 26);
+            this.buttonDeletePeroid.Size = new System.Drawing.Size(218, 26);
             this.buttonDeletePeroid.TabIndex = 7;
             this.buttonDeletePeroid.Text = "Usuń";
             this.buttonDeletePeroid.UseVisualStyleBackColor = true;
+            this.buttonDeletePeroid.Click += new System.EventHandler(this.buttonDeletePeroid_Click);
             // 
             // buttonUpdatePeroid
             // 
-            this.buttonUpdatePeroid.Location = new System.Drawing.Point(0, 113);
+            this.buttonUpdatePeroid.Location = new System.Drawing.Point(0, 30);
             this.buttonUpdatePeroid.Name = "buttonUpdatePeroid";
-            this.buttonUpdatePeroid.Size = new System.Drawing.Size(86, 26);
+            this.buttonUpdatePeroid.Size = new System.Drawing.Size(218, 26);
             this.buttonUpdatePeroid.TabIndex = 6;
             this.buttonUpdatePeroid.Text = "Aktualizuj";
             this.buttonUpdatePeroid.UseVisualStyleBackColor = true;
+            this.buttonUpdatePeroid.Click += new System.EventHandler(this.buttonUpdatePeroid_Click);
             // 
             // buttonAddPeroid
             // 
-            this.buttonAddPeroid.Location = new System.Drawing.Point(0, 80);
+            this.buttonAddPeroid.Location = new System.Drawing.Point(0, 1);
             this.buttonAddPeroid.Name = "buttonAddPeroid";
-            this.buttonAddPeroid.Size = new System.Drawing.Size(86, 26);
+            this.buttonAddPeroid.Size = new System.Drawing.Size(218, 26);
             this.buttonAddPeroid.TabIndex = 5;
             this.buttonAddPeroid.Text = "Dodaj";
             this.buttonAddPeroid.UseVisualStyleBackColor = true;
+            this.buttonAddPeroid.Click += new System.EventHandler(this.buttonAddPeroid_Click);
             // 
             // buttonExecutePeroid
             // 
-            this.buttonExecutePeroid.Location = new System.Drawing.Point(0, 177);
+            this.buttonExecutePeroid.Location = new System.Drawing.Point(0, 168);
             this.buttonExecutePeroid.Name = "buttonExecutePeroid";
-            this.buttonExecutePeroid.Size = new System.Drawing.Size(86, 26);
+            this.buttonExecutePeroid.Size = new System.Drawing.Size(218, 44);
             this.buttonExecutePeroid.TabIndex = 4;
             this.buttonExecutePeroid.Text = "Wykonaj";
             this.buttonExecutePeroid.UseVisualStyleBackColor = true;
+            this.buttonExecutePeroid.Click += new System.EventHandler(this.buttonExecutePeroid_Click);
             // 
             // labelSelEmpID
             // 
             this.labelSelEmpID.AutoSize = true;
-            this.labelSelEmpID.Location = new System.Drawing.Point(345, 41);
+            this.labelSelEmpID.Location = new System.Drawing.Point(405, 5);
             this.labelSelEmpID.Name = "labelSelEmpID";
             this.labelSelEmpID.Size = new System.Drawing.Size(23, 19);
             this.labelSelEmpID.TabIndex = 2;
             this.labelSelEmpID.Text = "ID";
             // 
-            // buttonZatrWykonaj
+            // buttonPeroidCancel
             // 
-            this.buttonZatrWykonaj.Location = new System.Drawing.Point(0, 14);
-            this.buttonZatrWykonaj.Name = "buttonZatrWykonaj";
-            this.buttonZatrWykonaj.Size = new System.Drawing.Size(86, 26);
-            this.buttonZatrWykonaj.TabIndex = 0;
-            this.buttonZatrWykonaj.Text = "Wykonaj";
-            this.buttonZatrWykonaj.UseVisualStyleBackColor = true;
+            this.buttonPeroidCancel.Location = new System.Drawing.Point(-2, 118);
+            this.buttonPeroidCancel.Name = "buttonPeroidCancel";
+            this.buttonPeroidCancel.Size = new System.Drawing.Size(218, 44);
+            this.buttonPeroidCancel.TabIndex = 0;
+            this.buttonPeroidCancel.Text = "Anuluj";
+            this.buttonPeroidCancel.UseVisualStyleBackColor = true;
+            this.buttonPeroidCancel.Click += new System.EventHandler(this.buttonPeroidCancel_Click);
             // 
             // panelUrlopy
             // 
             this.panelUrlopy.Controls.Add(this.buttonUrlopZapisz);
-            this.panelUrlopy.Location = new System.Drawing.Point(1429, 34);
+            this.panelUrlopy.Location = new System.Drawing.Point(170, 667);
             this.panelUrlopy.Name = "panelUrlopy";
-            this.panelUrlopy.Size = new System.Drawing.Size(184, 344);
+            this.panelUrlopy.Size = new System.Drawing.Size(1214, 171);
             this.panelUrlopy.TabIndex = 1;
             // 
             // buttonUrlopZapisz
             // 
-            this.buttonUrlopZapisz.Location = new System.Drawing.Point(49, 249);
+            this.buttonUrlopZapisz.Location = new System.Drawing.Point(0, 6);
             this.buttonUrlopZapisz.Name = "buttonUrlopZapisz";
             this.buttonUrlopZapisz.Size = new System.Drawing.Size(86, 26);
             this.buttonUrlopZapisz.TabIndex = 0;
@@ -771,19 +847,23 @@ namespace P4_PROJEKT_NR_1
             this.buttonPanelUrlopy.UseVisualStyleBackColor = true;
             this.buttonPanelUrlopy.Click += new System.EventHandler(this.buttonPanelUrlopy_Click);
             // 
-            // Form1
+            // FormEWU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1681, 899);
+            this.ClientSize = new System.Drawing.Size(1492, 906);
             this.Controls.Add(this.panelUrlopy);
             this.Controls.Add(this.buttonPanelUrlopy);
             this.Controls.Add(this.buttonPanelZatrudnienie);
             this.Controls.Add(this.buttonPanelPracownicy);
             this.Controls.Add(this.panelZatrudnienie);
             this.Controls.Add(this.panelPracownicy);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1510, 1080);
+            this.MinimumSize = new System.Drawing.Size(1510, 950);
+            this.Name = "FormEWU";
+            this.Text = "Ewidencja Urlopów";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelPracownicy.ResumeLayout(false);
             this.panelPracownicy.PerformLayout();
@@ -797,12 +877,11 @@ namespace P4_PROJEKT_NR_1
         }
 
         #endregion
-        private System.Windows.Forms.Button buttonShowEmployee;
         private System.Windows.Forms.Panel panelPracownicy;
         private System.Windows.Forms.Panel panelZatrudnienie;
         private System.Windows.Forms.Button buttonPanelPracownicy;
         private System.Windows.Forms.Button buttonPanelZatrudnienie;
-        private System.Windows.Forms.Button buttonZatrWykonaj;
+        private System.Windows.Forms.Button buttonPeroidCancel;
         private System.Windows.Forms.Button buttonPanelUrlopy;
         private System.Windows.Forms.Panel panelUrlopy;
         private System.Windows.Forms.Button buttonUrlopZapisz;
@@ -821,7 +900,7 @@ namespace P4_PROJEKT_NR_1
         private System.Windows.Forms.Label labelID;
         private System.Windows.Forms.TextBox tBID;
         private System.Windows.Forms.MaskedTextBox mTBDataUrodzenia;
-        private System.Windows.Forms.Button buttonRefresh;
+        private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.ComboBox cBgender;
         private System.Windows.Forms.DataGridView dataGridViewEmployess;
         private System.Windows.Forms.Label labelSelEmpID;
@@ -864,6 +943,13 @@ namespace P4_PROJEKT_NR_1
         private System.Windows.Forms.DataGridViewTextBoxColumn etathidden;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDStanowisko;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDwymiar;
+        private System.Windows.Forms.CheckBox checkBoxUCNO;
+        private System.Windows.Forms.Label labelTEST;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
 

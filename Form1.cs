@@ -13,12 +13,13 @@ using System.Data.SqlClient;
 
 namespace P4_PROJEKT_NR_1
 {
-    public partial class Form1 : Form
+    public partial class FormEWU : Form
     {
         static List<string> myGender = new List<string>();
         static List<StazPracy> Practice = new List<StazPracy>();
         private int IDemployee;
-        public Form1()
+        private int IDperoid;
+        public FormEWU()
         {
             InitializeComponent();
 
@@ -44,15 +45,16 @@ namespace P4_PROJEKT_NR_1
             cBoxEmployee.DisplayMember = "FullName";
             cBoxEmployee.ValueMember = "IDpracownika";
 
-
+            checkBoxUCNO.Checked = false;
+            SwitchPeroidsCB(false);
 
         }
         private void Form1_Load(object sender, EventArgs e)
         {
 
-
             tBID.Enabled = false;
             buttonPracownikWykonaj.Enabled = false;
+            buttonExecutePeroid.Enabled = false;
 
             EmployeeDecorator();
 
@@ -61,14 +63,12 @@ namespace P4_PROJEKT_NR_1
             panelPracownicy.Hide();
 
             tBoxSelectedEmployee.Text = null;
+            dTPzatrudnionyDo.Hide();
 
+            tBnaleznyUrlop.Enabled = false;
         }
         #region
-        private void buttonShowEmployee_Click(object sender, EventArgs e)
-        {
-            EmployeeDecorator();
-        }
-        #region
+
         private void buttonPanelPracownicy_Click(object sender, EventArgs e)
         {
             panelUrlopy.Hide();
@@ -92,33 +92,37 @@ namespace P4_PROJEKT_NR_1
             panelUrlopy.BringToFront();
             panelUrlopy.Show();
         }
-
+        private void buttonShowEmployee_Click(object sender, EventArgs e)
+        {
+            EmployeeDecorator();
+        }
+        
+        #endregion
+        #region
         private void buttonPracownikDodaj_Click(object sender, EventArgs e)
         {
             buttonPracownikAkt.Enabled = false;
             buttonPrawconikUsun.Enabled = false;
             buttonPracownikWykonaj.Enabled = true;
         }
-
         private void buttonPracownikAkt_Click(object sender, EventArgs e)
         {
             buttonPracownikDodaj.Enabled = false;
             buttonPrawconikUsun.Enabled = false;
             buttonPracownikWykonaj.Enabled = true;
         }
-
         private void buttonPrawconikUsun_Click(object sender, EventArgs e)
         {
             buttonPracownikDodaj.Enabled = false;
             buttonPracownikAkt.Enabled = false;
             buttonPracownikWykonaj.Enabled = true;
         }
-        #endregion
+
         private void buttonPracownikWykonaj_Click(object sender, EventArgs e)
         {
             if (buttonPracownikDodaj.Enabled == true)
             {
-                if (DataCheck() == true)
+                if (DataCheckEmp() == true)
                 {
                     Pracownicy newEmployee = new Pracownicy()
                     {
@@ -136,7 +140,7 @@ namespace P4_PROJEKT_NR_1
 
             if (buttonPracownikAkt.Enabled == true)
             {
-                if (DataCheck() == true)
+                if (DataCheckEmp() == true)
                 {
                     Pracownicy newEmployee = new Pracownicy()
                     {
@@ -155,7 +159,7 @@ namespace P4_PROJEKT_NR_1
 
             if (buttonPrawconikUsun.Enabled == true)
             {
-                if (DataCheck() == true)
+                if (DataCheckEmp() == true)
                 {
                     myDB.DeleteEmployee(tBnPESEL.Text.ToString(), int.Parse(tBID.Text));
                     EmployeeDecorator();
@@ -165,6 +169,7 @@ namespace P4_PROJEKT_NR_1
             buttonPracownikDodaj.Enabled = true;
             buttonPracownikAkt.Enabled = true;
             buttonPrawconikUsun.Enabled = true;
+            cBoxEmployee.DataSource = myDB.GetEmployees();
         }
 
         private void dataGridViewEmployess_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -209,7 +214,7 @@ namespace P4_PROJEKT_NR_1
                 MessageBox.Show("PESEL - tylko 11 cyfr!!!");
             }
         }
-        private bool DataCheck()
+        private bool DataCheckEmp()
         {
             if (tBImie.TextLength < 3)
             {
@@ -233,8 +238,10 @@ namespace P4_PROJEKT_NR_1
             }
             return true;
         }
-
         #endregion
+
+
+
         private void cBoxEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
             tBoxSelectedEmployee.Text = cBoxEmployee.SelectedValue.ToString();
@@ -245,35 +252,22 @@ namespace P4_PROJEKT_NR_1
 
                 int.TryParse(tBoxSelectedEmployee.Text, out IDemployee);
                 dataGridPeroidOfEmp.DataSource = myDB.GetPeroidsOfEmployment(IDemployee);
+
+                dTPzatrudnionyOd.Text = DateTime.Now.ToString();
+                dTPzatrudnionyDo.Text = DateTime.Now.AddMonths(3).ToString();
             }
-
-
         }
-
-        //private void dataGridPeroidOfEmp_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    //dataGridViewEmployess.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        //    //dataGridViewEmployess.ReadOnly = true;
-
-        //    label1.Text = dataGridPeroidOfEmp.CurrentRow.Cells[0].Value.ToString();
-        //    cBoxStanowisko.Text = dataGridPeroidOfEmp.CurrentRow.Cells[6].Value.ToString();
-        //    tBnaleznyUrlop.Text = dataGridPeroidOfEmp.CurrentRow.Cells[0].Value.ToString();
-
-        //}
-
-        public int staz ()
+        private void dataGridPeroidOfEmp_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            label1.Text = IDperoid.ToString();
+            label2.Text = cBoxStazPracy.SelectedValue.ToString();
+            label4.Text = dTPzatrudnionyOd.Text.ToString();
+            label5.Text = dTPzatrudnionyDo.Text.ToString();
+            label3.Text = cBoxWCP.SelectedValue.ToString();
+            labelTEST.Text = cBoxStanowisko.SelectedValue.ToString();
 
-
-            return 1;
-        }
-
-        private void dataGridPeroidOfEmp_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-            label1.Text = dataGridPeroidOfEmp.CurrentRow.Cells[0].Value.ToString();
-
-            if(dataGridPeroidOfEmp.CurrentRow.Cells[4].Value.ToString() == "0")
+            int.TryParse(dataGridPeroidOfEmp.CurrentRow.Cells[0].Value.ToString(), out IDperoid);
+            if (dataGridPeroidOfEmp.CurrentRow.Cells[4].Value.ToString() == "0")
             {
                 cBoxStazPracy.SelectedIndex = Practice[0].practice;
             }
@@ -282,7 +276,6 @@ namespace P4_PROJEKT_NR_1
                 cBoxStazPracy.SelectedIndex = Practice[1].practice;
             }
 
-            //cBoxStazPracy.Text = dataGridPeroidOfEmp.CurrentRow.Cells[4].Value.ToString();      //not ok
             dTPzatrudnionyOd.Text = dataGridPeroidOfEmp.CurrentRow.Cells[5].Value.ToString();    //ok
             if (dataGridPeroidOfEmp.CurrentRow.Cells[6].Value == null)
             {
@@ -290,13 +283,151 @@ namespace P4_PROJEKT_NR_1
             }
             else
             {
-                dTPzatrudnionyDo.Text = dataGridPeroidOfEmp.CurrentRow.Cells[6].Value.ToString();   //ok
                 dTPzatrudnionyDo.Show();
+                dTPzatrudnionyDo.Text = dataGridPeroidOfEmp.CurrentRow.Cells[6].Value.ToString();   //ok
             }
+
             tBnaleznyUrlop.Text = dataGridPeroidOfEmp.CurrentRow.Cells[7].Value.ToString();   //ok
             cBoxStanowisko.Text = dataGridPeroidOfEmp.CurrentRow.Cells[8].Value.ToString();     //ok
             cBoxWCP.Text = dataGridPeroidOfEmp.CurrentRow.Cells[11].Value.ToString();           //ok
+        }
 
+
+        private void buttonExecutePeroid_Click(object sender, EventArgs e)
+        {
+            if (buttonAddPeroid.Enabled == true)
+            {
+                DateTime? UCNO;
+                if (true)
+                {
+                    if (checkBoxUCNO.Checked)
+                    {
+
+                        UCNO = null;
+                    }
+                    else
+                    {
+                        UCNO = DateTime.Parse(dTPzatrudnionyDo.Text.ToString());
+                    }
+
+                    OkresZatrudnienia newPeroid = new OkresZatrudnienia()
+                    {
+                        IDpracownika = int.Parse(tBoxSelectedEmployee.Text.ToString()),
+                        IDstanowiska = int.Parse(cBoxStanowisko.SelectedValue.ToString()),
+                        IDwymiar = int.Parse(cBoxWCP.SelectedValue.ToString()),
+                        staz_pracy = int.Parse(cBoxStazPracy.SelectedValue.ToString()),
+                        zatrudniony_od = DateTime.Parse(dTPzatrudnionyOd.Text.ToString()),
+                        zatrudniony_do = UCNO
+                    };
+                    myDB.InsertPeroid(newPeroid);
+                    PeroidRefresh(IDemployee);
+                    buttonExecutePeroid.Enabled = false;
+                    dataGridPeroidOfEmp.Enabled = true;
+                }
+            }
+
+            if (buttonUpdatePeroid.Enabled == true)
+            {
+                if (true)
+                {
+                    OkresZatrudnienia newEmployee = new OkresZatrudnienia()
+                    {
+                    };
+                    //myDB.UpdateEmployees(newEmployee);
+                    PeroidRefresh(IDemployee);
+                    buttonExecutePeroid.Enabled = false;
+                    dataGridPeroidOfEmp.Enabled = true;
+                }
+            }
+
+            if (buttonDeletePeroid.Enabled == true)
+            {
+                if (true)
+                {
+                    myDB.DeletePeroid(IDperoid);
+                    PeroidRefresh(IDemployee);
+                    buttonExecutePeroid.Enabled = false;
+                    dataGridPeroidOfEmp.Enabled = true;
+                }
+            }
+            buttonAddPeroid.Enabled = true;
+            buttonUpdatePeroid.Enabled = true;
+            buttonDeletePeroid.Enabled = true;
+            SwitchPeroidsCB(false);
+        }
+
+        private void buttonAddPeroid_Click(object sender, EventArgs e)
+        {
+            buttonUpdatePeroid.Enabled = false;
+            buttonDeletePeroid.Enabled = false;
+            buttonExecutePeroid.Enabled = true;
+            dataGridPeroidOfEmp.Enabled = false;
+
+            SwitchPeroidsCB(true);
+
+            checkBoxUCNO.Show();
+        }
+
+        private void buttonUpdatePeroid_Click(object sender, EventArgs e)
+        {
+            buttonAddPeroid.Enabled = false;
+            buttonDeletePeroid.Enabled = false;
+            buttonExecutePeroid.Enabled = true;
+            dataGridPeroidOfEmp.Enabled = false;
+
+            SwitchPeroidsCB(true);
+
+            checkBoxUCNO.Show();
+        }
+
+        private void buttonDeletePeroid_Click(object sender, EventArgs e)
+        {
+            buttonAddPeroid.Enabled = false;
+            buttonUpdatePeroid.Enabled = false;
+            buttonExecutePeroid.Enabled = true;
+            dataGridPeroidOfEmp.Enabled = false;
+
+            SwitchPeroidsCB(true);
+        }
+
+
+        public void SwitchPeroidsCB(bool mySwitch)
+        {
+            cBoxStanowisko.Enabled = mySwitch;
+            cBoxWCP.Enabled = mySwitch;
+            cBoxStazPracy.Enabled = mySwitch;
+            dTPzatrudnionyOd.Enabled = mySwitch;
+            dTPzatrudnionyDo.Enabled = mySwitch;
+            checkBoxUCNO.Visible = mySwitch;
+        }
+        public void PeroidRefresh(int id)
+        {
+            buttonAddPeroid.Enabled = true;
+            buttonDeletePeroid.Enabled = true;
+            buttonUpdatePeroid.Enabled = true;
+            dataGridPeroidOfEmp.Enabled = true;
+
+            buttonExecutePeroid.Enabled = false;
+
+            dataGridPeroidOfEmp.DataSource = myDB.GetPeroidsOfEmployment(id);
+        }
+
+        private void checkBoxUCNO_CheckedChanged(object sender, EventArgs e)
+        {
+            if (dTPzatrudnionyDo.Visible == false || (dTPzatrudnionyDo == null))
+            {
+                dTPzatrudnionyDo.Show();
+            }
+            else if (dTPzatrudnionyDo.Visible == true || !(dTPzatrudnionyDo == null))
+            {
+                dTPzatrudnionyDo.Hide();
+            }
+        }
+
+        private void buttonPeroidCancel_Click(object sender, EventArgs e)
+        {
+            PeroidRefresh(IDemployee);
+            SwitchPeroidsCB(false);
         }
     }
 }

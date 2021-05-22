@@ -64,20 +64,20 @@ namespace P4_PROJEKT_NR_1.Tables
                 if (myDBconnection.State == ConnectionState.Closed)
                     myDBconnection.Open();
                 var result = myDBconnection.Execute(@"DELETE FROM ewu.pracownicy WHERE IDpracownika = @ID OR numer_pesel = @PESEL",
-                new { PESEL = PESEL, ID = IDempolyee});
+                new { PESEL = PESEL, ID = IDempolyee });
 
                 return result == 1;
             }
         }
         #endregion
-        public static IEnumerable<ComboOkresZatrudnienia> GetPeroidsOfEmployment(int id )
+        public static IEnumerable<ComboOkresZatrudnienia> GetPeroidsOfEmployment(int id)
         {
 
             using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
             {
                 if (myDBconnection.State == ConnectionState.Closed)
                     myDBconnection.Open();
-                return myDBconnection.Query<ComboOkresZatrudnienia>(@"SELECT OZ.IDzatrudnienia, OZ. IDpracownika, OZ.IDstanowiska, OZ.IDwymiar, OZ.nalezny_urlop, OZ.zatrudniony_od,
+                return myDBconnection.Query<ComboOkresZatrudnienia>(@"SELECT OZ.IDzatrudnienia, OZ.IDpracownika, OZ.IDstanowiska, OZ.IDwymiar, OZ.nalezny_urlop, OZ.zatrudniony_od,
                                                                     OZ.zatrudniony_do, OZ.staz_pracy, nazwaWCP, nazwaST, opisST
                                                                     FROM ewu.pracownicy AS P	INNER JOIN ewu.okres_zatrudnienia AS OZ ON P.IDpracownika=OZ.IDpracownika
 							                                        INNER JOIN ewu.stanowisko AS S ON OZ.IDstanowiska=S.IDstanowiska
@@ -108,6 +108,38 @@ namespace P4_PROJEKT_NR_1.Tables
                 return myDBconnection.Query<WymiarCzasuPracy>(@"SELECT * FROM ewu.wymiar_czasu_pracy").ToList();
             }
         }
-    }
+        public static bool InsertPeroid(OkresZatrudnienia peroid)
+        {
+            using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
+            {
+                if (myDBconnection.State == ConnectionState.Closed)
+                    myDBconnection.Open();
+                var result = myDBconnection.Execute(@"INSERT INTO ewu.okres_zatrudnienia (IDpracownika, IDstanowiska, IDwymiar, staz_pracy, zatrudniony_od, zatrudniony_do) 
+                                                        VALUES (@IDemp, @Position, @DayJob, @Practice ,@Since, @ToDate)",
+                     new
+                     {
+                         IDemp = peroid.IDpracownika,
+                         Position = peroid.IDstanowiska,
+                         DayJob = peroid.IDwymiar,
+                         Practice = peroid.staz_pracy,
+                         Since = peroid.zatrudniony_od,
+                         ToDate = peroid.zatrudniony_do
+                     });
+                return result == 1;
+            }
+        }
 
+        public static bool DeletePeroid( int IDperoid)
+        {
+            using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
+            {
+                if (myDBconnection.State == ConnectionState.Closed)
+                    myDBconnection.Open();
+                var result = myDBconnection.Execute(@"DELETE FROM ewu.okres_zatrudnienia WHERE IDzatrudnienia = @IDp",
+                new {IDp = IDperoid});
+
+                return result == 1;
+            }
+        }
+    }
 }
