@@ -56,24 +56,7 @@ namespace P4_PROJEKT_NR_1
             this.numer_pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_urodzenia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelZatrudnienie = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.labelTEST = new System.Windows.Forms.Label();
             this.checkBoxUCNO = new System.Windows.Forms.CheckBox();
-            this.dataGridPeroidOfEmp = new System.Windows.Forms.DataGridView();
-            this.IDzatrudnienia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZatrudnionyOD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZatrudnionyDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.naleznyUrlop = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stazPracy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.etat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Stanowisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.opisST = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idpracownikahidden = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.etathidden = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDStanowisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDwymiar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cBoxStanowisko = new System.Windows.Forms.ComboBox();
             this.cBoxWCP = new System.Windows.Forms.ComboBox();
             this.tBnaleznyUrlop = new System.Windows.Forms.TextBox();
@@ -94,6 +77,23 @@ namespace P4_PROJEKT_NR_1
             this.buttonExecutePeroid = new System.Windows.Forms.Button();
             this.labelSelEmpID = new System.Windows.Forms.Label();
             this.buttonPeroidCancel = new System.Windows.Forms.Button();
+            this.dataGridPeroidOfEmp = new System.Windows.Forms.DataGridView();
+            this.IDzatrudnienia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZatrudnionyOD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZatrudnionyDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.naleznyUrlop = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stazPracy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.etat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stanowisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opisST = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idpracownikahidden = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.etathidden = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDStanowisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDwymiar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelTEST = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -303,11 +303,13 @@ namespace P4_PROJEKT_NR_1
             this.dataGridViewEmployess.Location = new System.Drawing.Point(284, 0);
             this.dataGridViewEmployess.MinimumSize = new System.Drawing.Size(15, 0);
             this.dataGridViewEmployess.Name = "dataGridViewEmployess";
+            this.dataGridViewEmployess.ReadOnly = true;
             this.dataGridViewEmployess.RowHeadersWidth = 47;
             this.dataGridViewEmployess.RowTemplate.Height = 28;
+            this.dataGridViewEmployess.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewEmployess.Size = new System.Drawing.Size(689, 548);
             this.dataGridViewEmployess.TabIndex = 0;
-            this.dataGridViewEmployess.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployess_CellContentClick);
+            this.dataGridViewEmployess.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployess_CellClick);
             // 
             // IDpracownika
             // 
@@ -376,7 +378,6 @@ namespace P4_PROJEKT_NR_1
             // panelZatrudnienie
             // 
             this.panelZatrudnienie.Controls.Add(this.checkBoxUCNO);
-            this.panelZatrudnienie.Controls.Add(this.dataGridPeroidOfEmp);
             this.panelZatrudnienie.Controls.Add(this.cBoxStanowisko);
             this.panelZatrudnienie.Controls.Add(this.cBoxWCP);
             this.panelZatrudnienie.Controls.Add(this.tBnaleznyUrlop);
@@ -397,46 +398,11 @@ namespace P4_PROJEKT_NR_1
             this.panelZatrudnienie.Controls.Add(this.buttonExecutePeroid);
             this.panelZatrudnienie.Controls.Add(this.labelSelEmpID);
             this.panelZatrudnienie.Controls.Add(this.buttonPeroidCancel);
+            this.panelZatrudnienie.Controls.Add(this.dataGridPeroidOfEmp);
             this.panelZatrudnienie.Location = new System.Drawing.Point(189, 12);
             this.panelZatrudnienie.Name = "panelZatrudnienie";
             this.panelZatrudnienie.Size = new System.Drawing.Size(1291, 609);
             this.panelZatrudnienie.TabIndex = 3;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(36, 331);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 19);
-            this.label6.TabIndex = 33;
-            this.label6.Text = "label6";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(36, 233);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 19);
-            this.label5.TabIndex = 32;
-            this.label5.Text = "label5";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(36, 260);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 19);
-            this.label3.TabIndex = 30;
-            this.label3.Text = "label3";
-            // 
-            // labelTEST
-            // 
-            this.labelTEST.AutoSize = true;
-            this.labelTEST.Location = new System.Drawing.Point(36, 286);
-            this.labelTEST.Name = "labelTEST";
-            this.labelTEST.Size = new System.Drawing.Size(65, 19);
-            this.labelTEST.TabIndex = 28;
-            this.labelTEST.Text = "labelTEST";
             // 
             // checkBoxUCNO
             // 
@@ -448,143 +414,6 @@ namespace P4_PROJEKT_NR_1
             this.checkBoxUCNO.TabIndex = 27;
             this.checkBoxUCNO.Text = "Umowa na czas nieokreślony";
             this.checkBoxUCNO.UseVisualStyleBackColor = true;
-            // 
-            // dataGridPeroidOfEmp
-            // 
-            this.dataGridPeroidOfEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridPeroidOfEmp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDzatrudnienia,
-            this.ZatrudnionyOD,
-            this.ZatrudnionyDO,
-            this.naleznyUrlop,
-            this.stazPracy,
-            this.etat,
-            this.Stanowisko,
-            this.opisST,
-            this.idpracownikahidden,
-            this.etathidden,
-            this.IDStanowisko,
-            this.IDwymiar});
-            this.dataGridPeroidOfEmp.Location = new System.Drawing.Point(412, 39);
-            this.dataGridPeroidOfEmp.Name = "dataGridPeroidOfEmp";
-            this.dataGridPeroidOfEmp.RowHeadersWidth = 47;
-            this.dataGridPeroidOfEmp.RowTemplate.Height = 28;
-            this.dataGridPeroidOfEmp.Size = new System.Drawing.Size(879, 570);
-            this.dataGridPeroidOfEmp.TabIndex = 25;
-            this.dataGridPeroidOfEmp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPeroidOfEmp_CellClick);
-            // 
-            // IDzatrudnienia
-            // 
-            this.IDzatrudnienia.DataPropertyName = "IDzatrudnienia";
-            this.IDzatrudnienia.HeaderText = "ID (z)";
-            this.IDzatrudnienia.MinimumWidth = 6;
-            this.IDzatrudnienia.Name = "IDzatrudnienia";
-            this.IDzatrudnienia.ReadOnly = true;
-            this.IDzatrudnienia.Width = 50;
-            // 
-            // ZatrudnionyOD
-            // 
-            this.ZatrudnionyOD.DataPropertyName = "zatrudniony_od";
-            this.ZatrudnionyOD.HeaderText = "Zatrudniony od";
-            this.ZatrudnionyOD.MinimumWidth = 6;
-            this.ZatrudnionyOD.Name = "ZatrudnionyOD";
-            this.ZatrudnionyOD.ReadOnly = true;
-            this.ZatrudnionyOD.Width = 140;
-            // 
-            // ZatrudnionyDO
-            // 
-            this.ZatrudnionyDO.DataPropertyName = "zatrudniony_do";
-            this.ZatrudnionyDO.HeaderText = "Zatrudniony do";
-            this.ZatrudnionyDO.MinimumWidth = 6;
-            this.ZatrudnionyDO.Name = "ZatrudnionyDO";
-            this.ZatrudnionyDO.ReadOnly = true;
-            this.ZatrudnionyDO.Width = 140;
-            // 
-            // naleznyUrlop
-            // 
-            this.naleznyUrlop.DataPropertyName = "nalezny_urlop";
-            this.naleznyUrlop.HeaderText = "Należny urlop";
-            this.naleznyUrlop.MinimumWidth = 6;
-            this.naleznyUrlop.Name = "naleznyUrlop";
-            this.naleznyUrlop.ReadOnly = true;
-            this.naleznyUrlop.Width = 130;
-            // 
-            // stazPracy
-            // 
-            this.stazPracy.DataPropertyName = "staz_pracy";
-            this.stazPracy.HeaderText = "Staż Pracy";
-            this.stazPracy.MinimumWidth = 6;
-            this.stazPracy.Name = "stazPracy";
-            this.stazPracy.ReadOnly = true;
-            this.stazPracy.Width = 115;
-            // 
-            // etat
-            // 
-            this.etat.DataPropertyName = "nazwaWCP";
-            this.etat.HeaderText = "Etat";
-            this.etat.MinimumWidth = 6;
-            this.etat.Name = "etat";
-            this.etat.ReadOnly = true;
-            this.etat.Width = 140;
-            // 
-            // Stanowisko
-            // 
-            this.Stanowisko.DataPropertyName = "nazwaST";
-            this.Stanowisko.HeaderText = "Stanowisko";
-            this.Stanowisko.MinimumWidth = 6;
-            this.Stanowisko.Name = "Stanowisko";
-            this.Stanowisko.ReadOnly = true;
-            this.Stanowisko.Width = 115;
-            // 
-            // opisST
-            // 
-            this.opisST.DataPropertyName = "opisST";
-            this.opisST.HeaderText = "opisST";
-            this.opisST.MinimumWidth = 6;
-            this.opisST.Name = "opisST";
-            this.opisST.ReadOnly = true;
-            this.opisST.Visible = false;
-            this.opisST.Width = 115;
-            // 
-            // idpracownikahidden
-            // 
-            this.idpracownikahidden.DataPropertyName = "IDpracownika";
-            this.idpracownikahidden.HeaderText = "IDpracownika";
-            this.idpracownikahidden.MinimumWidth = 6;
-            this.idpracownikahidden.Name = "idpracownikahidden";
-            this.idpracownikahidden.ReadOnly = true;
-            this.idpracownikahidden.Visible = false;
-            this.idpracownikahidden.Width = 115;
-            // 
-            // etathidden
-            // 
-            this.etathidden.DataPropertyName = "etat";
-            this.etathidden.HeaderText = "etat";
-            this.etathidden.MinimumWidth = 6;
-            this.etathidden.Name = "etathidden";
-            this.etathidden.ReadOnly = true;
-            this.etathidden.Visible = false;
-            this.etathidden.Width = 115;
-            // 
-            // IDStanowisko
-            // 
-            this.IDStanowisko.DataPropertyName = "IDstanowiska";
-            this.IDStanowisko.HeaderText = "ID (s)";
-            this.IDStanowisko.MinimumWidth = 6;
-            this.IDStanowisko.Name = "IDStanowisko";
-            this.IDStanowisko.ReadOnly = true;
-            this.IDStanowisko.Visible = false;
-            this.IDStanowisko.Width = 50;
-            // 
-            // IDwymiar
-            // 
-            this.IDwymiar.DataPropertyName = "IDwymiar";
-            this.IDwymiar.HeaderText = "ID (wcp)";
-            this.IDwymiar.MinimumWidth = 6;
-            this.IDwymiar.Name = "IDwymiar";
-            this.IDwymiar.ReadOnly = true;
-            this.IDwymiar.Visible = false;
-            this.IDwymiar.Width = 50;
             // 
             // cBoxStanowisko
             // 
@@ -765,6 +594,181 @@ namespace P4_PROJEKT_NR_1
             this.buttonPeroidCancel.UseVisualStyleBackColor = true;
             this.buttonPeroidCancel.Click += new System.EventHandler(this.buttonPeroidCancel_Click);
             // 
+            // dataGridPeroidOfEmp
+            // 
+            this.dataGridPeroidOfEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridPeroidOfEmp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDzatrudnienia,
+            this.ZatrudnionyOD,
+            this.ZatrudnionyDO,
+            this.naleznyUrlop,
+            this.stazPracy,
+            this.etat,
+            this.Stanowisko,
+            this.opisST,
+            this.idpracownikahidden,
+            this.etathidden,
+            this.IDStanowisko,
+            this.IDwymiar});
+            this.dataGridPeroidOfEmp.Location = new System.Drawing.Point(412, 39);
+            this.dataGridPeroidOfEmp.Name = "dataGridPeroidOfEmp";
+            this.dataGridPeroidOfEmp.ReadOnly = true;
+            this.dataGridPeroidOfEmp.RowHeadersWidth = 47;
+            this.dataGridPeroidOfEmp.RowTemplate.Height = 28;
+            this.dataGridPeroidOfEmp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridPeroidOfEmp.Size = new System.Drawing.Size(879, 570);
+            this.dataGridPeroidOfEmp.TabIndex = 25;
+            this.dataGridPeroidOfEmp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPeroidOfEmp_CellClick);
+            // 
+            // IDzatrudnienia
+            // 
+            this.IDzatrudnienia.DataPropertyName = "IDzatrudnienia";
+            this.IDzatrudnienia.HeaderText = "ID (z)";
+            this.IDzatrudnienia.MinimumWidth = 6;
+            this.IDzatrudnienia.Name = "IDzatrudnienia";
+            this.IDzatrudnienia.ReadOnly = true;
+            this.IDzatrudnienia.Width = 50;
+            // 
+            // ZatrudnionyOD
+            // 
+            this.ZatrudnionyOD.DataPropertyName = "zatrudniony_od";
+            this.ZatrudnionyOD.HeaderText = "Zatrudniony od";
+            this.ZatrudnionyOD.MinimumWidth = 6;
+            this.ZatrudnionyOD.Name = "ZatrudnionyOD";
+            this.ZatrudnionyOD.ReadOnly = true;
+            this.ZatrudnionyOD.Width = 140;
+            // 
+            // ZatrudnionyDO
+            // 
+            this.ZatrudnionyDO.DataPropertyName = "zatrudniony_do";
+            this.ZatrudnionyDO.HeaderText = "Zatrudniony do";
+            this.ZatrudnionyDO.MinimumWidth = 6;
+            this.ZatrudnionyDO.Name = "ZatrudnionyDO";
+            this.ZatrudnionyDO.ReadOnly = true;
+            this.ZatrudnionyDO.Width = 140;
+            // 
+            // naleznyUrlop
+            // 
+            this.naleznyUrlop.DataPropertyName = "nalezny_urlop";
+            this.naleznyUrlop.HeaderText = "Należny urlop";
+            this.naleznyUrlop.MinimumWidth = 6;
+            this.naleznyUrlop.Name = "naleznyUrlop";
+            this.naleznyUrlop.ReadOnly = true;
+            this.naleznyUrlop.Width = 130;
+            // 
+            // stazPracy
+            // 
+            this.stazPracy.DataPropertyName = "staz_pracy";
+            this.stazPracy.HeaderText = "Staż Pracy";
+            this.stazPracy.MinimumWidth = 6;
+            this.stazPracy.Name = "stazPracy";
+            this.stazPracy.ReadOnly = true;
+            this.stazPracy.Width = 115;
+            // 
+            // etat
+            // 
+            this.etat.DataPropertyName = "nazwaWCP";
+            this.etat.HeaderText = "Etat";
+            this.etat.MinimumWidth = 6;
+            this.etat.Name = "etat";
+            this.etat.ReadOnly = true;
+            this.etat.Width = 140;
+            // 
+            // Stanowisko
+            // 
+            this.Stanowisko.DataPropertyName = "nazwaST";
+            this.Stanowisko.HeaderText = "Stanowisko";
+            this.Stanowisko.MinimumWidth = 6;
+            this.Stanowisko.Name = "Stanowisko";
+            this.Stanowisko.ReadOnly = true;
+            this.Stanowisko.Width = 115;
+            // 
+            // opisST
+            // 
+            this.opisST.DataPropertyName = "opisST";
+            this.opisST.HeaderText = "opisST";
+            this.opisST.MinimumWidth = 6;
+            this.opisST.Name = "opisST";
+            this.opisST.ReadOnly = true;
+            this.opisST.Visible = false;
+            this.opisST.Width = 115;
+            // 
+            // idpracownikahidden
+            // 
+            this.idpracownikahidden.DataPropertyName = "IDpracownika";
+            this.idpracownikahidden.HeaderText = "IDpracownika";
+            this.idpracownikahidden.MinimumWidth = 6;
+            this.idpracownikahidden.Name = "idpracownikahidden";
+            this.idpracownikahidden.ReadOnly = true;
+            this.idpracownikahidden.Visible = false;
+            this.idpracownikahidden.Width = 115;
+            // 
+            // etathidden
+            // 
+            this.etathidden.DataPropertyName = "etat";
+            this.etathidden.HeaderText = "etat";
+            this.etathidden.MinimumWidth = 6;
+            this.etathidden.Name = "etathidden";
+            this.etathidden.ReadOnly = true;
+            this.etathidden.Visible = false;
+            this.etathidden.Width = 115;
+            // 
+            // IDStanowisko
+            // 
+            this.IDStanowisko.DataPropertyName = "IDstanowiska";
+            this.IDStanowisko.HeaderText = "ID (s)";
+            this.IDStanowisko.MinimumWidth = 6;
+            this.IDStanowisko.Name = "IDStanowisko";
+            this.IDStanowisko.ReadOnly = true;
+            this.IDStanowisko.Visible = false;
+            this.IDStanowisko.Width = 50;
+            // 
+            // IDwymiar
+            // 
+            this.IDwymiar.DataPropertyName = "IDwymiar";
+            this.IDwymiar.HeaderText = "ID (wcp)";
+            this.IDwymiar.MinimumWidth = 6;
+            this.IDwymiar.Name = "IDwymiar";
+            this.IDwymiar.ReadOnly = true;
+            this.IDwymiar.Visible = false;
+            this.IDwymiar.Width = 50;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(36, 331);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 19);
+            this.label6.TabIndex = 33;
+            this.label6.Text = "label6";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(36, 233);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(45, 19);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "label5";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(36, 260);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 19);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "label3";
+            // 
+            // labelTEST
+            // 
+            this.labelTEST.AutoSize = true;
+            this.labelTEST.Location = new System.Drawing.Point(36, 286);
+            this.labelTEST.Name = "labelTEST";
+            this.labelTEST.Size = new System.Drawing.Size(65, 19);
+            this.labelTEST.TabIndex = 28;
+            this.labelTEST.Text = "labelTEST";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -844,6 +848,7 @@ namespace P4_PROJEKT_NR_1
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1492, 973);
+            this.Controls.Add(this.panelZatrudnienie);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panelUrlopy);
             this.Controls.Add(this.label5);
@@ -854,7 +859,6 @@ namespace P4_PROJEKT_NR_1
             this.Controls.Add(this.buttonPanelZatrudnienie);
             this.Controls.Add(this.buttonPanelPracownicy);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.panelZatrudnienie);
             this.Controls.Add(this.panelPracownicy);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
