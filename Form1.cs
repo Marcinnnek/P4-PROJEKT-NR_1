@@ -75,8 +75,10 @@ namespace P4_PROJEKT_NR_1
             panelPracownicy.Hide();
 
             tBoxSelectedEmployee.Text = null;
+            tBoxSelectedEmployeeLeave.Text = null;
 
             tBnaleznyUrlop.Enabled = false;
+
         }
         #region
 

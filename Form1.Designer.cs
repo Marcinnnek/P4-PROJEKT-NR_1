@@ -829,6 +829,7 @@ namespace P4_PROJEKT_NR_1
             // 
             // tBoxSelectedPeroidsLeave
             // 
+            this.tBoxSelectedPeroidsLeave.Enabled = false;
             this.tBoxSelectedPeroidsLeave.Location = new System.Drawing.Point(302, 41);
             this.tBoxSelectedPeroidsLeave.Name = "tBoxSelectedPeroidsLeave";
             this.tBoxSelectedPeroidsLeave.Size = new System.Drawing.Size(70, 26);
@@ -836,6 +837,7 @@ namespace P4_PROJEKT_NR_1
             // 
             // tBoxSelectedEmployeeLeave
             // 
+            this.tBoxSelectedEmployeeLeave.Enabled = false;
             this.tBoxSelectedEmployeeLeave.Location = new System.Drawing.Point(302, 8);
             this.tBoxSelectedEmployeeLeave.Name = "tBoxSelectedEmployeeLeave";
             this.tBoxSelectedEmployeeLeave.Size = new System.Drawing.Size(71, 26);
