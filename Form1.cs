@@ -50,8 +50,9 @@ namespace P4_PROJEKT_NR_1
             CBoxLeaveEmpID.DisplayMember = "FullName";
             CBoxLeaveEmpID.ValueMember = "IDpracownika";
 
-            CBoxLeaveEmpPeroids.ValueMember = "IDzatrudnienia"; // panel 3
-            CBoxLeaveEmpPeroids.DisplayMember = "FullPeroid";
+            CBoxLeaveEmpPeroids.DisplayMember = "FullPeroid";  // panel 3
+            CBoxLeaveEmpPeroids.ValueMember = "IDzatrudnienia";
+            
 
 
             //CBoxLeaveEmpPeroids.DataSource = myDB.GetPeroidsOfEmployment();
@@ -466,33 +467,26 @@ namespace P4_PROJEKT_NR_1
 
         private void CBoxLeaveEmpID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CBoxLeaveEmpPeroids.DataSource = myDB.GetPeroidsOfEmployment(IDemployee); // panel 3
-            CBoxLeaveEmpPeroids.ValueMember = "IDzatrudnienia";
-            CBoxLeaveEmpPeroids.DisplayMember = "FullPeroid";
-
+            tBoxSelectedEmployeeLeave.Text = CBoxLeaveEmpID.SelectedValue.ToString();
             if (tBoxSelectedEmployeeLeave != null)
             {
                 int.TryParse(tBoxSelectedEmployeeLeave.Text, out IDemployee);
-                //tBoxSelectedEmployeeLeave.Text = CBoxLeaveEmpID.SelectedValue.ToString();
-                //int.TryParse(tBoxSelectedEmployeeLeave.Text, out IDemployee);
-                //dataGridPeroidOfEmp.DataSource = myDB.GetPeroidsOfEmployment(IDemployee);
-                tBoxSelectedEmployeeLeave.Text = CBoxLeaveEmpID.SelectedValue.ToString();
-
-                //CBoxLeaveEmpPeroids.DataSource = myDB.GetPeroidsOfEmployment(IDemployee); // panel 3
-                //CBoxLeaveEmpPeroids.ValueMember = "IDzatrudnienia";
-                //CBoxLeaveEmpPeroids.DisplayMember = "FullPeroid";
+                CBoxLeaveEmpPeroids.DataSource = myDB.GetPeroidsOfEmployment(IDemployee);
 
             }
         }
 
         private void CBoxLeaveEmpPeroids_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+          tBoxSelectedPeroidsLeave.Text = CBoxLeaveEmpPeroids.SelectedValue.ToString();
         }
 
         private void CBoxLeaveEmpPeroids_MouseClick(object sender, MouseEventArgs e)
         {
+            //if (tBoxSelectedEmployeeLeave.Text.ToString() != "")
+            //{
 
+            //}
         }
     }
 }
