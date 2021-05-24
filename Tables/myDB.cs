@@ -67,7 +67,7 @@ namespace P4_PROJEKT_NR_1.Tables
             {
                 if (myDBconnection.State == ConnectionState.Closed)
                     myDBconnection.Open();
-                var result = myDBconnection.Execute(    @"DELETE FROM ewu.pracownicy 
+                var result = myDBconnection.Execute(@"DELETE FROM ewu.pracownicy 
                                                         WHERE IDpracownika = @ID OR numer_pesel = @PESEL",
                 new { PESEL = PESEL, ID = IDempolyee });
 
@@ -77,7 +77,6 @@ namespace P4_PROJEKT_NR_1.Tables
         #endregion
         public static IEnumerable<ComboOkresZatrudnienia> GetPeroidsOfEmployment(int id)
         {
-
             using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
             {
                 if (myDBconnection.State == ConnectionState.Closed)
@@ -93,7 +92,6 @@ namespace P4_PROJEKT_NR_1.Tables
 
         public static IEnumerable<Stanowisko> GetPosition()
         {
-
             using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
             {
                 if (myDBconnection.State == ConnectionState.Closed)
@@ -104,7 +102,6 @@ namespace P4_PROJEKT_NR_1.Tables
 
         public static IEnumerable<WymiarCzasuPracy> GetDayJob()
         {
-
             using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
             {
                 if (myDBconnection.State == ConnectionState.Closed)
@@ -134,14 +131,14 @@ namespace P4_PROJEKT_NR_1.Tables
             }
         }
 
-        public static bool DeletePeroid( int IDperoid)
+        public static bool DeletePeroid(int IDperoid)
         {
             using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
             {
                 if (myDBconnection.State == ConnectionState.Closed)
                     myDBconnection.Open();
-                var result = myDBconnection.Execute(    @"DELETE FROM ewu.okres_zatrudnienia WHERE IDzatrudnienia = @IDp",
-                new {IDp = IDperoid});
+                var result = myDBconnection.Execute(@"DELETE FROM ewu.okres_zatrudnienia WHERE IDzatrudnienia = @IDp",
+                new { IDp = IDperoid });
 
                 return result == 1;
             }
@@ -171,9 +168,37 @@ namespace P4_PROJEKT_NR_1.Tables
                      Practice = IDperoid.staz_pracy,
                      Since = IDperoid.zatrudniony_od,
                      ToDate = IDperoid.zatrudniony_do
-                 }) ;
+                 });
                 return result == 1;
             }
         }
+
+
+
+
+
+
+
+        public static IEnumerable<TypUrlopu> GetLeaveType()
+        {
+            using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
+            {
+                if (myDBconnection.State == ConnectionState.Closed)
+                    myDBconnection.Open();
+                return myDBconnection.Query<TypUrlopu>(@"SELECT * FROM ewu.typ_urlopu").ToList();
+            }
+        }
+
+        public static IEnumerable<TypUrlopu> GetLeaveStatus()
+        {
+            using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
+            {
+                if (myDBconnection.State == ConnectionState.Closed)
+                    myDBconnection.Open();
+                return myDBconnection.Query<TypUrlopu>(@"SELECT * FROM ewu.status_urlopu").ToList();
+            }
+        }
+
+
     }
 }

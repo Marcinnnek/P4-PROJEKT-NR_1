@@ -90,6 +90,7 @@ namespace P4_PROJEKT_NR_1
             this.etathidden = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDStanowisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDwymiar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullPeroid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -98,6 +99,11 @@ namespace P4_PROJEKT_NR_1
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelUrlopy = new System.Windows.Forms.Panel();
+            this.tBoxSelectedPeroidsLeave = new System.Windows.Forms.TextBox();
+            this.tBoxSelectedEmployeeLeave = new System.Windows.Forms.TextBox();
+            this.dataGridViewLeave = new System.Windows.Forms.DataGridView();
+            this.CBoxLeaveEmpPeroids = new System.Windows.Forms.ComboBox();
+            this.CBoxLeaveEmpID = new System.Windows.Forms.ComboBox();
             this.buttonUrlopZapisz = new System.Windows.Forms.Button();
             this.buttonPanelPracownicy = new System.Windows.Forms.Button();
             this.buttonPanelZatrudnienie = new System.Windows.Forms.Button();
@@ -107,6 +113,7 @@ namespace P4_PROJEKT_NR_1
             this.panelZatrudnienie.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPeroidOfEmp)).BeginInit();
             this.panelUrlopy.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLeave)).BeginInit();
             this.SuspendLayout();
             // 
             // panelPracownicy
@@ -609,7 +616,8 @@ namespace P4_PROJEKT_NR_1
             this.idpracownikahidden,
             this.etathidden,
             this.IDStanowisko,
-            this.IDwymiar});
+            this.IDwymiar,
+            this.FullPeroid});
             this.dataGridPeroidOfEmp.Location = new System.Drawing.Point(412, 39);
             this.dataGridPeroidOfEmp.Name = "dataGridPeroidOfEmp";
             this.dataGridPeroidOfEmp.ReadOnly = true;
@@ -733,6 +741,16 @@ namespace P4_PROJEKT_NR_1
             this.IDwymiar.Visible = false;
             this.IDwymiar.Width = 50;
             // 
+            // FullPeroid
+            // 
+            this.FullPeroid.DataPropertyName = "FullPeroid";
+            this.FullPeroid.HeaderText = "FullPeroid";
+            this.FullPeroid.MinimumWidth = 6;
+            this.FullPeroid.Name = "FullPeroid";
+            this.FullPeroid.ReadOnly = true;
+            this.FullPeroid.Visible = false;
+            this.FullPeroid.Width = 115;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -798,11 +816,62 @@ namespace P4_PROJEKT_NR_1
             // 
             // panelUrlopy
             // 
+            this.panelUrlopy.Controls.Add(this.tBoxSelectedPeroidsLeave);
+            this.panelUrlopy.Controls.Add(this.tBoxSelectedEmployeeLeave);
+            this.panelUrlopy.Controls.Add(this.dataGridViewLeave);
+            this.panelUrlopy.Controls.Add(this.CBoxLeaveEmpPeroids);
+            this.panelUrlopy.Controls.Add(this.CBoxLeaveEmpID);
             this.panelUrlopy.Controls.Add(this.buttonUrlopZapisz);
-            this.panelUrlopy.Location = new System.Drawing.Point(170, 667);
+            this.panelUrlopy.Location = new System.Drawing.Point(36, 646);
             this.panelUrlopy.Name = "panelUrlopy";
-            this.panelUrlopy.Size = new System.Drawing.Size(1214, 171);
+            this.panelUrlopy.Size = new System.Drawing.Size(1170, 278);
             this.panelUrlopy.TabIndex = 1;
+            // 
+            // tBoxSelectedPeroidsLeave
+            // 
+            this.tBoxSelectedPeroidsLeave.Location = new System.Drawing.Point(302, 41);
+            this.tBoxSelectedPeroidsLeave.Name = "tBoxSelectedPeroidsLeave";
+            this.tBoxSelectedPeroidsLeave.Size = new System.Drawing.Size(70, 26);
+            this.tBoxSelectedPeroidsLeave.TabIndex = 5;
+            // 
+            // tBoxSelectedEmployeeLeave
+            // 
+            this.tBoxSelectedEmployeeLeave.Location = new System.Drawing.Point(302, 8);
+            this.tBoxSelectedEmployeeLeave.Name = "tBoxSelectedEmployeeLeave";
+            this.tBoxSelectedEmployeeLeave.Size = new System.Drawing.Size(71, 26);
+            this.tBoxSelectedEmployeeLeave.TabIndex = 4;
+            // 
+            // dataGridViewLeave
+            // 
+            this.dataGridViewLeave.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewLeave.Location = new System.Drawing.Point(424, 75);
+            this.dataGridViewLeave.Name = "dataGridViewLeave";
+            this.dataGridViewLeave.RowHeadersWidth = 47;
+            this.dataGridViewLeave.RowTemplate.Height = 28;
+            this.dataGridViewLeave.Size = new System.Drawing.Size(746, 172);
+            this.dataGridViewLeave.TabIndex = 3;
+            this.dataGridViewLeave.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLeave_CellClick);
+            // 
+            // CBoxLeaveEmpPeroids
+            // 
+            this.CBoxLeaveEmpPeroids.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBoxLeaveEmpPeroids.FormattingEnabled = true;
+            this.CBoxLeaveEmpPeroids.Location = new System.Drawing.Point(424, 41);
+            this.CBoxLeaveEmpPeroids.Name = "CBoxLeaveEmpPeroids";
+            this.CBoxLeaveEmpPeroids.Size = new System.Drawing.Size(628, 27);
+            this.CBoxLeaveEmpPeroids.TabIndex = 2;
+            this.CBoxLeaveEmpPeroids.SelectedIndexChanged += new System.EventHandler(this.CBoxLeaveEmpPeroids_SelectedIndexChanged);
+            this.CBoxLeaveEmpPeroids.MouseClick += new System.Windows.Forms.MouseEventHandler(this.CBoxLeaveEmpPeroids_MouseClick);
+            // 
+            // CBoxLeaveEmpID
+            // 
+            this.CBoxLeaveEmpID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBoxLeaveEmpID.FormattingEnabled = true;
+            this.CBoxLeaveEmpID.Location = new System.Drawing.Point(424, 7);
+            this.CBoxLeaveEmpID.Name = "CBoxLeaveEmpID";
+            this.CBoxLeaveEmpID.Size = new System.Drawing.Size(628, 27);
+            this.CBoxLeaveEmpID.TabIndex = 1;
+            this.CBoxLeaveEmpID.SelectedIndexChanged += new System.EventHandler(this.CBoxLeaveEmpID_SelectedIndexChanged);
             // 
             // buttonUrlopZapisz
             // 
@@ -876,6 +945,8 @@ namespace P4_PROJEKT_NR_1
             this.panelZatrudnienie.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPeroidOfEmp)).EndInit();
             this.panelUrlopy.ResumeLayout(false);
+            this.panelUrlopy.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLeave)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -936,15 +1007,6 @@ namespace P4_PROJEKT_NR_1
         private System.Windows.Forms.Button buttonExecutePeroid;
         private System.Windows.Forms.DataGridView dataGridPeroidOfEmp;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDzatrudnienia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ZatrudnionyOD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ZatrudnionyDO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn naleznyUrlop;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stazPracy;
-        private System.Windows.Forms.DataGridViewTextBoxColumn etat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Stanowisko;
-        private System.Windows.Forms.DataGridViewTextBoxColumn opisST;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idpracownikahidden;
         private System.Windows.Forms.DataGridViewTextBoxColumn etathidden;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDStanowisko;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDwymiar;
@@ -955,6 +1017,21 @@ namespace P4_PROJEKT_NR_1
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dataGridViewLeave;
+        private System.Windows.Forms.ComboBox CBoxLeaveEmpPeroids;
+        private System.Windows.Forms.ComboBox CBoxLeaveEmpID;
+        private System.Windows.Forms.TextBox tBoxSelectedEmployeeLeave;
+        private System.Windows.Forms.TextBox tBoxSelectedPeroidsLeave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDzatrudnienia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ZatrudnionyOD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ZatrudnionyDO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn naleznyUrlop;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stazPracy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn etat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stanowisko;
+        private System.Windows.Forms.DataGridViewTextBoxColumn opisST;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idpracownikahidden;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FullPeroid;
     }
 }
 

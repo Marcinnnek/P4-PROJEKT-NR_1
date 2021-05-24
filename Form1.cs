@@ -18,33 +18,43 @@ namespace P4_PROJEKT_NR_1
         private static List<string> myGender = new List<string>();
         private static List<StazPracy> Practice = new List<StazPracy>();
         private int IDemployee;
-        private int IDperoid=0;
+        private int IDperoid = 0;
         DateTime? UCNO;
         public FormEWU()
         {
             InitializeComponent();
 
-            myGender.Add("Kobieta");
+            myGender.Add("Kobieta");    // panel 1
             myGender.Add("Mężczyzna");
             cBgender.DataSource = myGender;
 
-            Practice.Add(new StazPracy { practice = 0, days = "20 dni" });
+            Practice.Add(new StazPracy { practice = 0, days = "20 dni" }); // panel 2
             Practice.Add(new StazPracy { practice = 1, days = "26 dni" });
             cBoxStazPracy.DataSource = Practice;
             cBoxStazPracy.DisplayMember = "days";
             cBoxStazPracy.ValueMember = "practice";
 
-            cBoxStanowisko.DataSource = myDB.GetPosition();
+            cBoxStanowisko.DataSource = myDB.GetPosition(); // panel 2
             cBoxStanowisko.DisplayMember = "nazwaST";
             cBoxStanowisko.ValueMember = "IDstanowiska";
 
-            cBoxWCP.DataSource = myDB.GetDayJob();
+            cBoxWCP.DataSource = myDB.GetDayJob(); // panel 2
             cBoxWCP.DisplayMember = "nazwaWCP";
             cBoxWCP.ValueMember = "IDwymiar";
 
-            cBoxEmployee.DataSource = myDB.GetEmployees();
+            cBoxEmployee.DataSource = myDB.GetEmployees(); // panel 2
             cBoxEmployee.DisplayMember = "FullName";
             cBoxEmployee.ValueMember = "IDpracownika";
+
+            CBoxLeaveEmpID.DataSource = myDB.GetEmployees(); // panel 3
+            CBoxLeaveEmpID.DisplayMember = "FullName";
+            CBoxLeaveEmpID.ValueMember = "IDpracownika";
+
+            CBoxLeaveEmpPeroids.ValueMember = "IDzatrudnienia"; // panel 3
+            CBoxLeaveEmpPeroids.DisplayMember = "FullPeroid";
+
+
+            //CBoxLeaveEmpPeroids.DataSource = myDB.GetPeroidsOfEmployment();
 
             checkBoxUCNO.Checked = false;
             SwitchPeroidsCB(false);
@@ -236,7 +246,7 @@ namespace P4_PROJEKT_NR_1
         #endregion
 
 
-
+        #region
         private void cBoxEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
             tBoxSelectedEmployee.Text = cBoxEmployee.SelectedValue.ToString();
@@ -426,23 +436,63 @@ namespace P4_PROJEKT_NR_1
             SwitchPeroidsCB(false);
         }
 
-        
-        private bool DataCheckPeroid ()
+
+        private bool DataCheckPeroid()
         {
-            if(tBoxSelectedEmployee.Text.ToString()=="")
+            if (tBoxSelectedEmployee.Text.ToString() == "")
             {
                 MessageBox.Show("Wybierz pracownika!");
                 return false;
             }
-            else if(dTPzatrudnionyDo != null)
+            else if (dTPzatrudnionyDo != null)
             {
-                if(DateTime.Parse(dTPzatrudnionyDo.Text) < DateTime.Parse(dTPzatrudnionyOd.Text))
+                if (DateTime.Parse(dTPzatrudnionyDo.Text) < DateTime.Parse(dTPzatrudnionyOd.Text))
                 {
                     MessageBox.Show("Niepoprawne daty okresu zatrdunienia!");
                     return false;
                 }
             }
             return true;
+        }
+
+
+
+        #endregion
+
+        private void dataGridViewLeave_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void CBoxLeaveEmpID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CBoxLeaveEmpPeroids.DataSource = myDB.GetPeroidsOfEmployment(IDemployee); // panel 3
+            CBoxLeaveEmpPeroids.ValueMember = "IDzatrudnienia";
+            CBoxLeaveEmpPeroids.DisplayMember = "FullPeroid";
+
+            if (tBoxSelectedEmployeeLeave != null)
+            {
+                int.TryParse(tBoxSelectedEmployeeLeave.Text, out IDemployee);
+                //tBoxSelectedEmployeeLeave.Text = CBoxLeaveEmpID.SelectedValue.ToString();
+                //int.TryParse(tBoxSelectedEmployeeLeave.Text, out IDemployee);
+                //dataGridPeroidOfEmp.DataSource = myDB.GetPeroidsOfEmployment(IDemployee);
+                tBoxSelectedEmployeeLeave.Text = CBoxLeaveEmpID.SelectedValue.ToString();
+
+                //CBoxLeaveEmpPeroids.DataSource = myDB.GetPeroidsOfEmployment(IDemployee); // panel 3
+                //CBoxLeaveEmpPeroids.ValueMember = "IDzatrudnienia";
+                //CBoxLeaveEmpPeroids.DisplayMember = "FullPeroid";
+
+            }
+        }
+
+        private void CBoxLeaveEmpPeroids_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CBoxLeaveEmpPeroids_MouseClick(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }
