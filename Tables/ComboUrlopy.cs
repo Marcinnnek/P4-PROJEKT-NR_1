@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace P4_PROJEKT_NR_1.Tables
 {
-    public class Urlopy
+    public class ComboUrlopy
     {
-        public int IDewidencji { get; set; }
+        //urlopy
+        public int IDewidencji { get; set; } 
         public int IDzatrudnienia { get; set; }
         public int IDstatus { get; set; }
         public int IDurlopu_typ { get; set; }
@@ -17,5 +18,10 @@ namespace P4_PROJEKT_NR_1.Tables
         public DateTime urlop_do { get; set; }
         public int ilosc_dni_urlopu { get; set; }
         public string uwagi { get; set; }
+
+        //typ_urlopu
+        public string nazwaTU { get; set; }
+        //status urlopu
+        public string nazwaSU { get; set; }
     }
 }

@@ -75,7 +75,7 @@ namespace P4_PROJEKT_NR_1.Tables
             }
         }
         #endregion
-        public static IEnumerable<ComboOkresZatrudnienia> GetPeroidsOfEmployment(int id)
+        public static IEnumerable<ComboOkresZatrudnienia> GetPeroidsOfEmployment(int IDperoid)
         {
             using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
             {
@@ -86,7 +86,7 @@ namespace P4_PROJEKT_NR_1.Tables
                                                                     FROM ewu.pracownicy AS P	INNER JOIN ewu.okres_zatrudnienia AS OZ ON P.IDpracownika=OZ.IDpracownika
 							                                        INNER JOIN ewu.stanowisko AS S ON OZ.IDstanowiska=S.IDstanowiska
 							                                        INNER JOIN ewu.wymiar_czasu_pracy AS WCP ON OZ.IDwymiar=WCP.IDwymiar
-                                                                    WHERE OZ.IDpracownika = @IDemp", new { IDemp = id }).ToList();
+                                                                    WHERE OZ.IDpracownika = @IDemp", new { IDemp = IDperoid }).ToList();
             }
         }
 
@@ -199,6 +199,19 @@ namespace P4_PROJEKT_NR_1.Tables
             }
         }
 
+        public static IEnumerable<ComboUrlopy> GetEmployeeLeaves(int id)
+        {
+            using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
+            {
+                if (myDBconnection.State == ConnectionState.Closed)
+                    myDBconnection.Open();
+                return myDBconnection.Query<ComboUrlopy>(   @"SELECT* FROM ewu.urlopy AS U INNER JOIN ewu.status_urlopu AS SU ON U.IDstatus=SU.IDstatus
+                                                            INNER JOIN EWU.typ_urlopu AS TU ON U.IDurlopu_typ=TU.IDurlopu_typ
+                                                            WHERE IDzatrudnienia = @IDperoid", new { IDperoid = id }).ToList();
+            }
+        }
+
 
     }
 }
+

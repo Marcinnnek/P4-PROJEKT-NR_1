@@ -19,6 +19,8 @@ namespace P4_PROJEKT_NR_1
         private static List<StazPracy> Practice = new List<StazPracy>();
         private int IDemployee;
         private int IDperoid = 0;
+        private int IDemployee_Leave;
+        private int IDperoid_Leave;
         DateTime? UCNO;
         public FormEWU()
         {
@@ -472,15 +474,16 @@ namespace P4_PROJEKT_NR_1
             tBoxSelectedEmployeeLeave.Text = CBoxLeaveEmpID.SelectedValue.ToString();
             if (tBoxSelectedEmployeeLeave != null)
             {
-                int.TryParse(tBoxSelectedEmployeeLeave.Text, out IDemployee);
-                CBoxLeaveEmpPeroids.DataSource = myDB.GetPeroidsOfEmployment(IDemployee);
-
+                int.TryParse(tBoxSelectedEmployeeLeave.Text, out IDemployee_Leave);
+                CBoxLeaveEmpPeroids.DataSource = myDB.GetPeroidsOfEmployment(IDemployee_Leave);
             }
         }
 
         private void CBoxLeaveEmpPeroids_SelectedIndexChanged(object sender, EventArgs e)
         {
-          tBoxSelectedPeroidsLeave.Text = CBoxLeaveEmpPeroids.SelectedValue.ToString();
+            tBoxSelectedPeroidsLeave.Text = CBoxLeaveEmpPeroids.SelectedValue.ToString();
+            int.TryParse(tBoxSelectedPeroidsLeave.Text, out IDperoid_Leave);
+            dataGridViewLeave.DataSource = myDB.GetEmployeeLeaves(IDperoid_Leave);
         }
 
         private void CBoxLeaveEmpPeroids_MouseClick(object sender, MouseEventArgs e)
