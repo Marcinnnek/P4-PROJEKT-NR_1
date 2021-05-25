@@ -91,6 +91,17 @@ namespace P4_PROJEKT_NR_1
             this.IDStanowisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDwymiar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullPeroid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelUrlopy = new System.Windows.Forms.Panel();
+            this.BtExecuteLeave = new System.Windows.Forms.Button();
+            this.BtCancelLeave = new System.Windows.Forms.Button();
+            this.BtDeleteLeave = new System.Windows.Forms.Button();
+            this.BtUpdateLeave = new System.Windows.Forms.Button();
+            this.BtAddLeave = new System.Windows.Forms.Button();
+            this.tBoxSelectedPeroidsLeave = new System.Windows.Forms.TextBox();
+            this.tBoxSelectedEmployeeLeave = new System.Windows.Forms.TextBox();
+            this.dataGridViewLeave = new System.Windows.Forms.DataGridView();
+            this.CBoxLeaveEmpPeroids = new System.Windows.Forms.ComboBox();
+            this.CBoxLeaveEmpID = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -98,16 +109,23 @@ namespace P4_PROJEKT_NR_1
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panelUrlopy = new System.Windows.Forms.Panel();
-            this.tBoxSelectedPeroidsLeave = new System.Windows.Forms.TextBox();
-            this.tBoxSelectedEmployeeLeave = new System.Windows.Forms.TextBox();
-            this.dataGridViewLeave = new System.Windows.Forms.DataGridView();
-            this.CBoxLeaveEmpPeroids = new System.Windows.Forms.ComboBox();
-            this.CBoxLeaveEmpID = new System.Windows.Forms.ComboBox();
-            this.buttonUrlopZapisz = new System.Windows.Forms.Button();
             this.buttonPanelPracownicy = new System.Windows.Forms.Button();
             this.buttonPanelZatrudnienie = new System.Windows.Forms.Button();
             this.buttonPanelUrlopy = new System.Windows.Forms.Button();
+            this.cBoxLeaveStatus = new System.Windows.Forms.ComboBox();
+            this.cBoxLeaveType = new System.Windows.Forms.ComboBox();
+            this.dTPLeaveDateApp = new System.Windows.Forms.DateTimePicker();
+            this.dTPLeaveSince = new System.Windows.Forms.DateTimePicker();
+            this.dTPLeaveTo = new System.Windows.Forms.DateTimePicker();
+            this.textBoxLeaveDays = new System.Windows.Forms.TextBox();
+            this.tBoxLeaveNote = new System.Windows.Forms.TextBox();
+            this.LLeaveStatus = new System.Windows.Forms.Label();
+            this.LLeaveType = new System.Windows.Forms.Label();
+            this.LLeaveDateApp = new System.Windows.Forms.Label();
+            this.LLeaveSince = new System.Windows.Forms.Label();
+            this.LLeaveTo = new System.Windows.Forms.Label();
+            this.LLeaveDays = new System.Windows.Forms.Label();
+            this.LLeaveNotes = new System.Windows.Forms.Label();
             this.panelPracownicy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployess)).BeginInit();
             this.panelZatrudnienie.SuspendLayout();
@@ -751,6 +769,132 @@ namespace P4_PROJEKT_NR_1
             this.FullPeroid.Visible = false;
             this.FullPeroid.Width = 115;
             // 
+            // panelUrlopy
+            // 
+            this.panelUrlopy.Controls.Add(this.LLeaveNotes);
+            this.panelUrlopy.Controls.Add(this.LLeaveDays);
+            this.panelUrlopy.Controls.Add(this.LLeaveTo);
+            this.panelUrlopy.Controls.Add(this.LLeaveSince);
+            this.panelUrlopy.Controls.Add(this.LLeaveDateApp);
+            this.panelUrlopy.Controls.Add(this.LLeaveType);
+            this.panelUrlopy.Controls.Add(this.LLeaveStatus);
+            this.panelUrlopy.Controls.Add(this.tBoxLeaveNote);
+            this.panelUrlopy.Controls.Add(this.textBoxLeaveDays);
+            this.panelUrlopy.Controls.Add(this.dTPLeaveTo);
+            this.panelUrlopy.Controls.Add(this.dTPLeaveSince);
+            this.panelUrlopy.Controls.Add(this.dTPLeaveDateApp);
+            this.panelUrlopy.Controls.Add(this.cBoxLeaveType);
+            this.panelUrlopy.Controls.Add(this.cBoxLeaveStatus);
+            this.panelUrlopy.Controls.Add(this.BtExecuteLeave);
+            this.panelUrlopy.Controls.Add(this.BtCancelLeave);
+            this.panelUrlopy.Controls.Add(this.BtDeleteLeave);
+            this.panelUrlopy.Controls.Add(this.BtUpdateLeave);
+            this.panelUrlopy.Controls.Add(this.BtAddLeave);
+            this.panelUrlopy.Controls.Add(this.tBoxSelectedPeroidsLeave);
+            this.panelUrlopy.Controls.Add(this.tBoxSelectedEmployeeLeave);
+            this.panelUrlopy.Controls.Add(this.dataGridViewLeave);
+            this.panelUrlopy.Controls.Add(this.CBoxLeaveEmpPeroids);
+            this.panelUrlopy.Controls.Add(this.CBoxLeaveEmpID);
+            this.panelUrlopy.Location = new System.Drawing.Point(45, 375);
+            this.panelUrlopy.Name = "panelUrlopy";
+            this.panelUrlopy.Size = new System.Drawing.Size(1293, 575);
+            this.panelUrlopy.TabIndex = 1;
+            // 
+            // BtExecuteLeave
+            // 
+            this.BtExecuteLeave.Location = new System.Drawing.Point(0, 167);
+            this.BtExecuteLeave.Name = "BtExecuteLeave";
+            this.BtExecuteLeave.Size = new System.Drawing.Size(218, 44);
+            this.BtExecuteLeave.TabIndex = 10;
+            this.BtExecuteLeave.Text = "Wykonaj";
+            this.BtExecuteLeave.UseVisualStyleBackColor = true;
+            // 
+            // BtCancelLeave
+            // 
+            this.BtCancelLeave.Location = new System.Drawing.Point(0, 117);
+            this.BtCancelLeave.Name = "BtCancelLeave";
+            this.BtCancelLeave.Size = new System.Drawing.Size(218, 44);
+            this.BtCancelLeave.TabIndex = 9;
+            this.BtCancelLeave.Text = "Anuluj";
+            this.BtCancelLeave.UseVisualStyleBackColor = true;
+            // 
+            // BtDeleteLeave
+            // 
+            this.BtDeleteLeave.Location = new System.Drawing.Point(0, 65);
+            this.BtDeleteLeave.Name = "BtDeleteLeave";
+            this.BtDeleteLeave.Size = new System.Drawing.Size(218, 26);
+            this.BtDeleteLeave.TabIndex = 8;
+            this.BtDeleteLeave.Text = "Usuń";
+            this.BtDeleteLeave.UseVisualStyleBackColor = true;
+            // 
+            // BtUpdateLeave
+            // 
+            this.BtUpdateLeave.Location = new System.Drawing.Point(0, 32);
+            this.BtUpdateLeave.Name = "BtUpdateLeave";
+            this.BtUpdateLeave.Size = new System.Drawing.Size(218, 26);
+            this.BtUpdateLeave.TabIndex = 7;
+            this.BtUpdateLeave.Text = "Aktualizuj";
+            this.BtUpdateLeave.UseVisualStyleBackColor = true;
+            // 
+            // BtAddLeave
+            // 
+            this.BtAddLeave.Location = new System.Drawing.Point(0, 0);
+            this.BtAddLeave.Name = "BtAddLeave";
+            this.BtAddLeave.Size = new System.Drawing.Size(218, 26);
+            this.BtAddLeave.TabIndex = 6;
+            this.BtAddLeave.Text = "Dodaj";
+            this.BtAddLeave.UseVisualStyleBackColor = true;
+            // 
+            // tBoxSelectedPeroidsLeave
+            // 
+            this.tBoxSelectedPeroidsLeave.Enabled = false;
+            this.tBoxSelectedPeroidsLeave.Location = new System.Drawing.Point(414, 43);
+            this.tBoxSelectedPeroidsLeave.Name = "tBoxSelectedPeroidsLeave";
+            this.tBoxSelectedPeroidsLeave.Size = new System.Drawing.Size(70, 26);
+            this.tBoxSelectedPeroidsLeave.TabIndex = 5;
+            // 
+            // tBoxSelectedEmployeeLeave
+            // 
+            this.tBoxSelectedEmployeeLeave.Enabled = false;
+            this.tBoxSelectedEmployeeLeave.Location = new System.Drawing.Point(413, 11);
+            this.tBoxSelectedEmployeeLeave.Name = "tBoxSelectedEmployeeLeave";
+            this.tBoxSelectedEmployeeLeave.Size = new System.Drawing.Size(71, 26);
+            this.tBoxSelectedEmployeeLeave.TabIndex = 4;
+            // 
+            // dataGridViewLeave
+            // 
+            this.dataGridViewLeave.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewLeave.Location = new System.Drawing.Point(414, 75);
+            this.dataGridViewLeave.Name = "dataGridViewLeave";
+            this.dataGridViewLeave.ReadOnly = true;
+            this.dataGridViewLeave.RowHeadersWidth = 47;
+            this.dataGridViewLeave.RowTemplate.Height = 28;
+            this.dataGridViewLeave.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewLeave.Size = new System.Drawing.Size(879, 500);
+            this.dataGridViewLeave.TabIndex = 3;
+            this.dataGridViewLeave.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLeave_CellClick);
+            // 
+            // CBoxLeaveEmpPeroids
+            // 
+            this.CBoxLeaveEmpPeroids.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBoxLeaveEmpPeroids.FormattingEnabled = true;
+            this.CBoxLeaveEmpPeroids.Location = new System.Drawing.Point(490, 43);
+            this.CBoxLeaveEmpPeroids.Name = "CBoxLeaveEmpPeroids";
+            this.CBoxLeaveEmpPeroids.Size = new System.Drawing.Size(803, 27);
+            this.CBoxLeaveEmpPeroids.TabIndex = 2;
+            this.CBoxLeaveEmpPeroids.SelectedIndexChanged += new System.EventHandler(this.CBoxLeaveEmpPeroids_SelectedIndexChanged);
+            this.CBoxLeaveEmpPeroids.MouseClick += new System.Windows.Forms.MouseEventHandler(this.CBoxLeaveEmpPeroids_MouseClick);
+            // 
+            // CBoxLeaveEmpID
+            // 
+            this.CBoxLeaveEmpID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBoxLeaveEmpID.FormattingEnabled = true;
+            this.CBoxLeaveEmpID.Location = new System.Drawing.Point(490, 11);
+            this.CBoxLeaveEmpID.Name = "CBoxLeaveEmpID";
+            this.CBoxLeaveEmpID.Size = new System.Drawing.Size(803, 27);
+            this.CBoxLeaveEmpID.TabIndex = 1;
+            this.CBoxLeaveEmpID.SelectedIndexChanged += new System.EventHandler(this.CBoxLeaveEmpID_SelectedIndexChanged);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -814,76 +958,6 @@ namespace P4_PROJEKT_NR_1
             this.label1.TabIndex = 26;
             this.label1.Text = "label1";
             // 
-            // panelUrlopy
-            // 
-            this.panelUrlopy.Controls.Add(this.tBoxSelectedPeroidsLeave);
-            this.panelUrlopy.Controls.Add(this.tBoxSelectedEmployeeLeave);
-            this.panelUrlopy.Controls.Add(this.dataGridViewLeave);
-            this.panelUrlopy.Controls.Add(this.CBoxLeaveEmpPeroids);
-            this.panelUrlopy.Controls.Add(this.CBoxLeaveEmpID);
-            this.panelUrlopy.Controls.Add(this.buttonUrlopZapisz);
-            this.panelUrlopy.Location = new System.Drawing.Point(36, 646);
-            this.panelUrlopy.Name = "panelUrlopy";
-            this.panelUrlopy.Size = new System.Drawing.Size(1170, 278);
-            this.panelUrlopy.TabIndex = 1;
-            // 
-            // tBoxSelectedPeroidsLeave
-            // 
-            this.tBoxSelectedPeroidsLeave.Enabled = false;
-            this.tBoxSelectedPeroidsLeave.Location = new System.Drawing.Point(302, 41);
-            this.tBoxSelectedPeroidsLeave.Name = "tBoxSelectedPeroidsLeave";
-            this.tBoxSelectedPeroidsLeave.Size = new System.Drawing.Size(70, 26);
-            this.tBoxSelectedPeroidsLeave.TabIndex = 5;
-            // 
-            // tBoxSelectedEmployeeLeave
-            // 
-            this.tBoxSelectedEmployeeLeave.Enabled = false;
-            this.tBoxSelectedEmployeeLeave.Location = new System.Drawing.Point(302, 8);
-            this.tBoxSelectedEmployeeLeave.Name = "tBoxSelectedEmployeeLeave";
-            this.tBoxSelectedEmployeeLeave.Size = new System.Drawing.Size(71, 26);
-            this.tBoxSelectedEmployeeLeave.TabIndex = 4;
-            // 
-            // dataGridViewLeave
-            // 
-            this.dataGridViewLeave.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewLeave.Location = new System.Drawing.Point(424, 75);
-            this.dataGridViewLeave.Name = "dataGridViewLeave";
-            this.dataGridViewLeave.RowHeadersWidth = 47;
-            this.dataGridViewLeave.RowTemplate.Height = 28;
-            this.dataGridViewLeave.Size = new System.Drawing.Size(746, 172);
-            this.dataGridViewLeave.TabIndex = 3;
-            this.dataGridViewLeave.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLeave_CellClick);
-            // 
-            // CBoxLeaveEmpPeroids
-            // 
-            this.CBoxLeaveEmpPeroids.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBoxLeaveEmpPeroids.FormattingEnabled = true;
-            this.CBoxLeaveEmpPeroids.Location = new System.Drawing.Point(424, 41);
-            this.CBoxLeaveEmpPeroids.Name = "CBoxLeaveEmpPeroids";
-            this.CBoxLeaveEmpPeroids.Size = new System.Drawing.Size(628, 27);
-            this.CBoxLeaveEmpPeroids.TabIndex = 2;
-            this.CBoxLeaveEmpPeroids.SelectedIndexChanged += new System.EventHandler(this.CBoxLeaveEmpPeroids_SelectedIndexChanged);
-            this.CBoxLeaveEmpPeroids.MouseClick += new System.Windows.Forms.MouseEventHandler(this.CBoxLeaveEmpPeroids_MouseClick);
-            // 
-            // CBoxLeaveEmpID
-            // 
-            this.CBoxLeaveEmpID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBoxLeaveEmpID.FormattingEnabled = true;
-            this.CBoxLeaveEmpID.Location = new System.Drawing.Point(424, 7);
-            this.CBoxLeaveEmpID.Name = "CBoxLeaveEmpID";
-            this.CBoxLeaveEmpID.Size = new System.Drawing.Size(628, 27);
-            this.CBoxLeaveEmpID.TabIndex = 1;
-            this.CBoxLeaveEmpID.SelectedIndexChanged += new System.EventHandler(this.CBoxLeaveEmpID_SelectedIndexChanged);
-            // 
-            // buttonUrlopZapisz
-            // 
-            this.buttonUrlopZapisz.Location = new System.Drawing.Point(0, 6);
-            this.buttonUrlopZapisz.Name = "buttonUrlopZapisz";
-            this.buttonUrlopZapisz.Size = new System.Drawing.Size(86, 26);
-            this.buttonUrlopZapisz.TabIndex = 0;
-            this.buttonUrlopZapisz.Text = "Zapisz";
-            this.buttonUrlopZapisz.UseVisualStyleBackColor = true;
-            // 
             // buttonPanelPracownicy
             // 
             this.buttonPanelPracownicy.Location = new System.Drawing.Point(12, 12);
@@ -914,14 +988,130 @@ namespace P4_PROJEKT_NR_1
             this.buttonPanelUrlopy.UseVisualStyleBackColor = true;
             this.buttonPanelUrlopy.Click += new System.EventHandler(this.buttonPanelUrlopy_Click);
             // 
+            // cBoxLeaveStatus
+            // 
+            this.cBoxLeaveStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxLeaveStatus.FormattingEnabled = true;
+            this.cBoxLeaveStatus.Location = new System.Drawing.Point(149, 248);
+            this.cBoxLeaveStatus.Name = "cBoxLeaveStatus";
+            this.cBoxLeaveStatus.Size = new System.Drawing.Size(256, 27);
+            this.cBoxLeaveStatus.TabIndex = 11;
+            // 
+            // cBoxLeaveType
+            // 
+            this.cBoxLeaveType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxLeaveType.FormattingEnabled = true;
+            this.cBoxLeaveType.Location = new System.Drawing.Point(149, 281);
+            this.cBoxLeaveType.Name = "cBoxLeaveType";
+            this.cBoxLeaveType.Size = new System.Drawing.Size(256, 27);
+            this.cBoxLeaveType.TabIndex = 12;
+            // 
+            // dTPLeaveDateApp
+            // 
+            this.dTPLeaveDateApp.Location = new System.Drawing.Point(149, 314);
+            this.dTPLeaveDateApp.Name = "dTPLeaveDateApp";
+            this.dTPLeaveDateApp.Size = new System.Drawing.Size(256, 26);
+            this.dTPLeaveDateApp.TabIndex = 13;
+            // 
+            // dTPLeaveSince
+            // 
+            this.dTPLeaveSince.Location = new System.Drawing.Point(149, 346);
+            this.dTPLeaveSince.Name = "dTPLeaveSince";
+            this.dTPLeaveSince.Size = new System.Drawing.Size(256, 26);
+            this.dTPLeaveSince.TabIndex = 14;
+            // 
+            // dTPLeaveTo
+            // 
+            this.dTPLeaveTo.Location = new System.Drawing.Point(149, 378);
+            this.dTPLeaveTo.Name = "dTPLeaveTo";
+            this.dTPLeaveTo.Size = new System.Drawing.Size(256, 26);
+            this.dTPLeaveTo.TabIndex = 15;
+            // 
+            // textBoxLeaveDays
+            // 
+            this.textBoxLeaveDays.Location = new System.Drawing.Point(149, 410);
+            this.textBoxLeaveDays.Name = "textBoxLeaveDays";
+            this.textBoxLeaveDays.Size = new System.Drawing.Size(256, 26);
+            this.textBoxLeaveDays.TabIndex = 0;
+            // 
+            // tBoxLeaveNote
+            // 
+            this.tBoxLeaveNote.Location = new System.Drawing.Point(149, 442);
+            this.tBoxLeaveNote.Name = "tBoxLeaveNote";
+            this.tBoxLeaveNote.Size = new System.Drawing.Size(256, 26);
+            this.tBoxLeaveNote.TabIndex = 0;
+            // 
+            // LLeaveStatus
+            // 
+            this.LLeaveStatus.AutoSize = true;
+            this.LLeaveStatus.Location = new System.Drawing.Point(-1, 251);
+            this.LLeaveStatus.Name = "LLeaveStatus";
+            this.LLeaveStatus.Size = new System.Drawing.Size(91, 19);
+            this.LLeaveStatus.TabIndex = 16;
+            this.LLeaveStatus.Text = "Status urlopu";
+            // 
+            // LLeaveType
+            // 
+            this.LLeaveType.AutoSize = true;
+            this.LLeaveType.Location = new System.Drawing.Point(0, 284);
+            this.LLeaveType.Name = "LLeaveType";
+            this.LLeaveType.Size = new System.Drawing.Size(77, 19);
+            this.LLeaveType.TabIndex = 17;
+            this.LLeaveType.Text = "Typ urlopu:";
+            // 
+            // LLeaveDateApp
+            // 
+            this.LLeaveDateApp.AutoSize = true;
+            this.LLeaveDateApp.Location = new System.Drawing.Point(-1, 320);
+            this.LLeaveDateApp.Name = "LLeaveDateApp";
+            this.LLeaveDateApp.Size = new System.Drawing.Size(95, 19);
+            this.LLeaveDateApp.TabIndex = 18;
+            this.LLeaveDateApp.Text = "Data wniosku:";
+            // 
+            // LLeaveSince
+            // 
+            this.LLeaveSince.AutoSize = true;
+            this.LLeaveSince.Location = new System.Drawing.Point(0, 352);
+            this.LLeaveSince.Name = "LLeaveSince";
+            this.LLeaveSince.Size = new System.Drawing.Size(129, 19);
+            this.LLeaveSince.TabIndex = 19;
+            this.LLeaveSince.Text = "Rozpoczęcie urlopu:";
+            // 
+            // LLeaveTo
+            // 
+            this.LLeaveTo.AutoSize = true;
+            this.LLeaveTo.Location = new System.Drawing.Point(-1, 384);
+            this.LLeaveTo.Name = "LLeaveTo";
+            this.LLeaveTo.Size = new System.Drawing.Size(131, 19);
+            this.LLeaveTo.TabIndex = 20;
+            this.LLeaveTo.Text = "Zakończenie urlopu:";
+            // 
+            // LLeaveDays
+            // 
+            this.LLeaveDays.AutoSize = true;
+            this.LLeaveDays.Location = new System.Drawing.Point(0, 413);
+            this.LLeaveDays.Name = "LLeaveDays";
+            this.LLeaveDays.Size = new System.Drawing.Size(77, 19);
+            this.LLeaveDays.TabIndex = 21;
+            this.LLeaveDays.Text = "Dni urlopu:";
+            // 
+            // LLeaveNotes
+            // 
+            this.LLeaveNotes.AutoSize = true;
+            this.LLeaveNotes.Location = new System.Drawing.Point(2, 445);
+            this.LLeaveNotes.Name = "LLeaveNotes";
+            this.LLeaveNotes.Size = new System.Drawing.Size(50, 19);
+            this.LLeaveNotes.TabIndex = 22;
+            this.LLeaveNotes.Text = "Uwagi:";
+            // 
             // FormEWU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1492, 973);
+            this.Controls.Add(this.panelUrlopy);
             this.Controls.Add(this.panelZatrudnienie);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.panelUrlopy);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.buttonPanelUrlopy);
             this.Controls.Add(this.label3);
@@ -962,7 +1152,6 @@ namespace P4_PROJEKT_NR_1
         private System.Windows.Forms.Button buttonPeroidCancel;
         private System.Windows.Forms.Button buttonPanelUrlopy;
         private System.Windows.Forms.Panel panelUrlopy;
-        private System.Windows.Forms.Button buttonUrlopZapisz;
         private System.Windows.Forms.Button buttonPracownikDodaj;
         private System.Windows.Forms.Button buttonPracownikAkt;
         private System.Windows.Forms.Button buttonPrawconikUsun;
@@ -1034,6 +1223,25 @@ namespace P4_PROJEKT_NR_1
         private System.Windows.Forms.DataGridViewTextBoxColumn opisST;
         private System.Windows.Forms.DataGridViewTextBoxColumn idpracownikahidden;
         private System.Windows.Forms.DataGridViewTextBoxColumn FullPeroid;
+        private System.Windows.Forms.Button BtExecuteLeave;
+        private System.Windows.Forms.Button BtCancelLeave;
+        private System.Windows.Forms.Button BtDeleteLeave;
+        private System.Windows.Forms.Button BtUpdateLeave;
+        private System.Windows.Forms.Button BtAddLeave;
+        private System.Windows.Forms.Label LLeaveNotes;
+        private System.Windows.Forms.Label LLeaveDays;
+        private System.Windows.Forms.Label LLeaveTo;
+        private System.Windows.Forms.Label LLeaveSince;
+        private System.Windows.Forms.Label LLeaveDateApp;
+        private System.Windows.Forms.Label LLeaveType;
+        private System.Windows.Forms.Label LLeaveStatus;
+        private System.Windows.Forms.TextBox tBoxLeaveNote;
+        private System.Windows.Forms.TextBox textBoxLeaveDays;
+        private System.Windows.Forms.DateTimePicker dTPLeaveTo;
+        private System.Windows.Forms.DateTimePicker dTPLeaveSince;
+        private System.Windows.Forms.DateTimePicker dTPLeaveDateApp;
+        private System.Windows.Forms.ComboBox cBoxLeaveType;
+        private System.Windows.Forms.ComboBox cBoxLeaveStatus;
     }
 }
 
