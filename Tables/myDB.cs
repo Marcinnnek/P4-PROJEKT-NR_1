@@ -274,7 +274,5 @@ namespace P4_PROJEKT_NR_1.Tables
                                                             WHERE IDzatrudnienia = @IDperoid", new { IDperoid = id }).ToList();
             }
         }
-
-
     }
 }

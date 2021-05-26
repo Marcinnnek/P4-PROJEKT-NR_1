@@ -57,11 +57,11 @@ namespace P4_PROJEKT_NR_1
             CBoxLeaveEmpPeroids.DisplayMember = "FullPeroid";  // panel 3
             CBoxLeaveEmpPeroids.ValueMember = "IDzatrudnienia";
 
-            cBoxLeaveStatus.DataSource = myDB.GetLeaveStatus();
+            cBoxLeaveStatus.DataSource = myDB.GetLeaveStatus(); //panel 3
             cBoxLeaveStatus.DisplayMember = "nazwaSU";
             cBoxLeaveStatus.ValueMember = "IDstatus";
 
-            cBoxLeaveType.DataSource = myDB.GetLeaveType();
+            cBoxLeaveType.DataSource = myDB.GetLeaveType();     //panel 3
             cBoxLeaveType.DisplayMember = "nazwaTU";
             cBoxLeaveType.ValueMember = "IDurlopu_typ";
 
@@ -276,13 +276,6 @@ namespace P4_PROJEKT_NR_1
         }
         private void dataGridPeroidOfEmp_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            label1.Text = IDperoid.ToString();
-            label2.Text = cBoxStazPracy.SelectedValue.ToString();
-            label4.Text = dTPzatrudnionyOd.Text.ToString();
-            label5.Text = dTPzatrudnionyDo.Text.ToString();
-            label3.Text = cBoxWCP.SelectedValue.ToString();
-            labelTEST.Text = cBoxStanowisko.SelectedValue.ToString();
-
             int.TryParse(dataGridPeroidOfEmp.CurrentRow.Cells[0].Value.ToString(), out IDperoid);
             if (dataGridPeroidOfEmp.CurrentRow.Cells[4].Value.ToString() == "0")
             {
@@ -313,18 +306,20 @@ namespace P4_PROJEKT_NR_1
         {
             try
             {
+                if (checkBoxUCNO.Checked)
+                {
+                    UCNO = null;
+                }
+                else
+                {
+                    UCNO = DateTime.Parse(dTPzatrudnionyDo.Text.ToString());
+                }
+
                 if (buttonAddPeroid.Enabled == true)
                 {
                     if (DataCheckPeroid() == true)
                     {
-                        if (checkBoxUCNO.Checked)
-                        {
-                            UCNO = null;
-                        }
-                        else
-                        {
-                            UCNO = DateTime.Parse(dTPzatrudnionyDo.Text.ToString());
-                        }
+
                         OkresZatrudnienia newPeroid = new OkresZatrudnienia()
                         {
                             IDpracownika = int.Parse(cBoxEmployee.SelectedValue.ToString()),
@@ -354,8 +349,7 @@ namespace P4_PROJEKT_NR_1
                                 IDwymiar = int.Parse(cBoxWCP.SelectedValue.ToString()),
                                 staz_pracy = int.Parse(cBoxStazPracy.SelectedValue.ToString()),
                                 zatrudniony_od = DateTime.Parse(dTPzatrudnionyOd.Text.ToString()),
-                                zatrudniony_do = DateTime.Parse(dTPzatrudnionyDo.Text.ToString()),
-
+                                zatrudniony_do = UCNO,
                             };
                             myDB.UpdatePeroid(editedPeroid);
                             buttonExecutePeroid.Enabled = false;

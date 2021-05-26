@@ -92,8 +92,6 @@ namespace P4_PROJEKT_NR_1
             this.IDwymiar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullPeroid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelUrlopy = new System.Windows.Forms.Panel();
-            this.labelUIRLOP_DO = new System.Windows.Forms.Label();
-            this.labelURLOP_OD = new System.Windows.Forms.Label();
             this.LLeaveNotes = new System.Windows.Forms.Label();
             this.LLeaveDays = new System.Windows.Forms.Label();
             this.LLeaveTo = new System.Windows.Forms.Label();
@@ -129,13 +127,6 @@ namespace P4_PROJEKT_NR_1
             this.nazwaSU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CBoxLeaveEmpPeroids = new System.Windows.Forms.ComboBox();
             this.CBoxLeaveEmpID = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.labelTEST = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.buttonPanelPracownicy = new System.Windows.Forms.Button();
             this.buttonPanelZatrudnienie = new System.Windows.Forms.Button();
             this.buttonPanelUrlopy = new System.Windows.Forms.Button();
@@ -785,8 +776,6 @@ namespace P4_PROJEKT_NR_1
             // 
             // panelUrlopy
             // 
-            this.panelUrlopy.Controls.Add(this.labelUIRLOP_DO);
-            this.panelUrlopy.Controls.Add(this.labelURLOP_OD);
             this.panelUrlopy.Controls.Add(this.LLeaveNotes);
             this.panelUrlopy.Controls.Add(this.LLeaveDays);
             this.panelUrlopy.Controls.Add(this.LLeaveTo);
@@ -815,24 +804,6 @@ namespace P4_PROJEKT_NR_1
             this.panelUrlopy.Name = "panelUrlopy";
             this.panelUrlopy.Size = new System.Drawing.Size(1293, 609);
             this.panelUrlopy.TabIndex = 1;
-            // 
-            // labelUIRLOP_DO
-            // 
-            this.labelUIRLOP_DO.AutoSize = true;
-            this.labelUIRLOP_DO.Location = new System.Drawing.Point(240, 103);
-            this.labelUIRLOP_DO.Name = "labelUIRLOP_DO";
-            this.labelUIRLOP_DO.Size = new System.Drawing.Size(45, 19);
-            this.labelUIRLOP_DO.TabIndex = 24;
-            this.labelUIRLOP_DO.Text = "label8";
-            // 
-            // labelURLOP_OD
-            // 
-            this.labelURLOP_OD.AutoSize = true;
-            this.labelURLOP_OD.Location = new System.Drawing.Point(242, 75);
-            this.labelURLOP_OD.Name = "labelURLOP_OD";
-            this.labelURLOP_OD.Size = new System.Drawing.Size(45, 19);
-            this.labelURLOP_OD.TabIndex = 23;
-            this.labelURLOP_OD.Text = "label7";
             // 
             // LLeaveNotes
             // 
@@ -1165,69 +1136,6 @@ namespace P4_PROJEKT_NR_1
             this.CBoxLeaveEmpID.TabIndex = 1;
             this.CBoxLeaveEmpID.SelectedIndexChanged += new System.EventHandler(this.CBoxLeaveEmpID_SelectedIndexChanged);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(36, 331);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 19);
-            this.label6.TabIndex = 33;
-            this.label6.Text = "label6";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(36, 233);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 19);
-            this.label5.TabIndex = 32;
-            this.label5.Text = "label5";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(36, 260);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 19);
-            this.label3.TabIndex = 30;
-            this.label3.Text = "label3";
-            // 
-            // labelTEST
-            // 
-            this.labelTEST.AutoSize = true;
-            this.labelTEST.Location = new System.Drawing.Point(36, 286);
-            this.labelTEST.Name = "labelTEST";
-            this.labelTEST.Size = new System.Drawing.Size(65, 19);
-            this.labelTEST.TabIndex = 28;
-            this.labelTEST.Text = "labelTEST";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(36, 205);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 19);
-            this.label4.TabIndex = 31;
-            this.label4.Text = "label4";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 179);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 19);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "label2";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 155);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 19);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "label1";
-            // 
             // buttonPanelPracownicy
             // 
             this.buttonPanelPracownicy.Location = new System.Drawing.Point(12, 12);
@@ -1265,17 +1173,10 @@ namespace P4_PROJEKT_NR_1
             this.ClientSize = new System.Drawing.Size(1492, 630);
             this.Controls.Add(this.panelUrlopy);
             this.Controls.Add(this.panelZatrudnienie);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.buttonPanelUrlopy);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.labelTEST);
             this.Controls.Add(this.buttonPanelZatrudnienie);
             this.Controls.Add(this.buttonPanelPracownicy);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.panelPracownicy);
-            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1510, 1080);
@@ -1294,7 +1195,6 @@ namespace P4_PROJEKT_NR_1
             this.panelUrlopy.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLeave)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -1351,17 +1251,10 @@ namespace P4_PROJEKT_NR_1
         private System.Windows.Forms.DateTimePicker dTPzatrudnionyOd;
         private System.Windows.Forms.Button buttonExecutePeroid;
         private System.Windows.Forms.DataGridView dataGridPeroidOfEmp;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn etathidden;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDStanowisko;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDwymiar;
         private System.Windows.Forms.CheckBox checkBoxUCNO;
-        private System.Windows.Forms.Label labelTEST;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridViewLeave;
         private System.Windows.Forms.ComboBox CBoxLeaveEmpPeroids;
         private System.Windows.Forms.ComboBox CBoxLeaveEmpID;
@@ -1396,8 +1289,6 @@ namespace P4_PROJEKT_NR_1
         private System.Windows.Forms.DateTimePicker dTPLeaveDateApp;
         private System.Windows.Forms.ComboBox cBoxLeaveType;
         private System.Windows.Forms.ComboBox cBoxLeaveStatus;
-        private System.Windows.Forms.Label labelUIRLOP_DO;
-        private System.Windows.Forms.Label labelURLOP_OD;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDewidencji;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDstatus;
