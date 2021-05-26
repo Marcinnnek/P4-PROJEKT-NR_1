@@ -92,6 +92,22 @@ namespace P4_PROJEKT_NR_1
             this.IDwymiar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullPeroid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelUrlopy = new System.Windows.Forms.Panel();
+            this.labelUIRLOP_DO = new System.Windows.Forms.Label();
+            this.labelURLOP_OD = new System.Windows.Forms.Label();
+            this.LLeaveNotes = new System.Windows.Forms.Label();
+            this.LLeaveDays = new System.Windows.Forms.Label();
+            this.LLeaveTo = new System.Windows.Forms.Label();
+            this.LLeaveSince = new System.Windows.Forms.Label();
+            this.LLeaveDateApp = new System.Windows.Forms.Label();
+            this.LLeaveType = new System.Windows.Forms.Label();
+            this.LLeaveStatus = new System.Windows.Forms.Label();
+            this.tBoxLeaveNote = new System.Windows.Forms.TextBox();
+            this.tBoxLeaveDays = new System.Windows.Forms.TextBox();
+            this.dTPLeaveTo = new System.Windows.Forms.DateTimePicker();
+            this.dTPLeaveSince = new System.Windows.Forms.DateTimePicker();
+            this.dTPLeaveDateApp = new System.Windows.Forms.DateTimePicker();
+            this.cBoxLeaveType = new System.Windows.Forms.ComboBox();
+            this.cBoxLeaveStatus = new System.Windows.Forms.ComboBox();
             this.BtExecuteLeave = new System.Windows.Forms.Button();
             this.BtCancelLeave = new System.Windows.Forms.Button();
             this.BtDeleteLeave = new System.Windows.Forms.Button();
@@ -100,6 +116,17 @@ namespace P4_PROJEKT_NR_1
             this.tBoxSelectedPeroidsLeave = new System.Windows.Forms.TextBox();
             this.tBoxSelectedEmployeeLeave = new System.Windows.Forms.TextBox();
             this.dataGridViewLeave = new System.Windows.Forms.DataGridView();
+            this.IDewidencji = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDstatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDurlopu_typ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_wniosku = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.urlop_od = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ulrop_do = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ilosc_dni_urlopu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uwagi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nazwaTU = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nazwaSU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CBoxLeaveEmpPeroids = new System.Windows.Forms.ComboBox();
             this.CBoxLeaveEmpID = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -112,20 +139,6 @@ namespace P4_PROJEKT_NR_1
             this.buttonPanelPracownicy = new System.Windows.Forms.Button();
             this.buttonPanelZatrudnienie = new System.Windows.Forms.Button();
             this.buttonPanelUrlopy = new System.Windows.Forms.Button();
-            this.cBoxLeaveStatus = new System.Windows.Forms.ComboBox();
-            this.cBoxLeaveType = new System.Windows.Forms.ComboBox();
-            this.dTPLeaveDateApp = new System.Windows.Forms.DateTimePicker();
-            this.dTPLeaveSince = new System.Windows.Forms.DateTimePicker();
-            this.dTPLeaveTo = new System.Windows.Forms.DateTimePicker();
-            this.textBoxLeaveDays = new System.Windows.Forms.TextBox();
-            this.tBoxLeaveNote = new System.Windows.Forms.TextBox();
-            this.LLeaveStatus = new System.Windows.Forms.Label();
-            this.LLeaveType = new System.Windows.Forms.Label();
-            this.LLeaveDateApp = new System.Windows.Forms.Label();
-            this.LLeaveSince = new System.Windows.Forms.Label();
-            this.LLeaveTo = new System.Windows.Forms.Label();
-            this.LLeaveDays = new System.Windows.Forms.Label();
-            this.LLeaveNotes = new System.Windows.Forms.Label();
             this.panelPracownicy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployess)).BeginInit();
             this.panelZatrudnienie.SuspendLayout();
@@ -460,6 +473,7 @@ namespace P4_PROJEKT_NR_1
             // 
             // tBnaleznyUrlop
             // 
+            this.tBnaleznyUrlop.Enabled = false;
             this.tBnaleznyUrlop.Location = new System.Drawing.Point(150, 374);
             this.tBnaleznyUrlop.Name = "tBnaleznyUrlop";
             this.tBnaleznyUrlop.Size = new System.Drawing.Size(256, 26);
@@ -771,6 +785,8 @@ namespace P4_PROJEKT_NR_1
             // 
             // panelUrlopy
             // 
+            this.panelUrlopy.Controls.Add(this.labelUIRLOP_DO);
+            this.panelUrlopy.Controls.Add(this.labelURLOP_OD);
             this.panelUrlopy.Controls.Add(this.LLeaveNotes);
             this.panelUrlopy.Controls.Add(this.LLeaveDays);
             this.panelUrlopy.Controls.Add(this.LLeaveTo);
@@ -779,7 +795,7 @@ namespace P4_PROJEKT_NR_1
             this.panelUrlopy.Controls.Add(this.LLeaveType);
             this.panelUrlopy.Controls.Add(this.LLeaveStatus);
             this.panelUrlopy.Controls.Add(this.tBoxLeaveNote);
-            this.panelUrlopy.Controls.Add(this.textBoxLeaveDays);
+            this.panelUrlopy.Controls.Add(this.tBoxLeaveDays);
             this.panelUrlopy.Controls.Add(this.dTPLeaveTo);
             this.panelUrlopy.Controls.Add(this.dTPLeaveSince);
             this.panelUrlopy.Controls.Add(this.dTPLeaveDateApp);
@@ -795,10 +811,147 @@ namespace P4_PROJEKT_NR_1
             this.panelUrlopy.Controls.Add(this.dataGridViewLeave);
             this.panelUrlopy.Controls.Add(this.CBoxLeaveEmpPeroids);
             this.panelUrlopy.Controls.Add(this.CBoxLeaveEmpID);
-            this.panelUrlopy.Location = new System.Drawing.Point(45, 375);
+            this.panelUrlopy.Location = new System.Drawing.Point(189, 12);
             this.panelUrlopy.Name = "panelUrlopy";
-            this.panelUrlopy.Size = new System.Drawing.Size(1293, 575);
+            this.panelUrlopy.Size = new System.Drawing.Size(1293, 609);
             this.panelUrlopy.TabIndex = 1;
+            // 
+            // labelUIRLOP_DO
+            // 
+            this.labelUIRLOP_DO.AutoSize = true;
+            this.labelUIRLOP_DO.Location = new System.Drawing.Point(240, 103);
+            this.labelUIRLOP_DO.Name = "labelUIRLOP_DO";
+            this.labelUIRLOP_DO.Size = new System.Drawing.Size(45, 19);
+            this.labelUIRLOP_DO.TabIndex = 24;
+            this.labelUIRLOP_DO.Text = "label8";
+            // 
+            // labelURLOP_OD
+            // 
+            this.labelURLOP_OD.AutoSize = true;
+            this.labelURLOP_OD.Location = new System.Drawing.Point(242, 75);
+            this.labelURLOP_OD.Name = "labelURLOP_OD";
+            this.labelURLOP_OD.Size = new System.Drawing.Size(45, 19);
+            this.labelURLOP_OD.TabIndex = 23;
+            this.labelURLOP_OD.Text = "label7";
+            // 
+            // LLeaveNotes
+            // 
+            this.LLeaveNotes.AutoSize = true;
+            this.LLeaveNotes.Location = new System.Drawing.Point(2, 445);
+            this.LLeaveNotes.Name = "LLeaveNotes";
+            this.LLeaveNotes.Size = new System.Drawing.Size(50, 19);
+            this.LLeaveNotes.TabIndex = 22;
+            this.LLeaveNotes.Text = "Uwagi:";
+            // 
+            // LLeaveDays
+            // 
+            this.LLeaveDays.AutoSize = true;
+            this.LLeaveDays.Location = new System.Drawing.Point(0, 413);
+            this.LLeaveDays.Name = "LLeaveDays";
+            this.LLeaveDays.Size = new System.Drawing.Size(77, 19);
+            this.LLeaveDays.TabIndex = 21;
+            this.LLeaveDays.Text = "Dni urlopu:";
+            // 
+            // LLeaveTo
+            // 
+            this.LLeaveTo.AutoSize = true;
+            this.LLeaveTo.Location = new System.Drawing.Point(-1, 384);
+            this.LLeaveTo.Name = "LLeaveTo";
+            this.LLeaveTo.Size = new System.Drawing.Size(131, 19);
+            this.LLeaveTo.TabIndex = 20;
+            this.LLeaveTo.Text = "Zakończenie urlopu:";
+            // 
+            // LLeaveSince
+            // 
+            this.LLeaveSince.AutoSize = true;
+            this.LLeaveSince.Location = new System.Drawing.Point(0, 352);
+            this.LLeaveSince.Name = "LLeaveSince";
+            this.LLeaveSince.Size = new System.Drawing.Size(129, 19);
+            this.LLeaveSince.TabIndex = 19;
+            this.LLeaveSince.Text = "Rozpoczęcie urlopu:";
+            // 
+            // LLeaveDateApp
+            // 
+            this.LLeaveDateApp.AutoSize = true;
+            this.LLeaveDateApp.Location = new System.Drawing.Point(-1, 320);
+            this.LLeaveDateApp.Name = "LLeaveDateApp";
+            this.LLeaveDateApp.Size = new System.Drawing.Size(95, 19);
+            this.LLeaveDateApp.TabIndex = 18;
+            this.LLeaveDateApp.Text = "Data wniosku:";
+            // 
+            // LLeaveType
+            // 
+            this.LLeaveType.AutoSize = true;
+            this.LLeaveType.Location = new System.Drawing.Point(0, 284);
+            this.LLeaveType.Name = "LLeaveType";
+            this.LLeaveType.Size = new System.Drawing.Size(77, 19);
+            this.LLeaveType.TabIndex = 17;
+            this.LLeaveType.Text = "Typ urlopu:";
+            // 
+            // LLeaveStatus
+            // 
+            this.LLeaveStatus.AutoSize = true;
+            this.LLeaveStatus.Location = new System.Drawing.Point(-1, 251);
+            this.LLeaveStatus.Name = "LLeaveStatus";
+            this.LLeaveStatus.Size = new System.Drawing.Size(91, 19);
+            this.LLeaveStatus.TabIndex = 16;
+            this.LLeaveStatus.Text = "Status urlopu";
+            // 
+            // tBoxLeaveNote
+            // 
+            this.tBoxLeaveNote.Location = new System.Drawing.Point(149, 442);
+            this.tBoxLeaveNote.Name = "tBoxLeaveNote";
+            this.tBoxLeaveNote.Size = new System.Drawing.Size(256, 26);
+            this.tBoxLeaveNote.TabIndex = 0;
+            // 
+            // tBoxLeaveDays
+            // 
+            this.tBoxLeaveDays.Enabled = false;
+            this.tBoxLeaveDays.Location = new System.Drawing.Point(149, 410);
+            this.tBoxLeaveDays.Name = "tBoxLeaveDays";
+            this.tBoxLeaveDays.Size = new System.Drawing.Size(256, 26);
+            this.tBoxLeaveDays.TabIndex = 0;
+            // 
+            // dTPLeaveTo
+            // 
+            this.dTPLeaveTo.Location = new System.Drawing.Point(149, 378);
+            this.dTPLeaveTo.Name = "dTPLeaveTo";
+            this.dTPLeaveTo.Size = new System.Drawing.Size(256, 26);
+            this.dTPLeaveTo.TabIndex = 15;
+            this.dTPLeaveTo.ValueChanged += new System.EventHandler(this.dTPLeaveTo_ValueChanged);
+            // 
+            // dTPLeaveSince
+            // 
+            this.dTPLeaveSince.Location = new System.Drawing.Point(149, 346);
+            this.dTPLeaveSince.Name = "dTPLeaveSince";
+            this.dTPLeaveSince.Size = new System.Drawing.Size(256, 26);
+            this.dTPLeaveSince.TabIndex = 14;
+            this.dTPLeaveSince.ValueChanged += new System.EventHandler(this.dTPLeaveSince_ValueChanged);
+            // 
+            // dTPLeaveDateApp
+            // 
+            this.dTPLeaveDateApp.Location = new System.Drawing.Point(149, 314);
+            this.dTPLeaveDateApp.Name = "dTPLeaveDateApp";
+            this.dTPLeaveDateApp.Size = new System.Drawing.Size(256, 26);
+            this.dTPLeaveDateApp.TabIndex = 13;
+            // 
+            // cBoxLeaveType
+            // 
+            this.cBoxLeaveType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxLeaveType.FormattingEnabled = true;
+            this.cBoxLeaveType.Location = new System.Drawing.Point(149, 281);
+            this.cBoxLeaveType.Name = "cBoxLeaveType";
+            this.cBoxLeaveType.Size = new System.Drawing.Size(256, 27);
+            this.cBoxLeaveType.TabIndex = 12;
+            // 
+            // cBoxLeaveStatus
+            // 
+            this.cBoxLeaveStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxLeaveStatus.FormattingEnabled = true;
+            this.cBoxLeaveStatus.Location = new System.Drawing.Point(149, 248);
+            this.cBoxLeaveStatus.Name = "cBoxLeaveStatus";
+            this.cBoxLeaveStatus.Size = new System.Drawing.Size(256, 27);
+            this.cBoxLeaveStatus.TabIndex = 11;
             // 
             // BtExecuteLeave
             // 
@@ -808,6 +961,7 @@ namespace P4_PROJEKT_NR_1
             this.BtExecuteLeave.TabIndex = 10;
             this.BtExecuteLeave.Text = "Wykonaj";
             this.BtExecuteLeave.UseVisualStyleBackColor = true;
+            this.BtExecuteLeave.Click += new System.EventHandler(this.BtExecuteLeave_Click);
             // 
             // BtCancelLeave
             // 
@@ -817,6 +971,7 @@ namespace P4_PROJEKT_NR_1
             this.BtCancelLeave.TabIndex = 9;
             this.BtCancelLeave.Text = "Anuluj";
             this.BtCancelLeave.UseVisualStyleBackColor = true;
+            this.BtCancelLeave.Click += new System.EventHandler(this.BtCancelLeave_Click);
             // 
             // BtDeleteLeave
             // 
@@ -826,6 +981,7 @@ namespace P4_PROJEKT_NR_1
             this.BtDeleteLeave.TabIndex = 8;
             this.BtDeleteLeave.Text = "Usuń";
             this.BtDeleteLeave.UseVisualStyleBackColor = true;
+            this.BtDeleteLeave.Click += new System.EventHandler(this.BtDeleteLeave_Click);
             // 
             // BtUpdateLeave
             // 
@@ -835,6 +991,7 @@ namespace P4_PROJEKT_NR_1
             this.BtUpdateLeave.TabIndex = 7;
             this.BtUpdateLeave.Text = "Aktualizuj";
             this.BtUpdateLeave.UseVisualStyleBackColor = true;
+            this.BtUpdateLeave.Click += new System.EventHandler(this.BtUpdateLeave_Click);
             // 
             // BtAddLeave
             // 
@@ -844,6 +1001,7 @@ namespace P4_PROJEKT_NR_1
             this.BtAddLeave.TabIndex = 6;
             this.BtAddLeave.Text = "Dodaj";
             this.BtAddLeave.UseVisualStyleBackColor = true;
+            this.BtAddLeave.Click += new System.EventHandler(this.BtAddLeave_Click);
             // 
             // tBoxSelectedPeroidsLeave
             // 
@@ -864,15 +1022,128 @@ namespace P4_PROJEKT_NR_1
             // dataGridViewLeave
             // 
             this.dataGridViewLeave.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewLeave.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDewidencji,
+            this.dataGridViewTextBoxColumn1,
+            this.IDstatus,
+            this.IDurlopu_typ,
+            this.data_wniosku,
+            this.urlop_od,
+            this.ulrop_do,
+            this.ilosc_dni_urlopu,
+            this.uwagi,
+            this.nazwaTU,
+            this.nazwaSU});
             this.dataGridViewLeave.Location = new System.Drawing.Point(414, 75);
             this.dataGridViewLeave.Name = "dataGridViewLeave";
-            this.dataGridViewLeave.ReadOnly = true;
             this.dataGridViewLeave.RowHeadersWidth = 47;
             this.dataGridViewLeave.RowTemplate.Height = 28;
             this.dataGridViewLeave.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewLeave.Size = new System.Drawing.Size(879, 500);
+            this.dataGridViewLeave.Size = new System.Drawing.Size(879, 533);
             this.dataGridViewLeave.TabIndex = 3;
             this.dataGridViewLeave.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLeave_CellClick);
+            // 
+            // IDewidencji
+            // 
+            this.IDewidencji.DataPropertyName = "IDewidencji";
+            this.IDewidencji.HeaderText = "ID";
+            this.IDewidencji.MinimumWidth = 6;
+            this.IDewidencji.Name = "IDewidencji";
+            this.IDewidencji.ReadOnly = true;
+            this.IDewidencji.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "IDzatrudnienia";
+            this.dataGridViewTextBoxColumn1.HeaderText = "IDzatrudnienia";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewTextBoxColumn1.Width = 115;
+            // 
+            // IDstatus
+            // 
+            this.IDstatus.DataPropertyName = "IDstatus";
+            this.IDstatus.HeaderText = "IDstatus";
+            this.IDstatus.MinimumWidth = 6;
+            this.IDstatus.Name = "IDstatus";
+            this.IDstatus.ReadOnly = true;
+            this.IDstatus.Visible = false;
+            this.IDstatus.Width = 115;
+            // 
+            // IDurlopu_typ
+            // 
+            this.IDurlopu_typ.DataPropertyName = "IDurlopu_typ";
+            this.IDurlopu_typ.HeaderText = "IDurlopu_typ";
+            this.IDurlopu_typ.MinimumWidth = 6;
+            this.IDurlopu_typ.Name = "IDurlopu_typ";
+            this.IDurlopu_typ.ReadOnly = true;
+            this.IDurlopu_typ.Visible = false;
+            this.IDurlopu_typ.Width = 115;
+            // 
+            // data_wniosku
+            // 
+            this.data_wniosku.DataPropertyName = "data_wniosku";
+            this.data_wniosku.HeaderText = "Data wniosku";
+            this.data_wniosku.MinimumWidth = 6;
+            this.data_wniosku.Name = "data_wniosku";
+            this.data_wniosku.ReadOnly = true;
+            this.data_wniosku.Width = 90;
+            // 
+            // urlop_od
+            // 
+            this.urlop_od.DataPropertyName = "urlop_od";
+            this.urlop_od.HeaderText = "Urlop od";
+            this.urlop_od.MinimumWidth = 6;
+            this.urlop_od.Name = "urlop_od";
+            this.urlop_od.ReadOnly = true;
+            this.urlop_od.Width = 90;
+            // 
+            // ulrop_do
+            // 
+            this.ulrop_do.DataPropertyName = "urlop_do";
+            this.ulrop_do.HeaderText = "Urlop do";
+            this.ulrop_do.MinimumWidth = 6;
+            this.ulrop_do.Name = "ulrop_do";
+            this.ulrop_do.ReadOnly = true;
+            this.ulrop_do.Width = 90;
+            // 
+            // ilosc_dni_urlopu
+            // 
+            this.ilosc_dni_urlopu.DataPropertyName = "ilosc_dni_urlopu";
+            this.ilosc_dni_urlopu.HeaderText = "Dni";
+            this.ilosc_dni_urlopu.MinimumWidth = 6;
+            this.ilosc_dni_urlopu.Name = "ilosc_dni_urlopu";
+            this.ilosc_dni_urlopu.ReadOnly = true;
+            this.ilosc_dni_urlopu.Width = 90;
+            // 
+            // uwagi
+            // 
+            this.uwagi.DataPropertyName = "uwagi";
+            this.uwagi.HeaderText = "Uwagi";
+            this.uwagi.MinimumWidth = 6;
+            this.uwagi.Name = "uwagi";
+            this.uwagi.ReadOnly = true;
+            this.uwagi.Width = 155;
+            // 
+            // nazwaTU
+            // 
+            this.nazwaTU.DataPropertyName = "nazwaTU";
+            this.nazwaTU.HeaderText = "Rodzaj urlopu";
+            this.nazwaTU.MinimumWidth = 6;
+            this.nazwaTU.Name = "nazwaTU";
+            this.nazwaTU.ReadOnly = true;
+            this.nazwaTU.Width = 125;
+            // 
+            // nazwaSU
+            // 
+            this.nazwaSU.DataPropertyName = "nazwaSU";
+            this.nazwaSU.HeaderText = "Status";
+            this.nazwaSU.MinimumWidth = 6;
+            this.nazwaSU.Name = "nazwaSU";
+            this.nazwaSU.ReadOnly = true;
+            this.nazwaSU.Width = 130;
             // 
             // CBoxLeaveEmpPeroids
             // 
@@ -883,7 +1154,6 @@ namespace P4_PROJEKT_NR_1
             this.CBoxLeaveEmpPeroids.Size = new System.Drawing.Size(803, 27);
             this.CBoxLeaveEmpPeroids.TabIndex = 2;
             this.CBoxLeaveEmpPeroids.SelectedIndexChanged += new System.EventHandler(this.CBoxLeaveEmpPeroids_SelectedIndexChanged);
-            this.CBoxLeaveEmpPeroids.MouseClick += new System.Windows.Forms.MouseEventHandler(this.CBoxLeaveEmpPeroids_MouseClick);
             // 
             // CBoxLeaveEmpID
             // 
@@ -988,122 +1258,6 @@ namespace P4_PROJEKT_NR_1
             this.buttonPanelUrlopy.UseVisualStyleBackColor = true;
             this.buttonPanelUrlopy.Click += new System.EventHandler(this.buttonPanelUrlopy_Click);
             // 
-            // cBoxLeaveStatus
-            // 
-            this.cBoxLeaveStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxLeaveStatus.FormattingEnabled = true;
-            this.cBoxLeaveStatus.Location = new System.Drawing.Point(149, 248);
-            this.cBoxLeaveStatus.Name = "cBoxLeaveStatus";
-            this.cBoxLeaveStatus.Size = new System.Drawing.Size(256, 27);
-            this.cBoxLeaveStatus.TabIndex = 11;
-            // 
-            // cBoxLeaveType
-            // 
-            this.cBoxLeaveType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxLeaveType.FormattingEnabled = true;
-            this.cBoxLeaveType.Location = new System.Drawing.Point(149, 281);
-            this.cBoxLeaveType.Name = "cBoxLeaveType";
-            this.cBoxLeaveType.Size = new System.Drawing.Size(256, 27);
-            this.cBoxLeaveType.TabIndex = 12;
-            // 
-            // dTPLeaveDateApp
-            // 
-            this.dTPLeaveDateApp.Location = new System.Drawing.Point(149, 314);
-            this.dTPLeaveDateApp.Name = "dTPLeaveDateApp";
-            this.dTPLeaveDateApp.Size = new System.Drawing.Size(256, 26);
-            this.dTPLeaveDateApp.TabIndex = 13;
-            // 
-            // dTPLeaveSince
-            // 
-            this.dTPLeaveSince.Location = new System.Drawing.Point(149, 346);
-            this.dTPLeaveSince.Name = "dTPLeaveSince";
-            this.dTPLeaveSince.Size = new System.Drawing.Size(256, 26);
-            this.dTPLeaveSince.TabIndex = 14;
-            // 
-            // dTPLeaveTo
-            // 
-            this.dTPLeaveTo.Location = new System.Drawing.Point(149, 378);
-            this.dTPLeaveTo.Name = "dTPLeaveTo";
-            this.dTPLeaveTo.Size = new System.Drawing.Size(256, 26);
-            this.dTPLeaveTo.TabIndex = 15;
-            // 
-            // textBoxLeaveDays
-            // 
-            this.textBoxLeaveDays.Location = new System.Drawing.Point(149, 410);
-            this.textBoxLeaveDays.Name = "textBoxLeaveDays";
-            this.textBoxLeaveDays.Size = new System.Drawing.Size(256, 26);
-            this.textBoxLeaveDays.TabIndex = 0;
-            // 
-            // tBoxLeaveNote
-            // 
-            this.tBoxLeaveNote.Location = new System.Drawing.Point(149, 442);
-            this.tBoxLeaveNote.Name = "tBoxLeaveNote";
-            this.tBoxLeaveNote.Size = new System.Drawing.Size(256, 26);
-            this.tBoxLeaveNote.TabIndex = 0;
-            // 
-            // LLeaveStatus
-            // 
-            this.LLeaveStatus.AutoSize = true;
-            this.LLeaveStatus.Location = new System.Drawing.Point(-1, 251);
-            this.LLeaveStatus.Name = "LLeaveStatus";
-            this.LLeaveStatus.Size = new System.Drawing.Size(91, 19);
-            this.LLeaveStatus.TabIndex = 16;
-            this.LLeaveStatus.Text = "Status urlopu";
-            // 
-            // LLeaveType
-            // 
-            this.LLeaveType.AutoSize = true;
-            this.LLeaveType.Location = new System.Drawing.Point(0, 284);
-            this.LLeaveType.Name = "LLeaveType";
-            this.LLeaveType.Size = new System.Drawing.Size(77, 19);
-            this.LLeaveType.TabIndex = 17;
-            this.LLeaveType.Text = "Typ urlopu:";
-            // 
-            // LLeaveDateApp
-            // 
-            this.LLeaveDateApp.AutoSize = true;
-            this.LLeaveDateApp.Location = new System.Drawing.Point(-1, 320);
-            this.LLeaveDateApp.Name = "LLeaveDateApp";
-            this.LLeaveDateApp.Size = new System.Drawing.Size(95, 19);
-            this.LLeaveDateApp.TabIndex = 18;
-            this.LLeaveDateApp.Text = "Data wniosku:";
-            // 
-            // LLeaveSince
-            // 
-            this.LLeaveSince.AutoSize = true;
-            this.LLeaveSince.Location = new System.Drawing.Point(0, 352);
-            this.LLeaveSince.Name = "LLeaveSince";
-            this.LLeaveSince.Size = new System.Drawing.Size(129, 19);
-            this.LLeaveSince.TabIndex = 19;
-            this.LLeaveSince.Text = "Rozpoczęcie urlopu:";
-            // 
-            // LLeaveTo
-            // 
-            this.LLeaveTo.AutoSize = true;
-            this.LLeaveTo.Location = new System.Drawing.Point(-1, 384);
-            this.LLeaveTo.Name = "LLeaveTo";
-            this.LLeaveTo.Size = new System.Drawing.Size(131, 19);
-            this.LLeaveTo.TabIndex = 20;
-            this.LLeaveTo.Text = "Zakończenie urlopu:";
-            // 
-            // LLeaveDays
-            // 
-            this.LLeaveDays.AutoSize = true;
-            this.LLeaveDays.Location = new System.Drawing.Point(0, 413);
-            this.LLeaveDays.Name = "LLeaveDays";
-            this.LLeaveDays.Size = new System.Drawing.Size(77, 19);
-            this.LLeaveDays.TabIndex = 21;
-            this.LLeaveDays.Text = "Dni urlopu:";
-            // 
-            // LLeaveNotes
-            // 
-            this.LLeaveNotes.AutoSize = true;
-            this.LLeaveNotes.Location = new System.Drawing.Point(2, 445);
-            this.LLeaveNotes.Name = "LLeaveNotes";
-            this.LLeaveNotes.Size = new System.Drawing.Size(50, 19);
-            this.LLeaveNotes.TabIndex = 22;
-            this.LLeaveNotes.Text = "Uwagi:";
-            // 
             // FormEWU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -1122,11 +1276,10 @@ namespace P4_PROJEKT_NR_1
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panelPracownicy);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1510, 1080);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1510, 950);
+            this.MinimumSize = new System.Drawing.Size(1510, 600);
             this.Name = "FormEWU";
             this.Text = "Ewidencja Urlopów";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -1236,12 +1389,25 @@ namespace P4_PROJEKT_NR_1
         private System.Windows.Forms.Label LLeaveType;
         private System.Windows.Forms.Label LLeaveStatus;
         private System.Windows.Forms.TextBox tBoxLeaveNote;
-        private System.Windows.Forms.TextBox textBoxLeaveDays;
+        private System.Windows.Forms.TextBox tBoxLeaveDays;
         private System.Windows.Forms.DateTimePicker dTPLeaveTo;
         private System.Windows.Forms.DateTimePicker dTPLeaveSince;
         private System.Windows.Forms.DateTimePicker dTPLeaveDateApp;
         private System.Windows.Forms.ComboBox cBoxLeaveType;
         private System.Windows.Forms.ComboBox cBoxLeaveStatus;
+        private System.Windows.Forms.Label labelUIRLOP_DO;
+        private System.Windows.Forms.Label labelURLOP_OD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDewidencji;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDstatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDurlopu_typ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_wniosku;
+        private System.Windows.Forms.DataGridViewTextBoxColumn urlop_od;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ulrop_do;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ilosc_dni_urlopu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uwagi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nazwaTU;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nazwaSU;
     }
 }
 

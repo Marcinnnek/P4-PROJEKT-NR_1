@@ -54,13 +54,22 @@ namespace P4_PROJEKT_NR_1
 
             CBoxLeaveEmpPeroids.DisplayMember = "FullPeroid";  // panel 3
             CBoxLeaveEmpPeroids.ValueMember = "IDzatrudnienia";
-            
+
+            cBoxLeaveStatus.DataSource = myDB.GetLeaveStatus();
+            cBoxLeaveStatus.DisplayMember = "nazwaSU";
+            cBoxLeaveStatus.ValueMember = "IDstatus";
+
+            cBoxLeaveType.DataSource = myDB.GetLeaveType();
+            cBoxLeaveType.DisplayMember = "nazwaTU";
+            cBoxLeaveType.ValueMember = "IDurlopu_typ";
+
 
 
             //CBoxLeaveEmpPeroids.DataSource = myDB.GetPeroidsOfEmployment();
 
             checkBoxUCNO.Checked = false;
             SwitchPeroidsCB(false);
+            SwitchLeaveCB(false);
 
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -69,6 +78,7 @@ namespace P4_PROJEKT_NR_1
             tBID.Enabled = false;
             buttonPracownikWykonaj.Enabled = false;
             buttonExecutePeroid.Enabled = false;
+            BtExecuteLeave.Enabled = false;
 
             EmployeeRefresh();
 
@@ -79,7 +89,7 @@ namespace P4_PROJEKT_NR_1
             tBoxSelectedEmployee.Text = null;
             tBoxSelectedEmployeeLeave.Text = null;
 
-            tBnaleznyUrlop.Enabled = false;
+            DefaultLeaveData();
 
         }
         #region
@@ -466,7 +476,20 @@ namespace P4_PROJEKT_NR_1
 
         private void dataGridViewLeave_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            cBoxLeaveStatus.Text = dataGridViewLeave.CurrentRow.Cells[2].Value.ToString();
+            cBoxLeaveType.Text = dataGridViewLeave.CurrentRow.Cells[3].Value.ToString();
+            dTPLeaveDateApp.Text = dataGridViewLeave.CurrentRow.Cells[4].Value.ToString();
+            dTPLeaveSince.Text = dataGridViewLeave.CurrentRow.Cells[5].Value.ToString();
+            dTPLeaveTo.Text = dataGridViewLeave.CurrentRow.Cells[6].Value.ToString();
+            tBoxLeaveDays.Text = dataGridViewLeave.CurrentRow.Cells[7].Value.ToString();
+            if (dataGridViewLeave.CurrentRow.Cells[8].Value == null)
+            {
+                tBoxLeaveNote.Text = "brak";
+            }
+            else
+            {
+                tBoxLeaveNote.Text = dataGridViewLeave.CurrentRow.Cells[8].Value.ToString();
+            }
         }
 
         private void CBoxLeaveEmpID_SelectedIndexChanged(object sender, EventArgs e)
@@ -484,14 +507,208 @@ namespace P4_PROJEKT_NR_1
             tBoxSelectedPeroidsLeave.Text = CBoxLeaveEmpPeroids.SelectedValue.ToString();
             int.TryParse(tBoxSelectedPeroidsLeave.Text, out IDperoid_Leave);
             dataGridViewLeave.DataSource = myDB.GetEmployeeLeaves(IDperoid_Leave);
+
+
         }
 
-        private void CBoxLeaveEmpPeroids_MouseClick(object sender, MouseEventArgs e)
+
+        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        private void BtAddLeave_Click(object sender, EventArgs e)
         {
-            //if (tBoxSelectedEmployeeLeave.Text.ToString() != "")
-            //{
+            BtUpdateLeave.Enabled = false;
+            BtDeleteLeave.Enabled = false;
+            BtExecuteLeave.Enabled = true;
+            dataGridViewLeave.Enabled = false;
 
-            //}
+            SwitchLeaveCB(true);
         }
+
+        private void BtUpdateLeave_Click(object sender, EventArgs e)
+        {
+            BtAddLeave.Enabled = false;
+            BtDeleteLeave.Enabled = false;
+            BtExecuteLeave.Enabled = true;
+            dataGridViewLeave.Enabled = false;
+
+            SwitchLeaveCB(true);
+        }
+
+        private void BtDeleteLeave_Click(object sender, EventArgs e)
+        {
+            BtAddLeave.Enabled = false;
+            BtUpdateLeave.Enabled = false;
+            BtExecuteLeave.Enabled = true;
+            dataGridViewLeave.Enabled = false;
+
+            SwitchLeaveCB(true);
+        }
+
+        private void BtCancelLeave_Click(object sender, EventArgs e)
+        {
+            LeaveRefresh(IDperoid_Leave);
+            SwitchLeaveCB(false);
+        }
+
+
+        private void BtExecuteLeave_Click(object sender, EventArgs e)
+        {
+            if (BtAddLeave.Enabled == true)
+            {
+                if (true)
+                {
+                    Urlopy newPeroid = new Urlopy()
+                    {
+
+                    };
+                    //myDB.InsertPeroid(newPeroid);
+                    BtExecuteLeave.Enabled = false;
+                    dataGridViewLeave.Enabled = true;
+                }
+            }
+
+            if (BtUpdateLeave.Enabled == true)
+            {
+                if (true)
+                {
+                    if (IDperoid_Leave != 0)
+                    {
+                        Urlopy editedLeave = new Urlopy()
+                        {
+
+
+                        };
+                        //myDB.UpdatePeroid(editedLeave);
+                        buttonExecutePeroid.Enabled = false;
+                        dataGridViewLeave.Enabled = true;
+                    }
+                    else
+                        MessageBox.Show("Wybierz odpowiedni urlop!");
+                }
+            }
+
+            if (BtDeleteLeave.Enabled == true)
+            {
+                if (true)
+                {
+                    if (IDperoid_Leave != 0)
+                    {
+                        //myDB.DeletePeroid(IDperoid);
+                        buttonExecutePeroid.Enabled = false;
+                        dataGridViewLeave.Enabled = true;
+                    }
+                    else
+                        MessageBox.Show("Wybierz który urlop chcesz usunąć!");
+                }
+
+            }
+            BtAddLeave.Enabled = true;
+            BtUpdateLeave.Enabled = true;
+            BtDeleteLeave.Enabled = true;
+            SwitchLeaveCB(false);
+            LeaveRefresh(IDperoid_Leave);
+        }
+
+
+        private void LeaveRefresh(int id)
+        {
+            BtAddLeave.Enabled = true;
+            BtDeleteLeave.Enabled = true;
+            BtUpdateLeave.Enabled = true;
+            dataGridViewLeave.Enabled = true;
+
+            BtExecuteLeave.Enabled = false;
+
+            dataGridViewLeave.DataSource = myDB.GetEmployeeLeaves(id);
+        }
+
+        private void SwitchLeaveCB(bool mySwitch)
+        {
+            cBoxLeaveStatus.Enabled = mySwitch;
+            cBoxLeaveType.Enabled = mySwitch;
+            dTPLeaveDateApp.Enabled = mySwitch;
+            dTPLeaveSince.Enabled = mySwitch;
+            dTPLeaveTo.Enabled = mySwitch;
+            tBoxLeaveDays.Enabled = mySwitch;
+            tBoxLeaveNote.Enabled = mySwitch;
+
+        }
+
+        public void DefaultLeaveData()
+        {
+            dTPLeaveDateApp.Text = DateTime.Now.AddDays(-1).ToString();
+            dTPLeaveSince.Text = DateTime.Now.ToString();
+            dTPLeaveTo.Text = DateTime.Now.ToString();
+            tBoxLeaveNote.Text = "brak";
+
+        }
+
+        private void dTPLeaveSince_ValueChanged(object sender, EventArgs e)
+        {
+            //labelUIRLOP_DO.Text = dTPLeaveSince.Text.ToString();
+            //labelURLOP_OD.Text = dTPLeaveTo.Text.ToString();
+            tBoxLeaveDays.Text = AmountLeaveDays(DateTime.Parse(dTPLeaveSince.Text.ToString()), DateTime.Parse(dTPLeaveTo.Text.ToString())).ToString();
+            dTPLeaveTo.MinDate = DateTime.Parse(dTPLeaveSince.Text.ToString());
+        }
+
+        private void dTPLeaveTo_ValueChanged(object sender, EventArgs e)
+        {
+                //labelUIRLOP_DO.Text = dTPLeaveSince.Text.ToString();
+                //labelURLOP_OD.Text = dTPLeaveTo.Text.ToString();
+                tBoxLeaveDays.Text = AmountLeaveDays(DateTime.Parse(dTPLeaveSince.Text.ToString()), DateTime.Parse(dTPLeaveTo.Text.ToString())).ToString();
+        }
+
+        private int AmountLeaveDays(DateTime since, DateTime to)
+        {
+            var dates = new List<DateTime>();
+            DateTime dt = since;
+            DateTime start = since;
+            DateTime end = to;
+
+            for (dt = start; dt <= end; dt = dt.AddDays(1))
+            {
+                dates.Add(dt);
+            }
+
+            int DniUrlopu = 0;
+            for (int i = 0; i < dates.Count; i++)
+            {
+                if (CzySwieto(dates[i]) == true)
+                {
+                    DniUrlopu--;
+                }
+                else
+                    DniUrlopu++;
+            }
+            return DniUrlopu;
+        }
+        private static bool CzySwieto(DateTime Day)
+        {
+            if (Day.DayOfWeek == DayOfWeek.Sunday) return true;
+            if (Day.Month == 1 && Day.Day == 1) return true; // Nowy Rok
+            if (Day.Month == 1 && Day.Day == 6) return true; // 3 króli
+            if (Day.Month == 5 && Day.Day == 1) return true; // 1 maja
+            if (Day.Month == 5 && Day.Day == 3) return true; // 3 maja
+            if (Day.Month == 8 && Day.Day == 15) return true; // Święto Wojska Polskiego
+            if (Day.Month == 11 && Day.Day == 1) return true; // Wszystkich Świętych
+            if (Day.Month == 11 && Day.Day == 11) return true; // Dzień Niepodległości
+            if (Day.Month == 12 && Day.Day == 25) return true; // Boże Narodzenie
+            if (Day.Month == 12 && Day.Day == 26) return true; // Boże Narodzenie
+            int a = Day.Year % 19;
+            int b = Day.Year % 4;
+            int c = Day.Year % 7;
+            int d = (a * 19 + 24) % 30;
+            int e = (2 * b + 4 * c + 6 * d + 5) % 7;
+            if (d == 29 && e == 6) d -= 7;
+            if (d == 28 && e == 6 && a > 10) d -= 7;
+            DateTime wielkanoc = new DateTime(Day.Year, 3, 22).AddDays(d + e);
+            if (Day.AddDays(-1) == wielkanoc)
+                return true; // Wielkanoc (poniedziałek)
+            if (Day.AddDays(-60) == wielkanoc)
+                return true; // Boże Ciało
+            return false;
+        }
+
+
     }
 }
+

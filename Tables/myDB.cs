@@ -189,13 +189,13 @@ namespace P4_PROJEKT_NR_1.Tables
             }
         }
 
-        public static IEnumerable<TypUrlopu> GetLeaveStatus()
+        public static IEnumerable<StatusUrlopu> GetLeaveStatus()
         {
             using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
             {
                 if (myDBconnection.State == ConnectionState.Closed)
                     myDBconnection.Open();
-                return myDBconnection.Query<TypUrlopu>(@"SELECT * FROM ewu.status_urlopu").ToList();
+                return myDBconnection.Query<StatusUrlopu>(@"SELECT * FROM ewu.status_urlopu").ToList();
             }
         }
 
