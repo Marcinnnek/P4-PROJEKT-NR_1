@@ -139,54 +139,61 @@ namespace P4_PROJEKT_NR_1
 
         private void buttonPracownikWykonaj_Click(object sender, EventArgs e)
         {
-            if (buttonPracownikDodaj.Enabled == true)
+            try
             {
-                if (DataCheckEmp() == true)
+                if (buttonPracownikDodaj.Enabled == true)
                 {
-                    Pracownicy newEmployee = new Pracownicy()
+                    if (DataCheckEmp() == true)
                     {
-                        imie = tBImie.Text.ToString(),
-                        nazwisko = tBNazwisko.Text.ToString(),
-                        plec = cBgender.Text.ToString(),
-                        numer_pesel = tBnPESEL.Text.ToString(),
-                        data_urodzenia = DateTime.Parse(mTBDataUrodzenia.Text.ToString())
-                    };
-                    myDB.InsertEmployees(newEmployee);
-                    buttonPracownikWykonaj.Enabled = false;
+                        Pracownicy newEmployee = new Pracownicy()
+                        {
+                            imie = tBImie.Text.ToString(),
+                            nazwisko = tBNazwisko.Text.ToString(),
+                            plec = cBgender.Text.ToString(),
+                            numer_pesel = tBnPESEL.Text.ToString(),
+                            data_urodzenia = DateTime.Parse(mTBDataUrodzenia.Text.ToString())
+                        };
+                        myDB.InsertEmployees(newEmployee);
+                        buttonPracownikWykonaj.Enabled = false;
+                    }
                 }
-            }
 
-            if (buttonPracownikAkt.Enabled == true)
-            {
-                if (DataCheckEmp() == true)
+                if (buttonPracownikAkt.Enabled == true)
                 {
-                    Pracownicy newEmployee = new Pracownicy()
+                    if (DataCheckEmp() == true)
                     {
-                        IDpracownika = int.Parse(tBID.Text),
-                        imie = tBImie.Text.ToString(),
-                        nazwisko = tBNazwisko.Text.ToString(),
-                        plec = cBgender.Text.ToString(),
-                        numer_pesel = tBnPESEL.Text.ToString(),
-                        data_urodzenia = DateTime.Parse(mTBDataUrodzenia.Text.ToString())
-                    };
-                    myDB.UpdateEmployees(newEmployee);
-                    buttonPracownikWykonaj.Enabled = false;
+                        Pracownicy newEmployee = new Pracownicy()
+                        {
+                            IDpracownika = int.Parse(tBID.Text),
+                            imie = tBImie.Text.ToString(),
+                            nazwisko = tBNazwisko.Text.ToString(),
+                            plec = cBgender.Text.ToString(),
+                            numer_pesel = tBnPESEL.Text.ToString(),
+                            data_urodzenia = DateTime.Parse(mTBDataUrodzenia.Text.ToString())
+                        };
+                        myDB.UpdateEmployees(newEmployee);
+                        buttonPracownikWykonaj.Enabled = false;
+                    }
                 }
-            }
 
-            if (buttonPrawconikUsun.Enabled == true)
-            {
-                if (DataCheckEmp() == true)
+                if (buttonPrawconikUsun.Enabled == true)
                 {
-                    myDB.DeleteEmployee(tBnPESEL.Text.ToString(), int.Parse(tBID.Text));
-                    buttonPracownikWykonaj.Enabled = false;
+                    if (DataCheckEmp() == true)
+                    {
+                        myDB.DeleteEmployee(tBnPESEL.Text.ToString(), int.Parse(tBID.Text));
+                        buttonPracownikWykonaj.Enabled = false;
+                    }
                 }
+                buttonPracownikDodaj.Enabled = true;
+                buttonPracownikAkt.Enabled = true;
+                buttonPrawconikUsun.Enabled = true;
+                cBoxEmployee.DataSource = myDB.GetEmployees();
+                EmployeeRefresh();
             }
-            buttonPracownikDodaj.Enabled = true;
-            buttonPracownikAkt.Enabled = true;
-            buttonPrawconikUsun.Enabled = true;
-            cBoxEmployee.DataSource = myDB.GetEmployees();
-            EmployeeRefresh();
+            catch (SqlException mySQLexception)
+            {
+                MessageBox.Show("Sprawdź poprawność danych!");
+            }
         }
 
         private void dataGridViewEmployess_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -304,79 +311,86 @@ namespace P4_PROJEKT_NR_1
 
         private void buttonExecutePeroid_Click(object sender, EventArgs e)
         {
-            if (buttonAddPeroid.Enabled == true)
+            try
             {
-                if (DataCheckPeroid() == true)
+                if (buttonAddPeroid.Enabled == true)
                 {
-                    if (checkBoxUCNO.Checked)
+                    if (DataCheckPeroid() == true)
                     {
-                        UCNO = null;
-                    }
-                    else
-                    {
-                        UCNO = DateTime.Parse(dTPzatrudnionyDo.Text.ToString());
-                    }
-                    OkresZatrudnienia newPeroid = new OkresZatrudnienia()
-                    {
-                        IDpracownika = int.Parse(cBoxEmployee.SelectedValue.ToString()),
-                        IDstanowiska = int.Parse(cBoxStanowisko.SelectedValue.ToString()),
-                        IDwymiar = int.Parse(cBoxWCP.SelectedValue.ToString()),
-                        staz_pracy = int.Parse(cBoxStazPracy.SelectedValue.ToString()),
-                        zatrudniony_od = DateTime.Parse(dTPzatrudnionyOd.Text.ToString()),
-                        zatrudniony_do = UCNO
-                    };
-                    myDB.InsertPeroid(newPeroid);
-                    buttonExecutePeroid.Enabled = false;
-                    dataGridPeroidOfEmp.Enabled = true;
-                }
-            }
-
-            if (buttonUpdatePeroid.Enabled == true)
-            {
-                if (DataCheckPeroid() == true)
-                {
-                    if (IDperoid != 0)
-                    {
-                        OkresZatrudnienia editedPeroid = new OkresZatrudnienia()
+                        if (checkBoxUCNO.Checked)
                         {
-                            IDpracownika = IDemployee,
-                            IDzatrudnienia = IDperoid,
+                            UCNO = null;
+                        }
+                        else
+                        {
+                            UCNO = DateTime.Parse(dTPzatrudnionyDo.Text.ToString());
+                        }
+                        OkresZatrudnienia newPeroid = new OkresZatrudnienia()
+                        {
+                            IDpracownika = int.Parse(cBoxEmployee.SelectedValue.ToString()),
                             IDstanowiska = int.Parse(cBoxStanowisko.SelectedValue.ToString()),
                             IDwymiar = int.Parse(cBoxWCP.SelectedValue.ToString()),
                             staz_pracy = int.Parse(cBoxStazPracy.SelectedValue.ToString()),
                             zatrudniony_od = DateTime.Parse(dTPzatrudnionyOd.Text.ToString()),
-                            zatrudniony_do = DateTime.Parse(dTPzatrudnionyDo.Text.ToString()),
-
+                            zatrudniony_do = UCNO
                         };
-                        myDB.UpdatePeroid(editedPeroid);
+                        myDB.InsertPeroid(newPeroid);
                         buttonExecutePeroid.Enabled = false;
                         dataGridPeroidOfEmp.Enabled = true;
                     }
-                    else
-                        MessageBox.Show("Wybierz okres zatrudnienia!");
                 }
-            }
 
-            if (buttonDeletePeroid.Enabled == true)
-            {
-                if (DataCheckPeroid() == true)
+                if (buttonUpdatePeroid.Enabled == true)
                 {
-                    if (IDperoid != 0)
+                    if (DataCheckPeroid() == true)
                     {
-                        myDB.DeletePeroid(IDperoid);
-                        buttonExecutePeroid.Enabled = false;
-                        dataGridPeroidOfEmp.Enabled = true;
+                        if (IDperoid != 0)
+                        {
+                            OkresZatrudnienia editedPeroid = new OkresZatrudnienia()
+                            {
+                                IDpracownika = IDemployee,
+                                IDzatrudnienia = IDperoid,
+                                IDstanowiska = int.Parse(cBoxStanowisko.SelectedValue.ToString()),
+                                IDwymiar = int.Parse(cBoxWCP.SelectedValue.ToString()),
+                                staz_pracy = int.Parse(cBoxStazPracy.SelectedValue.ToString()),
+                                zatrudniony_od = DateTime.Parse(dTPzatrudnionyOd.Text.ToString()),
+                                zatrudniony_do = DateTime.Parse(dTPzatrudnionyDo.Text.ToString()),
+
+                            };
+                            myDB.UpdatePeroid(editedPeroid);
+                            buttonExecutePeroid.Enabled = false;
+                            dataGridPeroidOfEmp.Enabled = true;
+                        }
+                        else
+                            MessageBox.Show("Wybierz okres zatrudnienia!");
                     }
-                    else
-                        MessageBox.Show("Wybierz okres zatrudnienia!");
                 }
 
+                if (buttonDeletePeroid.Enabled == true)
+                {
+                    if (DataCheckPeroid() == true)
+                    {
+                        if (IDperoid != 0)
+                        {
+                            myDB.DeletePeroid(IDperoid);
+                            buttonExecutePeroid.Enabled = false;
+                            dataGridPeroidOfEmp.Enabled = true;
+                        }
+                        else
+                            MessageBox.Show("Wybierz okres zatrudnienia!");
+                    }
+
+                }
+                buttonAddPeroid.Enabled = true;
+                buttonUpdatePeroid.Enabled = true;
+                buttonDeletePeroid.Enabled = true;
+                SwitchPeroidsCB(false);
+                PeroidRefresh(IDemployee);
             }
-            buttonAddPeroid.Enabled = true;
-            buttonUpdatePeroid.Enabled = true;
-            buttonDeletePeroid.Enabled = true;
-            SwitchPeroidsCB(false);
-            PeroidRefresh(IDemployee);
+            catch (SqlException mySQLexception)
+            {
+                MessageBox.Show("Sprawdź poprawność danych!");
+            }
         }
 
         private void buttonAddPeroid_Click(object sender, EventArgs e)
@@ -538,79 +552,87 @@ namespace P4_PROJEKT_NR_1
 
         private void BtExecuteLeave_Click(object sender, EventArgs e)
         {
-            string? notes = tBoxLeaveNote.Text.ToString();
-            notes = notes.Trim();
-            if (tBoxLeaveNote.Text.ToString() == "brak")
+            try
             {
-                notes = null;
-            }
-
-            if (BtAddLeave.Enabled == true)
-            {
-                if (DateTime.Parse(dTPLeaveDateApp.Text.ToString()) < DateTime.Parse(dTPLeaveSince.Text.ToString()))
+                string? notes = tBoxLeaveNote.Text.ToString();
+                notes = notes.Trim();
+                if (tBoxLeaveNote.Text.ToString() == "brak")
                 {
-                    Urlopy newLeave = new Urlopy()
+                    notes = null;
+                }
+
+                if (BtAddLeave.Enabled == true)
+                {
+                    if (DateTime.Parse(dTPLeaveDateApp.Text.ToString()) < DateTime.Parse(dTPLeaveSince.Text.ToString()))
                     {
-                        IDzatrudnienia = IDperoid_Leave,
-                        IDstatus = int.Parse(cBoxLeaveStatus.SelectedValue.ToString()),
-                        IDurlopu_typ = int.Parse(cBoxLeaveType.SelectedValue.ToString()),
-                        data_wniosku = DateTime.Parse(dTPLeaveDateApp.Text.ToString()),
-                        urlop_od = DateTime.Parse(dTPLeaveSince.Text.ToString()),
-                        urlop_do = DateTime.Parse(dTPLeaveTo.Text.ToString()),
-                        ilosc_dni_urlopu = int.Parse(tBoxLeaveDays.Text.ToString()),
-                        uwagi = notes
-                    };
-                    myDB.InsertLeave(newLeave);
-                    BtExecuteLeave.Enabled = false;
-                    dataGridViewLeave.Enabled = true;
-                }
-                else
-                {
-                    MessageBox.Show("Sprawdź poprawność danych!");
-                }
-            }
-
-            if (BtUpdateLeave.Enabled == true)
-            {
-                if (IDperoid_Leave != 0 || IDleave != 0)
-                {
-                    Urlopy editedLeave = new Urlopy()
+                        Urlopy newLeave = new Urlopy()
+                        {
+                            IDzatrudnienia = IDperoid_Leave,
+                            IDstatus = int.Parse(cBoxLeaveStatus.SelectedValue.ToString()),
+                            IDurlopu_typ = int.Parse(cBoxLeaveType.SelectedValue.ToString()),
+                            data_wniosku = DateTime.Parse(dTPLeaveDateApp.Text.ToString()),
+                            urlop_od = DateTime.Parse(dTPLeaveSince.Text.ToString()),
+                            urlop_do = DateTime.Parse(dTPLeaveTo.Text.ToString()),
+                            ilosc_dni_urlopu = int.Parse(tBoxLeaveDays.Text.ToString()),
+                            uwagi = notes
+                        };
+                        myDB.InsertLeave(newLeave);
+                        BtExecuteLeave.Enabled = false;
+                        dataGridViewLeave.Enabled = true;
+                    }
+                    else
                     {
-                        IDewidencji = IDleave,
-                        IDzatrudnienia = IDperoid_Leave,
-                        IDstatus = int.Parse(cBoxLeaveStatus.SelectedValue.ToString()),
-                        IDurlopu_typ = int.Parse(cBoxLeaveType.SelectedValue.ToString()),
-                        data_wniosku = DateTime.Parse(dTPLeaveDateApp.Text.ToString()),
-                        urlop_od = DateTime.Parse(dTPLeaveSince.Text.ToString()),
-                        urlop_do = DateTime.Parse(dTPLeaveTo.Text.ToString()),
-                        ilosc_dni_urlopu = int.Parse(tBoxLeaveDays.Text.ToString()),
-                        uwagi = notes
-                    };
-                    myDB.UpdateLeave(editedLeave);
-                    buttonExecutePeroid.Enabled = false;
-                    dataGridViewLeave.Enabled = true;
+                        MessageBox.Show("Sprawdź poprawność danych!");
+                    }
                 }
-                else
-                    MessageBox.Show("Wybierz odpowiedni urlop!");
-            }
 
-            if (BtDeleteLeave.Enabled == true)
-            {
-
-                if (IDperoid_Leave != 0)
+                if (BtUpdateLeave.Enabled == true)
                 {
-                    myDB.DeleteLeave(IDleave);
-                    buttonExecutePeroid.Enabled = false;
-                    dataGridViewLeave.Enabled = true;
+                    if (IDperoid_Leave != 0 || IDleave != 0)
+                    {
+                        Urlopy editedLeave = new Urlopy()
+                        {
+                            IDewidencji = IDleave,
+                            IDzatrudnienia = IDperoid_Leave,
+                            IDstatus = int.Parse(cBoxLeaveStatus.SelectedValue.ToString()),
+                            IDurlopu_typ = int.Parse(cBoxLeaveType.SelectedValue.ToString()),
+                            data_wniosku = DateTime.Parse(dTPLeaveDateApp.Text.ToString()),
+                            urlop_od = DateTime.Parse(dTPLeaveSince.Text.ToString()),
+                            urlop_do = DateTime.Parse(dTPLeaveTo.Text.ToString()),
+                            ilosc_dni_urlopu = int.Parse(tBoxLeaveDays.Text.ToString()),
+                            uwagi = notes
+                        };
+                        myDB.UpdateLeave(editedLeave);
+                        buttonExecutePeroid.Enabled = false;
+                        dataGridViewLeave.Enabled = true;
+                    }
+                    else
+                        MessageBox.Show("Wybierz odpowiedni urlop!");
                 }
-                else
-                    MessageBox.Show("Wybierz który urlop chcesz usunąć!");
+
+                if (BtDeleteLeave.Enabled == true)
+                {
+
+                    if (IDperoid_Leave != 0)
+                    {
+                        myDB.DeleteLeave(IDleave);
+                        buttonExecutePeroid.Enabled = false;
+                        dataGridViewLeave.Enabled = true;
+                    }
+                    else
+                        MessageBox.Show("Wybierz który urlop chcesz usunąć!");
+                }
+                BtAddLeave.Enabled = true;
+                BtUpdateLeave.Enabled = true;
+                BtDeleteLeave.Enabled = true;
+                SwitchLeaveCB(false);
+                LeaveRefresh(IDperoid_Leave);
             }
-            BtAddLeave.Enabled = true;
-            BtUpdateLeave.Enabled = true;
-            BtDeleteLeave.Enabled = true;
-            SwitchLeaveCB(false);
-            LeaveRefresh(IDperoid_Leave);
+            catch (SqlException mySQLexception)
+            {
+                MessageBox.Show("Sprawdź poprawność danych!");
+            }
+
         }
 
 
@@ -711,4 +733,3 @@ namespace P4_PROJEKT_NR_1
 
     }
 }
-

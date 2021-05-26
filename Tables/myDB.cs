@@ -173,17 +173,6 @@ namespace P4_PROJEKT_NR_1.Tables
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
         public static bool InsertLeave(Urlopy newLeave)
         {
             using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
@@ -195,14 +184,14 @@ namespace P4_PROJEKT_NR_1.Tables
                                                     VALUES (@IDperoid, @Status, @IDLeaveType, @AppDate,@Since, @To, @Quantity, @Notes)",
                      new
                      {
-                        IDperoid = newLeave.IDzatrudnienia,
-                        Status = newLeave.IDstatus,
-                        IDLeaveType = newLeave.IDurlopu_typ,
-                        AppDate = newLeave.data_wniosku,
-                        Since = newLeave.urlop_od,
-                        To = newLeave.urlop_do,
-                        Quantity = newLeave.ilosc_dni_urlopu,
-                        Notes = newLeave.uwagi
+                         IDperoid = newLeave.IDzatrudnienia,
+                         Status = newLeave.IDstatus,
+                         IDLeaveType = newLeave.IDurlopu_typ,
+                         AppDate = newLeave.data_wniosku,
+                         Since = newLeave.urlop_od,
+                         To = newLeave.urlop_do,
+                         Quantity = newLeave.ilosc_dni_urlopu,
+                         Notes = newLeave.uwagi
                      });
                 return result == 1;
             }
@@ -254,9 +243,6 @@ namespace P4_PROJEKT_NR_1.Tables
             }
         }
 
-
-
-
         public static IEnumerable<TypUrlopu> GetLeaveType()
         {
             using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
@@ -283,7 +269,7 @@ namespace P4_PROJEKT_NR_1.Tables
             {
                 if (myDBconnection.State == ConnectionState.Closed)
                     myDBconnection.Open();
-                return myDBconnection.Query<ComboUrlopy>(   @"SELECT* FROM ewu.urlopy AS U INNER JOIN ewu.status_urlopu AS SU ON U.IDstatus=SU.IDstatus
+                return myDBconnection.Query<ComboUrlopy>(@"SELECT* FROM ewu.urlopy AS U INNER JOIN ewu.status_urlopu AS SU ON U.IDstatus=SU.IDstatus
                                                             INNER JOIN EWU.typ_urlopu AS TU ON U.IDurlopu_typ=TU.IDurlopu_typ
                                                             WHERE IDzatrudnienia = @IDperoid", new { IDperoid = id }).ToList();
             }
@@ -292,4 +278,3 @@ namespace P4_PROJEKT_NR_1.Tables
 
     }
 }
-
