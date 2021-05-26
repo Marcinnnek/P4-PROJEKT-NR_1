@@ -1262,7 +1262,7 @@ namespace P4_PROJEKT_NR_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1492, 973);
+            this.ClientSize = new System.Drawing.Size(1492, 630);
             this.Controls.Add(this.panelUrlopy);
             this.Controls.Add(this.panelZatrudnienie);
             this.Controls.Add(this.label6);
@@ -1276,6 +1276,7 @@ namespace P4_PROJEKT_NR_1
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panelPracownicy);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1510, 1080);
             this.MinimizeBox = false;

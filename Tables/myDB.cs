@@ -109,7 +109,7 @@ namespace P4_PROJEKT_NR_1.Tables
                 return myDBconnection.Query<WymiarCzasuPracy>(@"SELECT * FROM ewu.wymiar_czasu_pracy").ToList();
             }
         }
-        public static bool InsertPeroid(OkresZatrudnienia peroid)
+        public static bool InsertPeroid(OkresZatrudnienia newPeroid)
         {
             using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
             {
@@ -120,12 +120,12 @@ namespace P4_PROJEKT_NR_1.Tables
                                                     VALUES (@IDemp, @Position, @DayJob, @Practice ,@Since, @ToDate)",
                      new
                      {
-                         IDemp = peroid.IDpracownika,
-                         Position = peroid.IDstanowiska,
-                         DayJob = peroid.IDwymiar,
-                         Practice = peroid.staz_pracy,
-                         Since = peroid.zatrudniony_od,
-                         ToDate = peroid.zatrudniony_do
+                         IDemp = newPeroid.IDpracownika,
+                         Position = newPeroid.IDstanowiska,
+                         DayJob = newPeroid.IDwymiar,
+                         Practice = newPeroid.staz_pracy,
+                         Since = newPeroid.zatrudniony_od,
+                         ToDate = newPeroid.zatrudniony_do
                      });
                 return result == 1;
             }
@@ -144,7 +144,7 @@ namespace P4_PROJEKT_NR_1.Tables
             }
         }
 
-        public static bool UpdatePeroid(OkresZatrudnienia IDperoid)
+        public static bool UpdatePeroid(OkresZatrudnienia updatedPeroid)
         {
             using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
             {
@@ -161,13 +161,13 @@ namespace P4_PROJEKT_NR_1.Tables
                                                     WHERE IDzatrudnienia = @IDper",
                  new
                  {
-                     IDemployee = IDperoid.IDpracownika,
-                     IDper = IDperoid.IDzatrudnienia,
-                     Position = IDperoid.IDstanowiska,
-                     DayJob = IDperoid.IDwymiar,
-                     Practice = IDperoid.staz_pracy,
-                     Since = IDperoid.zatrudniony_od,
-                     ToDate = IDperoid.zatrudniony_do
+                     IDemployee = updatedPeroid.IDpracownika,
+                     IDper = updatedPeroid.IDzatrudnienia,
+                     Position = updatedPeroid.IDstanowiska,
+                     DayJob = updatedPeroid.IDwymiar,
+                     Practice = updatedPeroid.staz_pracy,
+                     Since = updatedPeroid.zatrudniony_od,
+                     ToDate = updatedPeroid.zatrudniony_do
                  });
                 return result == 1;
             }
@@ -175,6 +175,84 @@ namespace P4_PROJEKT_NR_1.Tables
 
 
 
+
+
+
+
+
+
+
+
+
+        public static bool InsertLeave(Urlopy newLeave)
+        {
+            using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
+            {
+                if (myDBconnection.State == ConnectionState.Closed)
+                    myDBconnection.Open();
+                var result = myDBconnection.Execute(@"INSERT INTO ewu.urlopy
+                                                    (IDzatrudnienia, IDstatus, IDurlopu_typ, data_wniosku, urlop_od, urlop_do, ilosc_dni_urlopu, uwagi) 
+                                                    VALUES (@IDperoid, @Status, @IDLeaveType, @AppDate,@Since, @To, @Quantity, @Notes)",
+                     new
+                     {
+                        IDperoid = newLeave.IDzatrudnienia,
+                        Status = newLeave.IDstatus,
+                        IDLeaveType = newLeave.IDurlopu_typ,
+                        AppDate = newLeave.data_wniosku,
+                        Since = newLeave.urlop_od,
+                        To = newLeave.urlop_do,
+                        Quantity = newLeave.ilosc_dni_urlopu,
+                        Notes = newLeave.uwagi
+                     });
+                return result == 1;
+            }
+        }
+
+        public static bool UpdateLeave(Urlopy editedLeave)
+        {
+            using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
+            {
+                if (myDBconnection.State == ConnectionState.Closed)
+                    myDBconnection.Open();
+                var result = myDBconnection.Execute(@"UPDATE ewu.urlopy 
+                                                    SET
+                                                    IDstatus = @Status,
+                                                    IDurlopu_typ = @IDLeaveType, 
+                                                    data_wniosku = @AppDate, 
+                                                    urlop_od = @Since,
+                                                    urlop_do = @To,
+                                                    ilosc_dni_urlopu = @Quantity,
+                                                    uwagi = @Notes
+                                                    WHERE IDewidencji = @IDLeave",
+                 new
+                 {
+                     Status = editedLeave.IDstatus,
+                     IDLeaveType = editedLeave.IDurlopu_typ,
+                     AppDate = editedLeave.data_wniosku,
+                     Since = editedLeave.urlop_od,
+                     To = editedLeave.urlop_do,
+                     Quantity = editedLeave.ilosc_dni_urlopu,
+                     Notes = editedLeave.uwagi,
+                     IDLeave = editedLeave.IDewidencji
+                 });
+                return result == 1;
+            }
+        }
+
+
+
+        public static bool DeleteLeave(int IDleave)
+        {
+            using (IDbConnection myDBconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["EWUDatabase"].ConnectionString))
+            {
+                if (myDBconnection.State == ConnectionState.Closed)
+                    myDBconnection.Open();
+                var result = myDBconnection.Execute(@"DELETE FROM ewu.urlopy WHERE IDewidencji = @IDl",
+                new { IDl = IDleave });
+
+                return result == 1;
+            }
+        }
 
 
 

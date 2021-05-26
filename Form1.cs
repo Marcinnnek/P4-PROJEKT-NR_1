@@ -19,8 +19,10 @@ namespace P4_PROJEKT_NR_1
         private static List<StazPracy> Practice = new List<StazPracy>();
         private int IDemployee;
         private int IDperoid = 0;
+
         private int IDemployee_Leave;
         private int IDperoid_Leave;
+        private int IDleave = 0;
         DateTime? UCNO;
         public FormEWU()
         {
@@ -63,10 +65,6 @@ namespace P4_PROJEKT_NR_1
             cBoxLeaveType.DisplayMember = "nazwaTU";
             cBoxLeaveType.ValueMember = "IDurlopu_typ";
 
-
-
-            //CBoxLeaveEmpPeroids.DataSource = myDB.GetPeroidsOfEmployment();
-
             checkBoxUCNO.Checked = false;
             SwitchPeroidsCB(false);
             SwitchLeaveCB(false);
@@ -74,7 +72,6 @@ namespace P4_PROJEKT_NR_1
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
             tBID.Enabled = false;
             buttonPracownikWykonaj.Enabled = false;
             buttonExecutePeroid.Enabled = false;
@@ -90,8 +87,8 @@ namespace P4_PROJEKT_NR_1
             tBoxSelectedEmployeeLeave.Text = null;
 
             DefaultLeaveData();
-
         }
+        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         #region
 
         private void buttonPanelPracownicy_Click(object sender, EventArgs e)
@@ -117,12 +114,9 @@ namespace P4_PROJEKT_NR_1
             panelUrlopy.BringToFront();
             panelUrlopy.Show();
         }
-        private void buttonShowEmployee_Click(object sender, EventArgs e)
-        {
-            EmployeeRefresh();
-        }
-
         #endregion
+        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
         #region
         private void buttonPracownikDodaj_Click(object sender, EventArgs e)
         {
@@ -225,7 +219,6 @@ namespace P4_PROJEKT_NR_1
             dataGridViewEmployess.DataSource = myDB.GetEmployees().ToList();
         }
 
-
         private void tBnPESEL_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -260,7 +253,7 @@ namespace P4_PROJEKT_NR_1
         }
         #endregion
 
-
+        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         #region
         private void cBoxEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -326,7 +319,6 @@ namespace P4_PROJEKT_NR_1
                     OkresZatrudnienia newPeroid = new OkresZatrudnienia()
                     {
                         IDpracownika = int.Parse(cBoxEmployee.SelectedValue.ToString()),
-                        //tBoxSelectedEmployee.Text.ToString()),
                         IDstanowiska = int.Parse(cBoxStanowisko.SelectedValue.ToString()),
                         IDwymiar = int.Parse(cBoxWCP.SelectedValue.ToString()),
                         staz_pracy = int.Parse(cBoxStazPracy.SelectedValue.ToString()),
@@ -422,7 +414,6 @@ namespace P4_PROJEKT_NR_1
             SwitchPeroidsCB(true);
         }
 
-
         private void SwitchPeroidsCB(bool mySwitch)
         {
             cBoxStanowisko.Enabled = mySwitch;
@@ -444,13 +435,11 @@ namespace P4_PROJEKT_NR_1
             dataGridPeroidOfEmp.DataSource = myDB.GetPeroidsOfEmployment(id);
         }
 
-
         private void buttonPeroidCancel_Click(object sender, EventArgs e)
         {
             PeroidRefresh(IDemployee);
             SwitchPeroidsCB(false);
         }
-
 
         private bool DataCheckPeroid()
         {
@@ -469,11 +458,11 @@ namespace P4_PROJEKT_NR_1
             }
             return true;
         }
-
-
-
         #endregion
 
+        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        #region
         private void dataGridViewLeave_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             cBoxLeaveStatus.Text = dataGridViewLeave.CurrentRow.Cells[2].Value.ToString();
@@ -490,6 +479,7 @@ namespace P4_PROJEKT_NR_1
             {
                 tBoxLeaveNote.Text = dataGridViewLeave.CurrentRow.Cells[8].Value.ToString();
             }
+            IDleave = int.Parse(dataGridViewLeave.CurrentRow.Cells[0].Value.ToString());
         }
 
         private void CBoxLeaveEmpID_SelectedIndexChanged(object sender, EventArgs e)
@@ -507,12 +497,8 @@ namespace P4_PROJEKT_NR_1
             tBoxSelectedPeroidsLeave.Text = CBoxLeaveEmpPeroids.SelectedValue.ToString();
             int.TryParse(tBoxSelectedPeroidsLeave.Text, out IDperoid_Leave);
             dataGridViewLeave.DataSource = myDB.GetEmployeeLeaves(IDperoid_Leave);
-
-
         }
 
-
-        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         private void BtAddLeave_Click(object sender, EventArgs e)
         {
             BtUpdateLeave.Enabled = false;
@@ -552,54 +538,73 @@ namespace P4_PROJEKT_NR_1
 
         private void BtExecuteLeave_Click(object sender, EventArgs e)
         {
+            string? notes = tBoxLeaveNote.Text.ToString();
+            notes = notes.Trim();
+            if (tBoxLeaveNote.Text.ToString() == "brak")
+            {
+                notes = null;
+            }
+
             if (BtAddLeave.Enabled == true)
             {
-                if (true)
+                if (DateTime.Parse(dTPLeaveDateApp.Text.ToString()) < DateTime.Parse(dTPLeaveSince.Text.ToString()))
                 {
-                    Urlopy newPeroid = new Urlopy()
+                    Urlopy newLeave = new Urlopy()
                     {
-
+                        IDzatrudnienia = IDperoid_Leave,
+                        IDstatus = int.Parse(cBoxLeaveStatus.SelectedValue.ToString()),
+                        IDurlopu_typ = int.Parse(cBoxLeaveType.SelectedValue.ToString()),
+                        data_wniosku = DateTime.Parse(dTPLeaveDateApp.Text.ToString()),
+                        urlop_od = DateTime.Parse(dTPLeaveSince.Text.ToString()),
+                        urlop_do = DateTime.Parse(dTPLeaveTo.Text.ToString()),
+                        ilosc_dni_urlopu = int.Parse(tBoxLeaveDays.Text.ToString()),
+                        uwagi = notes
                     };
-                    //myDB.InsertPeroid(newPeroid);
+                    myDB.InsertLeave(newLeave);
                     BtExecuteLeave.Enabled = false;
                     dataGridViewLeave.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Sprawdź poprawność danych!");
                 }
             }
 
             if (BtUpdateLeave.Enabled == true)
             {
-                if (true)
+                if (IDperoid_Leave != 0 || IDleave != 0)
                 {
-                    if (IDperoid_Leave != 0)
+                    Urlopy editedLeave = new Urlopy()
                     {
-                        Urlopy editedLeave = new Urlopy()
-                        {
-
-
-                        };
-                        //myDB.UpdatePeroid(editedLeave);
-                        buttonExecutePeroid.Enabled = false;
-                        dataGridViewLeave.Enabled = true;
-                    }
-                    else
-                        MessageBox.Show("Wybierz odpowiedni urlop!");
+                        IDewidencji = IDleave,
+                        IDzatrudnienia = IDperoid_Leave,
+                        IDstatus = int.Parse(cBoxLeaveStatus.SelectedValue.ToString()),
+                        IDurlopu_typ = int.Parse(cBoxLeaveType.SelectedValue.ToString()),
+                        data_wniosku = DateTime.Parse(dTPLeaveDateApp.Text.ToString()),
+                        urlop_od = DateTime.Parse(dTPLeaveSince.Text.ToString()),
+                        urlop_do = DateTime.Parse(dTPLeaveTo.Text.ToString()),
+                        ilosc_dni_urlopu = int.Parse(tBoxLeaveDays.Text.ToString()),
+                        uwagi = notes
+                    };
+                    myDB.UpdateLeave(editedLeave);
+                    buttonExecutePeroid.Enabled = false;
+                    dataGridViewLeave.Enabled = true;
                 }
+                else
+                    MessageBox.Show("Wybierz odpowiedni urlop!");
             }
 
             if (BtDeleteLeave.Enabled == true)
             {
-                if (true)
-                {
-                    if (IDperoid_Leave != 0)
-                    {
-                        //myDB.DeletePeroid(IDperoid);
-                        buttonExecutePeroid.Enabled = false;
-                        dataGridViewLeave.Enabled = true;
-                    }
-                    else
-                        MessageBox.Show("Wybierz który urlop chcesz usunąć!");
-                }
 
+                if (IDperoid_Leave != 0)
+                {
+                    myDB.DeleteLeave(IDleave);
+                    buttonExecutePeroid.Enabled = false;
+                    dataGridViewLeave.Enabled = true;
+                }
+                else
+                    MessageBox.Show("Wybierz który urlop chcesz usunąć!");
             }
             BtAddLeave.Enabled = true;
             BtUpdateLeave.Enabled = true;
@@ -630,7 +635,6 @@ namespace P4_PROJEKT_NR_1
             dTPLeaveTo.Enabled = mySwitch;
             tBoxLeaveDays.Enabled = mySwitch;
             tBoxLeaveNote.Enabled = mySwitch;
-
         }
 
         public void DefaultLeaveData()
@@ -644,17 +648,13 @@ namespace P4_PROJEKT_NR_1
 
         private void dTPLeaveSince_ValueChanged(object sender, EventArgs e)
         {
-            //labelUIRLOP_DO.Text = dTPLeaveSince.Text.ToString();
-            //labelURLOP_OD.Text = dTPLeaveTo.Text.ToString();
             tBoxLeaveDays.Text = AmountLeaveDays(DateTime.Parse(dTPLeaveSince.Text.ToString()), DateTime.Parse(dTPLeaveTo.Text.ToString())).ToString();
             dTPLeaveTo.MinDate = DateTime.Parse(dTPLeaveSince.Text.ToString());
         }
 
         private void dTPLeaveTo_ValueChanged(object sender, EventArgs e)
         {
-                //labelUIRLOP_DO.Text = dTPLeaveSince.Text.ToString();
-                //labelURLOP_OD.Text = dTPLeaveTo.Text.ToString();
-                tBoxLeaveDays.Text = AmountLeaveDays(DateTime.Parse(dTPLeaveSince.Text.ToString()), DateTime.Parse(dTPLeaveTo.Text.ToString())).ToString();
+            tBoxLeaveDays.Text = AmountLeaveDays(DateTime.Parse(dTPLeaveSince.Text.ToString()), DateTime.Parse(dTPLeaveTo.Text.ToString())).ToString();
         }
 
         private int AmountLeaveDays(DateTime since, DateTime to)
@@ -707,7 +707,7 @@ namespace P4_PROJEKT_NR_1
                 return true; // Boże Ciało
             return false;
         }
-
+        #endregion
 
     }
 }
