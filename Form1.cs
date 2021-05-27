@@ -192,7 +192,7 @@ namespace P4_PROJEKT_NR_1
             }
             catch (SqlException mySQLexception)
             {
-                MessageBox.Show("Sprawdź poprawność danych!");
+                MessageBox.Show(mySQLexception.Message + " Sprawdź poprawność danych!");
             }
         }
 
@@ -383,9 +383,10 @@ namespace P4_PROJEKT_NR_1
             }
             catch (SqlException mySQLexception)
             {
-                MessageBox.Show("Sprawdź poprawność danych!");
+                MessageBox.Show(mySQLexception.Message + " Sprawdź poprawność danych!");
             }
         }
+
 
         private void buttonAddPeroid_Click(object sender, EventArgs e)
         {
@@ -466,6 +467,7 @@ namespace P4_PROJEKT_NR_1
             }
             return true;
         }
+
         #endregion
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -624,7 +626,7 @@ namespace P4_PROJEKT_NR_1
             }
             catch (SqlException mySQLexception)
             {
-                MessageBox.Show("Sprawdź poprawność danych!");
+                MessageBox.Show(mySQLexception.Message + " Sprawdź poprawność danych!");
             }
 
         }
@@ -660,6 +662,10 @@ namespace P4_PROJEKT_NR_1
             dTPLeaveTo.Text = DateTime.Now.ToString();
             tBoxLeaveNote.Text = "brak";
 
+        }
+        private void dTPLeaveDateApp_ValueChanged(object sender, EventArgs e)
+        {
+            dTPLeaveSince.MinDate = DateTime.Parse(dTPLeaveDateApp.Text.ToString());
         }
 
         private void dTPLeaveSince_ValueChanged(object sender, EventArgs e)
@@ -723,7 +729,10 @@ namespace P4_PROJEKT_NR_1
                 return true; // Boże Ciało
             return false;
         }
+
+
         #endregion
+
 
     }
 }

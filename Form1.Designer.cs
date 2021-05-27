@@ -905,6 +905,7 @@ namespace P4_PROJEKT_NR_1
             this.dTPLeaveDateApp.Name = "dTPLeaveDateApp";
             this.dTPLeaveDateApp.Size = new System.Drawing.Size(256, 26);
             this.dTPLeaveDateApp.TabIndex = 13;
+            this.dTPLeaveDateApp.ValueChanged += new System.EventHandler(this.dTPLeaveDateApp_ValueChanged);
             // 
             // cBoxLeaveType
             // 
@@ -1171,12 +1172,12 @@ namespace P4_PROJEKT_NR_1
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1492, 630);
-            this.Controls.Add(this.panelUrlopy);
             this.Controls.Add(this.panelZatrudnienie);
             this.Controls.Add(this.buttonPanelUrlopy);
             this.Controls.Add(this.buttonPanelZatrudnienie);
             this.Controls.Add(this.buttonPanelPracownicy);
             this.Controls.Add(this.panelPracownicy);
+            this.Controls.Add(this.panelUrlopy);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1510, 1080);
